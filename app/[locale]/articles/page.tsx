@@ -1,9 +1,14 @@
 import { getStrapiClient } from "@/lib/strapi";
 import type { Article } from "@/types/strapi";
 
-export default async function ArticlesPage() {
+export default async function ArticlesPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   const client = getStrapiClient();
-  const { data } = await client.collection("articles").find();
+  const { data } = await client.collection("articles").find({ locale });
   const articles = data as unknown as Article[];
 
   return (
