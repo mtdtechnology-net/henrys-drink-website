@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "./_components/Navbar";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,13 +23,23 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
+
 }>) {
+
+  const tabs = ['Our Story', 'French Vermouth', 'Cocktails', 'Contact'];
+  const signatureUrl = '/BlueSignature.svg'
+  const shopIconUrl = '/ShopIcon.svg'
+
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html>
+      <body className="min-h-full flex flex-col">
+
+      <div className="absolute top-0 left-0 w-full z-10">
+        <Navbar tabs={tabs} signatureUrl={signatureUrl} shopIconUrl={shopIconUrl}/>
+      </div>
+
+        {children}
+      </body>
     </html>
   );
 }
