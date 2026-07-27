@@ -6,33 +6,41 @@ interface NavbarProps {
   tabs: string[];
   signatureUrl: string;
   shopIconUrl: string;
+  itemCount: number;
 }
 
-export const Navbar = ({ tabs, signatureUrl, shopIconUrl }: NavbarProps) => {
+export const Navbar = ({ tabs, signatureUrl, shopIconUrl, itemCount}: NavbarProps) => {
   const leftTabs = tabs.slice(0, 2);
   const rightTabs = tabs.slice(2);
 
   return (
-    <nav className="fixed w-full h-[99px] flex flex-row justify-between items-center py-4 px-12 bg-transparent z-50">
-
+    <header className="fixed inset-x-0 z-50 py-5">
+     
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/40 to-transparent backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_50%,transparent_97%)] pointer-events-none" />
+     
+      <nav className="relative flex h-full w-full bg-transparent px-[80px]">
+        
+        <div className="w-[35%] flex flex-1 gap-24 items-center justify-start">
+          {leftTabs.map((tab) => (
+            <NavbarTextItem key={tab} text={tab} href="/" />
+          ))} 
+        </div>
+        
+        <div className="w-[30%] flex items-center justify-center">
+          <NavLogo signatureUrl={signatureUrl} />
+        </div>
 
-      <div className="flex-1 flex flex-row items-center justify-around mx-auto px-8">        
-        {leftTabs.map((tab) => (
-          <NavbarTextItem key={tab} text={tab} href='/'/>
-        ))}
+        <div className="w-[35%] flex flex-1 gap-24 items-center justify-end">
 
-      <NavLogo signatureUrl={signatureUrl} />
-      
+          {rightTabs.map((tab) => (
+            <NavbarTextItem key={tab} text={tab} href="/" />
+          ))}
 
-        {rightTabs.map((tab) => (
-          <NavbarTextItem key={tab} text={tab} href='/'/>
-        ))}
-      </div>
+          <NavShopIcon iconUrl={shopIconUrl} itemCount={itemCount} />
 
-      {/* Right Shop Icon */}
-      <NavShopIcon iconUrl={'/ShopIcon.svg'} itemCount={3} />
-
-    </nav>
+        </div>
+      </nav>
+    </header>
   );
+
 };

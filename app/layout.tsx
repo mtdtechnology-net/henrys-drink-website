@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
 
       <div className="absolute top-0 left-0 w-full z-10">
-        <Navbar tabs={tabs} signatureUrl={signatureUrl} shopIconUrl={shopIconUrl}/>
+        <Navbar tabs={tabs} signatureUrl={signatureUrl} shopIconUrl={shopIconUrl} itemCount={3}/>
       </div>
 
         {children}
