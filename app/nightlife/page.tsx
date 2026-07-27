@@ -17,26 +17,30 @@ export default function NightlifePage() {
     >
       <source src="/nightlifebg.mp4" type="video/mp4" />
     </video>
+  <div className="absolute inset-0 bg-white/1 z-10" />
   </div>
 
   <h1 className="relative z-20 font-pinyon text-[134px] leading-none text-white text-center w-full max-w-360 h-41.75 flex items-center justify-center">
     When the night comes alive
   </h1>
   
-  <p className="relative z-20 font-didact text-[24px] font-semibold leading-none uppercase text-white text-center w-full max-w-137.25 h-14.5 mt-8 flex items-center justify-center">
+  <p className="relative z-20 font-futura text-[24px] font-medium leading-none uppercase text-white text-center w-full max-w-137.25 h-14.5 mt-8 flex items-center justify-center">
     Cocktails, atmosphere, and moments worth remembering.
   </p>
   
-  <button className="absolute top-166 z-20 w-75 h-17.25 rounded-[160px] bg-[#FFFCF9] font-didact text-[22px] font-semibold leading-none text-[#442F0E] hover:bg-opacity-90 transition cursor-pointer flex items-center justify-center">
+  <button className="absolute top-166 z-20 w-75 h-17.25 rounded-[160px] bg-[#FFFCF9] font-futura text-[22px] font-medium leading-none text-[#442F0E] hover:bg-opacity-90 transition cursor-pointer flex items-center justify-center">
     Discover the experience
   </button>
 
-  <div className="absolute -bottom-20 left-0 w-full h-40.25 bg-[#080808] blur-2xl z-30 pointer-events-none" />
+<div className="absolute bottom-0 left-0 w-full h-48 bg-linear-to-t from-black via-black/80 to-transparent z-10 pointer-events-none" />
 
 </section>
 
       {/* section 2: a different rhythm */}
-      <section className="h-screen w-full snap-start grid grid-cols-1 md:grid-cols-2 bg-black text-[#F4EFE6] relative">
+      <section className="h-screen w-full snap-start grid grid-cols-1 md:grid-cols-2 bg-black text-[#F4EFE6] overflow-hidden relative">
+  
+<div className="absolute top-0 left-0 w-full h-48 bg-linear-to-b from-black via-black/70 to-transparent z-20 pointer-events-none" />
+
   <div className="relative w-full h-full">
     <Image
       src="/bartender.svg" 
@@ -50,15 +54,15 @@ export default function NightlifePage() {
   <div className="w-full h-full bg-black flex flex-col justify-center items-start pl-4 md:pl-6 p-8">
     
 <div className="w-full max-w-131.25 flex flex-col gap-13.75 -mt-12 md:-mt-16">      
-      <h2 className="font-didact text-[52px] font-extrabold leading-none uppercase text-[#F4EFE6] w-full max-w-131.25">
+      <h2 className="font-futura text-[52px] font-medium leading-none uppercase text-[#F4EFE6] w-full max-w-131.25">
        A DIFFERENT RHYTHM
       </h2>
 
-      <p className="font-didact text-[24px] font-semibold leading-[130%] text-[#F4EFE6] w-full max-w-131.25">
+      <p className="font-futura text-[24px] font-medium leading-[130%] text-[#F4EFE6] w-full max-w-131.25">
         as the day slows down, the Henry's experience takes on a new energy.
       </p>
 
-      <p className="font-didact text-[23px] font-semibold leading-[130%] lowercase text-[#F4EFE6] w-full max-w-127.5">
+      <p className="font-futura text-[23px] font-medium leading-[130%] lowercase text-[#F4EFE6] w-full max-w-127.5">
         The same appreciation for taste, craftsmanship, and connection moves into a more social setting, where cocktails replace wine glasses, conversations become longer, and every evening unfolds in its own way.
       </p>
 
@@ -71,7 +75,7 @@ export default function NightlifePage() {
       {/* section 3: signature cocktails */}
 <section className="h-screen w-full snap-start bg-black text-[#F3EDE6] relative flex flex-col justify-between p-10 md:p-16 overflow-hidden">
   
-  <div className="w-full flex justify-between items-center z-10 text-xs tracking-[0.2em] uppercase font-didact opacity-80">
+  <div className="w-full flex justify-between items-center z-10 text-xs tracking-[0.2em] uppercase font-futura font-medium opacity-85">
     <span>SIGNATURE COCKTAILS</span>
     <span>03 / 11</span>
   </div>
@@ -111,7 +115,7 @@ export default function NightlifePage() {
     
     <div className="w-full flex flex-col md:flex-row justify-between items-end gap-6">
             <div>
-        <p className="font-didact text-xs uppercase tracking-[0.3em] opacity-70 mb-1">
+        <p className="font-futura font-medium text-xs uppercase tracking-[0.3em] opacity-85 mb-1">
          ELEGANT, UNEXPECTED, UNFORGETTABLE
        </p>
 
@@ -120,7 +124,7 @@ export default function NightlifePage() {
         </h3>
       </div>
 
-      <p className="font-didact text-sm font-semibold md:text-base max-w-105 text-[#F3EDE6] leading-relaxed">
+      <p className="font-futura text-sm font-medium md:text-base max-w-105 text-[#F3EDE6] leading-relaxed">
         A refined combination of almond, white pepper, and citrus that balances softness with subtle spice, creating a sophisticated and layered profile.
       </p>
 
@@ -146,7 +150,10 @@ export default function NightlifePage() {
 
 
   {/* section 4: made to be shared*/}
-<section className="h-screen w-full snap-start bg-black text-[#FFFFFF] relative flex items-center justify-center overflow-hidden">
+<section className="h-screen w-full snap-start bg-black text-[#F3EDE6] relative flex items-center justify-center overflow-hidden">
+    
+    <div className="absolute bottom-0 left-0 w-full h-48 bg-linear-to-t from-black via-black/90 to-transparent z-10 pointer-events-none" />
+    
     <div className="absolute inset-0 w-full h-full z-0">
       <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-black to-transparent z-20 pointer-events-none" />
     
@@ -160,15 +167,17 @@ export default function NightlifePage() {
       />
     </div>
 
-    <div className="absolute top-0 left-0 w-1/2 h-full z-10">
-      <Image
-        src="/cocktailsection4.svg"
-        alt="Cocktail poured"
-        fill
-        priority
-        className="object-cover object-center brightness-110"
-      />
-    </div>
+    <div className="absolute top-0 left-0 w-1/2 h-full z-10 overflow-hidden">
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="w-full h-full object-cover brightness-110"
+  >
+    <source src="/cocktailprep.mp4" type="video/mp4" />
+  </video>
+</div>
 
     <div className="absolute inset-0 bg-black/40 z-20 pointer-events-none" />
   </div>
@@ -179,7 +188,7 @@ export default function NightlifePage() {
     made to be shared
   </h2>
 
-  <p className="font-didact text-[25px] font-extrabold leading-[100%] text-white text-center w-full max-w-268.25">
+  <p className="font-futura text-[27px] font-medium leading-[100%] text-white text-center w-full max-w-268.25">
     The best moments happen when people come together.
   </p>
 
@@ -198,6 +207,9 @@ export default function NightlifePage() {
 
 {/* section 5: meet the man behind the story */}
 <section className="h-screen w-full snap-start bg-black text-white relative flex items-center justify-center overflow-hidden">
+    
+    <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-10 pointer-events-none" />
+
     <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-black to-transparent z-20 pointer-events-none" />
 
   <div className="absolute inset-0 w-full h-full z-0">
@@ -210,22 +222,21 @@ export default function NightlifePage() {
     />
   </div>
 
-  <div className="relative z-30 w-full max-w-284 flex flex-col items-center text-center px-4 gap-10.75">
-    
-    <h2 className="font-perandory text-[60px] md:text-[85px] lg:text-[80px] leading-[100%] font-normal text-white uppercase whitespace-nowrap tracking-tighter mb-12">
-    MEET THE MAN BEHIND THE STORY
-  </h2>
+  <div className="relative z-30 w-full max-w-350 flex flex-col items-center text-center px-4 gap-6">
+  
+  <h2 className="font-perandory text-[56px] md:text-[76px] lg:text-[100px] -mt-11 leading-none font-normal text-white uppercase whitespace-nowrap tracking-normal mb-2">
+  MEET THE MAN BEHIND THE STORY
+</h2>
 
-    <p className="font-comfortaa text-[24px] font-medium leading-[100%] text-white text-center w-full max-w-167.25">
-      Long before Henry's became cocktails, events, and celebrations, it was a family tradition.
-    </p>
+  <p className="font-comfortaa text-[22px] md:text-[26px] font-medium mt-4 leading-tight text-white text-center max-w-175">
+    Long before Henry's became cocktails, events, and celebrations, it was a family tradition.
+  </p>
 
-    <button className="bg-[#325175] text-white font-comfortaa text-[21px] font-medium rounded-[160px] px-7.5 py-4 hover:bg-[#28415e] transition-colors duration-300">
-  Discover the Legacy
-</button>
+  <button className="mt-2 bg-[#325175] text-white font-comfortaa text-[18px] md:text-[20px] font-medium rounded-full px-9 py-3.5 hover:bg-[#28415e] transition-colors duration-300 cursor-pointer">
+    Discover the Legacy
+  </button>
 
-  </div>
-
+</div>
 </section>
 
     </main>
