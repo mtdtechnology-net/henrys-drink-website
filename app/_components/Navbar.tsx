@@ -20,7 +20,7 @@ export const Navbar = ({ tabs, signatureUrl, shopIconUrl, itemCount}: NavbarProp
      
       <nav className="relative flex h-full w-full bg-transparent px-[80px]">
         
-        <div className="w-[35%] flex flex-1 gap-24 items-center justify-start">
+        <div className="w-[35%] flex flex-1 gap-36 items-center justify-start">
           {leftTabs.map((tab) => (
             <NavbarTextItem key={tab} text={tab} href="/" />
           ))} 
