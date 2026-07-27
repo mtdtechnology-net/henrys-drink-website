@@ -3,35 +3,37 @@ import Image from "next/image";
 export default function NightlifePage() {
   return (
     <main className="h-screen w-full bg-black overflow-y-scroll text-white relative">
-      
-      <div className="absolute inset-0 w-full h-full z-0">
-        <Image
-          src="/nightlifebackground1.svg"
-          alt="Nightlife Background"
-          fill
-          priority
-          unoptimized
-          className="object-cover object-center brightness-90"
-        />
-      </div>
 
       {/* section 1: when the night comes alive */}
-      <section className="relative z-10 h-full w-full flex flex-col items-center justify-start text-center pt-70">
-      
-        <h1 className="font-pinyon text-[134px] leading-none text-white text-center w-full max-w-360 h-41.75 flex items-center justify-center">
-          When the night comes alive
-          </h1>
-        
-        <p className="font-didact text-[24px] font-semibold leading-none uppercase text-white text-center w-full max-w-137.25 h-14.5 mt-8 flex items-center justify-center">
-          Cocktails, atmosphere, and moments worth remembering.
-          </p>
-        
-        <button className="absolute top-166 w-75 h-17.25 rounded-[160px] bg-[#FFFCF9] font-didact text-[22px] font-semibold leading-none text-[#442F0E] hover:bg-opacity-90 transition cursor-pointer flex items-center justify-center">
-          Discover the experience
-          </button>
+<section className="relative h-screen w-full flex flex-col items-center justify-start text-center pt-70 overflow-hidden">
+  
+  <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="w-full h-full object-cover brightness-90"
+    >
+      <source src="/nightlifebg.mp4" type="video/mp4" />
+    </video>
+  </div>
 
-          <div className="absolute -bottom-20 left-0 w-full h-40.25 bg-[#080808] blur-2xl z-20 pointer-events-none" />
-      </section>
+  <h1 className="relative z-20 font-pinyon text-[134px] leading-none text-white text-center w-full max-w-360 h-41.75 flex items-center justify-center">
+    When the night comes alive
+  </h1>
+  
+  <p className="relative z-20 font-didact text-[24px] font-semibold leading-none uppercase text-white text-center w-full max-w-137.25 h-14.5 mt-8 flex items-center justify-center">
+    Cocktails, atmosphere, and moments worth remembering.
+  </p>
+  
+  <button className="absolute top-166 z-20 w-75 h-17.25 rounded-[160px] bg-[#FFFCF9] font-didact text-[22px] font-semibold leading-none text-[#442F0E] hover:bg-opacity-90 transition cursor-pointer flex items-center justify-center">
+    Discover the experience
+  </button>
+
+  <div className="absolute -bottom-20 left-0 w-full h-40.25 bg-[#080808] blur-2xl z-30 pointer-events-none" />
+
+</section>
 
       {/* section 2: a different rhythm */}
       <section className="h-screen w-full snap-start grid grid-cols-1 md:grid-cols-2 bg-black text-[#F4EFE6] relative">
@@ -67,7 +69,7 @@ export default function NightlifePage() {
 </section>
 
       {/* section 3: signature cocktails */}
-<section className="h-screen w-full snap-start bg-black text-[#F4EFE6] relative flex flex-col justify-between p-10 md:p-16 overflow-hidden">
+<section className="h-screen w-full snap-start bg-black text-[#F3EDE6] relative flex flex-col justify-between p-10 md:p-16 overflow-hidden">
   
   <div className="w-full flex justify-between items-center z-10 text-xs tracking-[0.2em] uppercase font-didact opacity-80">
     <span>SIGNATURE COCKTAILS</span>
@@ -113,12 +115,12 @@ export default function NightlifePage() {
          ELEGANT, UNEXPECTED, UNFORGETTABLE
        </p>
 
-        <h3 className="font-pinyon text-[32px] md:text-[40px] opacity-98 leading-none text-[#F4EFE6] w-full max-w-131.25">
+        <h3 className="font-pinyon text-[32px] md:text-[40px] opacity-98 leading-none text-[#F3EDE6] w-full max-w-131.25">
          Boulevard des coeurs
         </h3>
       </div>
 
-      <p className="font-didact text-sm font-semibold md:text-base max-w-105 text-white leading-relaxed">
+      <p className="font-didact text-sm font-semibold md:text-base max-w-105 text-[#F3EDE6] leading-relaxed">
         A refined combination of almond, white pepper, and citrus that balances softness with subtle spice, creating a sophisticated and layered profile.
       </p>
 
@@ -128,7 +130,7 @@ export default function NightlifePage() {
       <div className="h-0.5 flex-1 bg-white/20" />
       <div className="h-0.5 flex-1 bg-white/20" />
       <div className="h-0.5 flex-1 bg-white/20" />
-      <div className="h-0.5 flex-1 bg-[#F4EFE6]" />
+      <div className="h-0.5 flex-1 bg-[#F3EDE6]" />
       <div className="h-0.5 flex-1 bg-white/20" />
       <div className="h-0.5 flex-1 bg-white/20" />
       <div className="h-0.5 flex-1 bg-white/20" />
@@ -144,7 +146,7 @@ export default function NightlifePage() {
 
 
   {/* section 4: made to be shared*/}
-<section className="h-screen w-full snap-start bg-black text-[#F4EFE6] relative flex items-center justify-center overflow-hidden">
+<section className="h-screen w-full snap-start bg-black text-[#FFFFFF] relative flex items-center justify-center overflow-hidden">
     <div className="absolute inset-0 w-full h-full z-0">
       <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-black to-transparent z-20 pointer-events-none" />
     
