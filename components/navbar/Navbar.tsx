@@ -1,7 +1,7 @@
 import { NavbarTextItem } from "./NavTextItem";
 import { NavLogo } from "./NavLogo";
 import { NavShopIcon } from "./NavShopIcon";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { LanguageSwitcher } from "@/components/navbar/LanguageSwitcher";
 
 interface NavbarProps {
   tabs: string[];
