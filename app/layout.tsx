@@ -17,10 +17,22 @@ const comfortaa = Comfortaa({
 
 const interDisplay = localFont({
   src: [
-    { path: "./fonts/Font - Inter Display/InterDisplay-Regular.ttf", weight: "400" },
-    { path: "./fonts/Font - Inter Display/InterDisplay-Medium.ttf", weight: "500" },
-    { path: "./fonts/Font - Inter Display/InterDisplay-SemiBold.ttf", weight: "600" },
-    { path: "./fonts/Font - Inter Display/InterDisplay-Bold.ttf", weight: "700" },
+    {
+      path: "./fonts/Font - Inter Display/InterDisplay-Regular.ttf",
+      weight: "400",
+    },
+    {
+      path: "./fonts/Font - Inter Display/InterDisplay-Medium.ttf",
+      weight: "500",
+    },
+    {
+      path: "./fonts/Font - Inter Display/InterDisplay-SemiBold.ttf",
+      weight: "600",
+    },
+    {
+      path: "./fonts/Font - Inter Display/InterDisplay-Bold.ttf",
+      weight: "700",
+    },
   ],
   variable: "--font-inter-display",
 });
@@ -46,9 +58,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"
