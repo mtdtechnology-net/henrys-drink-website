@@ -10,7 +10,7 @@ export function CraftedSection() {
         <Image src="/vinuti.svg" alt="" fill priority sizes="100vw" />
       </div>
 
-      <div className="relative z-[2] mx-auto flex w-full max-w-[560px] flex-col items-start text-left max-[1024px]:max-w-[520px]">
+      <div className="relative z-[2] mx-auto flex w-full max-w-[560px] translate-y-[clamp(35px,7vh,90px)] flex-col items-start text-left max-[1024px]:max-w-[520px] max-[768px]:translate-y-0">
         <h2 className="mb-[clamp(2.5rem,5vh,4rem)] mt-0 flex origin-left scale-x-[0.87] flex-col items-start font-['Perandory',Georgia,serif] text-[clamp(3rem,3.8vw,4rem)] font-normal uppercase leading-[0.9] tracking-[-0.035em] text-[#442f0e] [font-stretch:semi-condensed] [&_span]:block [&_span]:whitespace-nowrap max-[1024px]:text-[clamp(3.5rem,7vw,5rem)] max-[768px]:mb-10 max-[768px]:text-[clamp(3rem,12vw,4.2rem)]">
           <span>CRAFTED WITH</span>
           <span>PATIENCE</span>

@@ -9,17 +9,17 @@ export function FamilyStorySection() {
     >
       <div className="absolute inset-0 z-0 bg-[url('/vines.svg')] bg-cover bg-center bg-no-repeat grayscale after:absolute after:inset-0 after:bg-black/[0.06] after:content-['']" />
 
-      <div className="relative z-[2] mx-auto min-h-screen min-h-[100svh] w-full max-[768px]:flex max-[768px]:min-h-0 max-[768px]:flex-col max-[768px]:items-center">
-        <Image
-          className="absolute left-[max(5.34%,calc((100vw-1441px)/2+77px))] top-[22%] h-auto w-[clamp(260px,25.12%,362px)] object-contain [filter:drop-shadow(0_4px_15.7px_rgba(0,0,0,0.35))] max-[1200px]:left-[6%] max-[1200px]:top-[23%] max-[1200px]:w-[clamp(230px,28%,320px)] max-[1024px]:left-[3%] max-[1024px]:top-[21%] max-[1024px]:w-[clamp(220px,30%,300px)] max-[768px]:relative max-[768px]:left-auto max-[768px]:top-auto max-[768px]:z-[2] max-[768px]:mb-[-2.5rem] max-[768px]:ml-2 max-[768px]:mr-0 max-[768px]:mt-0 max-[768px]:w-[min(48vw,220px)] max-[768px]:max-w-none max-[768px]:self-start max-[480px]:mb-[-2rem] max-[480px]:w-[185px] [@media(min-width:769px)_and_(max-height:1000px)]:!left-[12%]"
-          src="/logo-burgundy.svg"
-          alt=""
-          width={430}
-          height={530}
-          aria-hidden="true"
-        />
+      <div className="relative z-[2] mx-auto min-h-screen min-h-[100svh] w-full translate-y-[clamp(45px,8vh,100px)] max-[768px]:flex max-[768px]:min-h-0 max-[768px]:translate-y-0 max-[768px]:flex-col max-[768px]:items-center">
+  <Image
+    className="absolute left-[max(5.34%,calc((100vw-1441px)/2+77px))] top-[22%] h-auto w-[clamp(260px,25.12%,362px)] object-contain [filter:drop-shadow(0_4px_15.7px_rgba(0,0,0,0.35))] max-[1200px]:left-[8%] max-[1200px]:top-[10%] max-[1200px]:w-[230px] max-[1024px]:left-[12%] max-[1024px]:top-[9%] max-[1024px]:w-[205px] max-[768px]:relative max-[768px]:left-auto max-[768px]:top-auto max-[768px]:z-[2] max-[768px]:mb-[-2.5rem] max-[768px]:ml-2 max-[768px]:mr-0 max-[768px]:mt-0 max-[768px]:w-[min(48vw,220px)] max-[768px]:max-w-none max-[768px]:self-start max-[480px]:mb-[-2rem] max-[480px]:w-[175px] [@media(min-width:769px)_and_(max-height:1000px)]:!left-[14%] [@media(min-width:769px)_and_(max-height:1000px)]:!top-[8%] [@media(min-width:769px)_and_(max-height:1000px)]:!w-[220px]"
+    src="/logo-burgundy.svg"
+    alt=""
+    width={430}
+    height={530}
+    aria-hidden="true"
+  />
 
-        <article className="absolute right-[6%] top-[7%] z-[2] box-border flex h-auto w-[clamp(350px,33.4vw,565px)] flex-col overflow-hidden bg-[#fffcf9] px-[clamp(24px,2.36vw,40px)] py-[clamp(28px,2.95vw,50px)] text-[#493015] [container-type:inline-size] max-[1200px]:right-[5%] max-[1200px]:top-[8%] max-[1200px]:w-[clamp(350px,37vw,440px)] max-[1200px]:px-7 max-[1200px]:pb-9 max-[1200px]:pt-8 max-[1024px]:right-[4%] max-[1024px]:w-[clamp(340px,38vw,390px)] max-[1024px]:px-6 max-[1024px]:pb-8 max-[1024px]:pt-7 max-[768px]:relative max-[768px]:inset-auto max-[768px]:w-full max-[768px]:max-w-[430px] max-[768px]:px-6 max-[768px]:pb-10 max-[768px]:pt-8 max-[480px]:px-5 [@media(min-width:769px)_and_(max-height:1000px)]:right-[7%] [@media(min-width:769px)_and_(max-height:1000px)]:top-[12%] [@media(min-width:769px)_and_(max-height:1000px)]:w-[clamp(400px,28vw,500px)] [@media(min-width:769px)_and_(max-height:1000px)]:px-[30px] [@media(min-width:769px)_and_(max-height:1000px)]:pb-9 [@media(min-width:769px)_and_(max-height:1000px)]:pt-8">
+        <article className="absolute right-[6%] top-[7%] z-[2] box-border flex h-auto w-[clamp(350px,33.4vw,565px)] flex-col overflow-hidden bg-[#fffcf9] px-[clamp(24px,2.36vw,40px)] py-[clamp(28px,2.95vw,50px)] text-[#493015] [container-type:inline-size] max-[1200px]:right-[5%] max-[1200px]:top-[6%] max-[1200px]:w-[380px] max-[1200px]:px-7 max-[1200px]:pb-9 max-[1200px]:pt-8 max-[1024px]:right-[4%] max-[1024px]:top-[5%] max-[1024px]:w-[330px] max-[1024px]:px-6 max-[1024px]:pb-8 max-[1024px]:pt-7 max-[768px]:relative max-[768px]:inset-auto max-[768px]:w-full max-[768px]:max-w-[430px] max-[768px]:px-6 max-[768px]:pb-10 max-[768px]:pt-8 max-[480px]:px-5 [@media(min-width:769px)_and_(max-height:1000px)]:right-[6%] [@media(min-width:769px)_and_(max-height:1000px)]:top-[4%] [@media(min-width:769px)_and_(max-height:1000px)]:w-[350px] [@media(min-width:769px)_and_(max-height:1000px)]:px-6 [@media(min-width:769px)_and_(max-height:1000px)]:pb-7 [@media(min-width:769px)_and_(max-height:1000px)]:pt-6">
           <h2
             id="family-story-title"
             className="relative z-[3] mb-8 mt-0 flex min-h-[68px] w-full origin-center scale-x-[0.82] items-center justify-center whitespace-nowrap text-center font-['Perandory',Georgia,serif] text-[clamp(1.75rem,2.2vw,2.5rem)] font-normal leading-none text-[#442f0e] [font-stretch:semi-condensed] max-[1200px]:text-[clamp(1.8rem,3vw,2.35rem)] max-[1024px]:text-[clamp(1.75rem,3.2vw,2.25rem)] max-[768px]:mb-7 max-[768px]:whitespace-normal max-[768px]:text-[clamp(2rem,9vw,2.7rem)] [@media(min-width:769px)_and_(max-height:1000px)]:mb-6 [@media(min-width:769px)_and_(max-height:1000px)]:min-h-[52px] [@media(min-width:769px)_and_(max-height:1000px)]:text-[clamp(1.75rem,2vw,2.2rem)]"
@@ -39,7 +39,7 @@ export function FamilyStorySection() {
 
           <div className="static mt-4 min-h-[125px] max-[768px]:min-h-[120px] [@media(min-width:769px)_and_(max-height:1000px)]:mt-3 [@media(min-width:769px)_and_(max-height:1000px)]:min-h-0">
             <Image
-              className="pointer-events-none !absolute !inset-auto !left-[-32px] !top-[420px] !z-10 !h-[333px] !w-[382px] object-contain opacity-95 [filter:brightness(0.7)_saturate(220%)_hue-rotate(-10deg)] max-[768px]:!left-[-93.5px] max-[768px]:!top-[208px] max-[768px]:!h-[321px] max-[768px]:!w-[362px] [@media(min-width:769px)_and_(max-height:1000px)]:!left-[-35px] [@media(min-width:769px)_and_(max-height:1000px)]:!top-[255px] [@media(min-width:769px)_and_(max-height:1000px)]:!h-[266px] [@media(min-width:769px)_and_(max-height:1000px)]:!w-[300px]"
+              className="pointer-events-none !absolute !inset-auto !left-[-32px] !top-[460px] !z-10 !h-[333px] !w-[382px] object-contain opacity-95 [filter:brightness(0.7)_saturate(220%)_hue-rotate(-10deg)] max-[768px]:!left-[-93.5px] max-[768px]:!top-[208px] max-[768px]:!h-[321px] max-[768px]:!w-[362px] [@media(min-width:769px)_and_(max-height:1000px)]:!left-[-25px] [@media(min-width:769px)_and_(max-height:1000px)]:!top-[275px] [@media(min-width:769px)_and_(max-height:1000px)]:!h-[213px] [@media(min-width:769px)_and_(max-height:1000px)]:!w-[240px]"
               src="/mark.svg"
               alt=""
               fill

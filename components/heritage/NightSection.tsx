@@ -38,11 +38,11 @@ export function NightSection() {
         </p>
 
         <a
-          href="#experience"
-          className="inline-flex items-center justify-center rounded-full bg-[#95000d] px-10 py-[1.1rem] font-['Comfortaa',sans-serif] text-[clamp(0.95rem,1.2vw,1.1rem)] font-semibold text-white no-underline shadow-[0_8px_24px_rgba(149,0,13,0.4)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#b50011] max-[768px]:w-full max-w-[320px] max-[768px]:px-[1.8rem] max-[768px]:py-[0.9rem]"
-        >
-          Discover the experience by night
-        </a>
+  href="#experience"
+  className="mt-8 inline-flex h-[63px] min-w-[356px] shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-[#b50012] px-7 font-['Futura','Trebuchet_MS',sans-serif] text-[20px] font-medium leading-none text-white no-underline shadow-[0_8px_24px_rgba(149,0,13,0.4)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#95000d] max-[480px]:h-[56px] max-[480px]:min-w-0 max-[480px]:w-full max-[480px]:px-5 max-[480px]:text-[15px]"
+>
+  Discover the experience by night
+</a>
       </div>
     </section>
   );

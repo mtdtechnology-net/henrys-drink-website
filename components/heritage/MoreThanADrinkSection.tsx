@@ -10,15 +10,15 @@ export function MoreThanADrinkSection() {
         className="absolute inset-0 z-[1] flex h-full w-full max-[768px]:flex-col"
         aria-hidden="true"
       >
-        <div className="relative h-full min-w-0 max-w-[50%] basis-1/2 overflow-hidden max-[768px]:h-1/2 max-[768px]:w-full max-[768px]:max-w-full">
-          <Image
-            src="/girl.svg"
-            alt=""
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="!bottom-0 !left-0 !right-auto !top-0 !block !h-full !w-[calc(200%+48px)] !max-w-none origin-center translate-x-[8.5px] scale-x-[1.35] !object-fill !object-center"
-          />
-        </div>
+        <div className="relative h-full min-h-0 w-1/2 flex-none overflow-hidden max-[768px]:h-1/2 max-[768px]:w-full">
+    <Image
+  src="/girl.svg"
+  alt=""
+  fill
+  sizes="(max-width: 768px) 100vw, 50vw"
+  className="!bottom-0 !left-0 !right-auto !top-0 !h-full !w-[220%] !max-w-none object-cover object-left"
+/>
+  </div>
 
         <div className="relative h-full min-w-0 max-w-[50%] basis-1/2 overflow-hidden max-[768px]:h-1/2 max-[768px]:w-full max-[768px]:max-w-full">
           <Image

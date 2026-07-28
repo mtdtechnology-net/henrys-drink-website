@@ -8,13 +8,15 @@ import { MoreThanADrinkSection } from "../../../components/heritage/MoreThanADri
 
 export default function HeritagePage() {
   return (
-    <main className="w-full overflow-x-clip bg-[#fffcf9]">
+    <main className="relative left-1/2 w-[100dvw] max-w-none -translate-x-1/2 overflow-x-clip bg-[#fffcf9]">
       <HeritageHero />
 
       <div className="relative">
         <FamilyStorySection />
-        <IdentitySection />
-        <FloatingBottle />
+        <div className="relative overflow-visible [clip-path:inset(-100vh_0_0_0)]">
+  <IdentitySection />
+  <FloatingBottle />
+</div>
         <CraftedSection />
         <MoreThanADrinkSection />
         <NightSection />
