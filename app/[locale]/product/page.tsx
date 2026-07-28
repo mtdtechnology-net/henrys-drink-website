@@ -3,19 +3,17 @@ import Image from "next/image";
 export default function ProductPage() {
   return (
     <section className="relative w-full min-h-screen bg-[#FBF9F5] flex items-start justify-between px-10 xl:px-23 pt-35 pb-24 overflow-y-auto">
-      
-      {/* 1. background illustration */}
-      <div className="absolute left-0 top-55 w-[55%] h-[75%] z-0 pointer-events-none opacity-80">
-        <Image
-          src="/productbg.svg"
-          alt="Illustration Background"
-          fill
-          priority
-          className="object-contain object-top-left"
-        />
+
+      <div className="absolute left-0 top-70 w-[55%] h-[75%] z-0 pointer-events-none opacity-80">
+    <Image
+    src="/productbg.svg"
+    alt="Illustration Background"
+    fill
+    priority
+    className="object-contain object-top-left"
+    />
       </div>
 
-      {/* 2. left side */}
       <div className="relative z-10 flex flex-col justify-between h-131.5 w-102.75 shrink-0">
         <div className="flex flex-col gap-11.5">
           <div>
@@ -40,26 +38,25 @@ export default function ProductPage() {
           </button>
         </div>
       </div>
-
-      {/* 3. centre: henry's bottle */}
-      <div className="relative z-20 w-84.25 h-244.25 shrink-0 flex justify-center -mt-15">
+      
+      <div className="relative z-20 w-84.25 h-244.25 shrink-0 flex justify-center pt-3">
         <Image
-          src="/henrybottle.svg"
-          alt="Henry's Signature Aperitif Bottle"
-          width={337}
-          height={977}
-          priority
-          className="w-84.25 h-244.25 object-contain"
+        src="/henrybottle.svg"
+        alt="Henry's Signature Aperitif Bottle"
+        width={674}
+        height={1954}
+        priority
+        unoptimized
+        className="w-84.25 h-244.25 object-contain"
         />
       </div>
 
-      {/* 4.right side */}
-      <div className="font-comfortaa relative z-10 flex flex-col justify-start gap-15 w-108.75 shrink-0">
+      <div className="font-comfortaa relative z-10 flex flex-col justify-start gap-16 w-108.75 shrink-0">
         
         {/* About */}
         <div className="space-y-3">
           <h3 className="font-semibold text-[17px] text-[#325175]">About This Aperitif</h3>
-          <div className="text-[#0F0F0F] text-[16px] font-medium leading-7 space-y-3">
+          <div className="text-[#0F0F0F] text-[16px] font-medium leading-7 space-y-6">
             <p>
               Inspired by a family recipe passed down through generations, Henry's combines Bordeaux wine, walnut, elderflower, and carefully selected spirits to create a refined and distinctive aperitif.
             </p>
@@ -69,10 +66,9 @@ export default function ProductPage() {
           </div>
         </div>
 
-        {/* Tasting Notes */}
         <div className="space-y-3">
           <h3 className="font-semibold text-[17px] text-[#325175]">Tasting Notes</h3>
-          <div className="space-y-3 text-[#0F0F0F] text-[16px] font-medium leading-7">
+          <div className="space-y-6 text-[#0F0F0F] text-[16px] font-medium leading-7">
             <div>
               <p className="text-[#325175] font-semibold">Nose</p>
               <p>Floral • Fruity • Delicate</p>
@@ -90,11 +86,10 @@ export default function ProductPage() {
           </div>
         </div>
 
-        {/* Details */}
         <div className="space-y-3">
           <h3 className="font-semibold text-[17px] text-[#325175]">Details</h3>
 
-          <div className="space-y-3 text-[#0F0F0F] text-[16px] font-medium leading-7">
+          <div className="space-y-6 text-[#0F0F0F] text-[16px] font-medium leading-7">
             <div>
               <p className="text-[#325175] font-semibold">Origin</p>
               <p>Bordeaux, France</p>
