@@ -8,30 +8,27 @@ const pinyonScript = Pinyon_Script({
 export function NightSection() {
   return (
     <section
-      className="relative box-border flex min-h-screen min-h-[100svh] w-full items-center justify-center overflow-hidden px-8 py-16 max-[768px]:px-5 max-[768px]:py-12"
+      className="relative flex min-h-screen min-h-[100svh] w-full items-center justify-center overflow-hidden bg-black px-8 py-16 max-[768px]:px-5 max-[768px]:py-12"
       aria-labelledby="night-title"
     >
-      <div
-        className="absolute inset-0 z-[1] h-full w-full overflow-hidden"
-        aria-hidden="true"
-      >
+      <div className="absolute inset-0 z-0 h-full w-full overflow-hidden">
         <video
-  className="h-full w-full scale-[1.08] object-cover object-center blur-[20px] brightness-[0.7]"
-  autoPlay
-  loop
-  muted
-  playsInline
-  preload="auto"
->
-  <source src="/video-heritage.mp4" type="video/mp4" />
-</video>
-        <div className="absolute inset-0 bg-black/35" />
+          className="absolute inset-0 h-full w-full scale-[1.08] object-cover object-center blur-[20px] brightness-[0.7]"
+          src="/video-heritage.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        />
+
+        <div className="absolute inset-0 z-10 bg-black/35" />
       </div>
 
-      <div className="relative z-[2] flex w-full max-w-full flex-col items-center text-center">
+      <div className="relative z-20 flex w-full max-w-full flex-col items-center text-center">
         <h2
           id="night-title"
-          className={`${pinyonScript.className} m-0 text-center text-[clamp(4rem,15vw,232px)] font-normal not-italic leading-none text-white [text-shadow:0_4px_20px_rgba(0,0,0,0.4)]`}
+          className={`${pinyonScript.className} m-0 text-center text-[clamp(4rem,15vw,232px)] font-normal leading-none text-white [text-shadow:0_4px_20px_rgba(0,0,0,0.4)]`}
         >
           Enter the night
         </h2>
@@ -42,7 +39,7 @@ export function NightSection() {
 
         <a
           href="#experience"
-          className="inline-flex items-center justify-center rounded-full bg-[#95000d] px-10 py-[1.1rem] font-['Comfortaa',sans-serif] text-[clamp(0.95rem,1.2vw,1.1rem)] font-semibold text-white no-underline shadow-[0_8px_24px_rgba(149,0,13,0.4)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#b50011] max-[768px]:w-full max-[768px]:max-w-[320px] max-[768px]:px-[1.8rem] max-[768px]:py-[0.9rem]"
+          className="inline-flex items-center justify-center rounded-full bg-[#95000d] px-10 py-[1.1rem] font-['Comfortaa',sans-serif] text-[clamp(0.95rem,1.2vw,1.1rem)] font-semibold text-white no-underline shadow-[0_8px_24px_rgba(149,0,13,0.4)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#b50011] max-[768px]:w-full max-w-[320px] max-[768px]:px-[1.8rem] max-[768px]:py-[0.9rem]"
         >
           Discover the experience by night
         </a>
