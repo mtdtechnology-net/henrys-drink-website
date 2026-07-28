@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function IdentitySection() {
   return (
@@ -56,8 +57,8 @@ export function IdentitySection() {
           </p>
 
           <a
-            className="w-fit font-['Comfortaa',sans-serif] text-[clamp(1.05rem,1.25vw,1.4rem)] text-[#95000d] underline-offset-4 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#95000d] max-[768px]:text-base"
-            href="#heritage-details"
+            className="w-fit font-['Comfortaa',sans-serif] text-[clamp(1.05rem,1.25vw,1.4rem)] text-[#95000d] underline decoration-1 underline-offset-4 hover:text-[#c21a28] active:scale-[0.97] active:opacity-70 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#95000d] max-[768px]:text-base"
+            href="/product"
           >
             See more
           </a>

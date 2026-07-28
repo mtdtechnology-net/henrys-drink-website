@@ -1,4 +1,5 @@
 import { Pinyon_Script } from "next/font/google";
+import Link from "next/link";
 
 const pinyonScript = Pinyon_Script({
   subsets: ["latin"],
@@ -38,7 +39,7 @@ export function NightSection() {
         </p>
 
         <a
-  href="#experience"
+  href="/nightlife"
   className="mt-8 inline-flex h-[63px] min-w-[356px] shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-[#b50012] px-7 font-['Futura','Trebuchet_MS',sans-serif] text-[20px] font-medium leading-none text-white no-underline shadow-[0_8px_24px_rgba(149,0,13,0.4)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#95000d] max-[480px]:h-[56px] max-[480px]:min-w-0 max-[480px]:w-full max-[480px]:px-5 max-[480px]:text-[15px]"
 >
   Discover the experience by night
