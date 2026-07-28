@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { Navbar } from "../_components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,17 +26,26 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
+
+  const tabs = ["Our Story", "French Vermouth", "Cocktails", "Contact"];
+  const signatureUrl = "/BlueSignature.svg";
+  const shopIconUrl = "/ShopIcon.svg";
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <header>
-          <nav>
-            <LanguageSwitcher currentLocale={locale} />
-          </nav>
-        </header>
+        <div className="absolute top-0 left-0 w-full z-10">
+          <Navbar
+            tabs={tabs}
+            signatureUrl={signatureUrl}
+            shopIconUrl={shopIconUrl}
+            itemCount={3}
+            locale={locale}
+          />
+        </div>
         {children}
       </body>
     </html>
