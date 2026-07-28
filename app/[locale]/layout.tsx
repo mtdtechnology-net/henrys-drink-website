@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import { Navbar } from "../../components/navbar/Navbar";
+import { Navbar } from "@/components/navbar/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,9 +27,7 @@ export default async function LocaleLayout({
 }>) {
   const { locale } = await params;
 
-  const tabs = ["Our Story", "French Vermouth", "Cocktails", "Contact"];
-  const signatureUrl = "/BlueSignature.svg";
-  const shopIconUrl = "/ShopIcon.svg";
+
 
   return (
     <html
@@ -38,13 +36,7 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col">
         <div className="absolute top-0 left-0 w-full z-10">
-          <Navbar
-            tabs={tabs}
-            signatureUrl={signatureUrl}
-            shopIconUrl={shopIconUrl}
-            itemCount={3}
-            locale={locale}
-          />
+          <Navbar locale={locale} itemCount={1} mode="brown"/>
         </div>
         {children}
       </body>

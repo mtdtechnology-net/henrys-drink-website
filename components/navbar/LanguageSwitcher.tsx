@@ -8,7 +8,13 @@ const locales = [
   { code: "pt", label: "Português" },
 ];
 
-export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
+interface LanguageSwitcherProps {
+  currentLocale: string;
+  textColor: string; 
+  className: string;
+}
+
+export function LanguageSwitcher({ currentLocale, textColor, className }: LanguageSwitcherProps) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -22,6 +28,7 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
     <select
       value={currentLocale}
       onChange={(e) => switchLocale(e.target.value)}
+      className={`bg-transparent outline-none cursor-pointer ${textColor} ${className}`}
     >
       {locales.map((l) => (
         <option key={l.code} value={l.code}>
