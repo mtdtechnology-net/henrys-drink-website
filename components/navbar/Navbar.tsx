@@ -1,11 +1,15 @@
+"use client";
+
+import { useState } from "react";
 import { NavbarTextItem } from "./NavTextItem";
 import { NavLogo } from "./NavLogo";
 import { NavShopIcon } from "./NavShopIcon";
 import { LanguageSwitcher } from "@/components/navbar/LanguageSwitcher";
 
-type NavbarMode = 'blue' | 'white' | 'brown';
+type NavbarMode = "blue" | "white" | "brown";
 
-const BASE_NAV_STYLE = "italic font-normal transition-all duration-200 ease-in-out font-['Inter_Variable',_sans-serif] whitespace-nowrap text-[clamp(0.7rem,1.1vw,1.125rem)]";
+const BASE_NAV_STYLE =
+  "italic font-normal transition-all duration-200 ease-in-out font-['Inter_Variable',_sans-serif] whitespace-nowrap text-[clamp(0.7rem,1.1vw,1.125rem)]";
 
 interface StyleConfig {
   textColor: string;
@@ -17,18 +21,18 @@ const MODE_STYLES: Record<NavbarMode, StyleConfig> = {
   blue: {
     textColor: "text-[#442F0E]",
     shopIconUrl: "/shopIconRed.svg",
-    signatureUrl: "/blueSignature.svg"
+    signatureUrl: "/blueSignature.svg",
   },
   white: {
     textColor: "text-white",
     shopIconUrl: "/shopIconWhite.svg",
-    signatureUrl: "/whiteSignature.svg"
+    signatureUrl: "/whiteSignature.svg",
   },
   brown: {
     textColor: "text-white",
     shopIconUrl: "/shopIconWhite.svg",
-    signatureUrl: "/brownSignature.svg"
-  }
+    signatureUrl: "/brownSignature.svg",
+  },
 };
 
 interface NavbarProps {
@@ -44,25 +48,27 @@ const tabs = [
   { text: "Contact", href: "/contact" },
 ];
 
-export const Navbar = ({
-  itemCount,
-  mode = "blue",
-  locale,
-}: NavbarProps) => {
+export const Navbar = ({ itemCount, mode = "blue", locale }: NavbarProps) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const leftTabs = tabs.slice(0, 3);
-  const rightTabs = tabs.slice(3);
+  const leftTabs = tabs.slice(0, 2);
+  const rightTabs = tabs.slice(2);
 
-  const { textColor, shopIconUrl, signatureUrl } = MODE_STYLES[mode] ?? MODE_STYLES.blue;
+  const { textColor, shopIconUrl, signatureUrl } =
+    MODE_STYLES[mode] ?? MODE_STYLES.blue;
   const navTextStyle = `${BASE_NAV_STYLE} ${textColor}`;
 
   return (
     <header className="fixed inset-x-0 z-50 py-3 sm:py-5">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/40 to-transparent backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_50%,transparent_97%)] pointer-events-none" />
-
-      <nav className="relative flex w-full items-center justify-between bg-transparent px-[clamp(0.75rem,3vw,5rem)]">
-
-        <div className="flex flex-1 items-center justify-start gap-3 sm:gap-5 md:gap-12 lg:gap-16 xl:gap-24 2xl:gap-38 pr-2">
+      <div
+        className="absolute inset-0 -z-10 backdrop-blur-md pointer-events-none [mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_100%)]"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 15%, rgba(0,0,0,0.32) 30%, rgba(0,0,0,0.20) 45%, rgba(0,0,0,0.10) 65%, rgba(0,0,0,0.04) 80%, transparent 100%)",
+        }}
+      />
+      <nav className="relative flex w-full items-center justify-between bg-transparent px-5 sm:px-8 md:px-12 lg:px-[80px]">
+        <div className="hidden lg:flex flex-1 items-center justify-start gap-3 sm:gap-5 md:gap-8 lg:gap-[110px] pr-2">
           {leftTabs.map((tab) => (
             <NavbarTextItem
               key={tab.text}
@@ -74,11 +80,11 @@ export const Navbar = ({
           ))}
         </div>
 
-        <div className="flex items-center justify-center shrink-0">
+        <div className="hidden lg:flex items-center justify-center shrink-0">
           <NavLogo signatureUrl={signatureUrl} href={`/${locale}`} />
         </div>
 
-        <div className="flex flex-1 items-center justify-end gap-5 sm:gap-8 md:gap-16 lg:gap-24 xl:gap-32 2xl:gap-48 pl-2">          
+        <div className="hidden lg:flex flex-1 items-center justify-end gap-5 sm:gap-8 md:gap-12 lg:gap-[110px] pl-2">
           {rightTabs.map((tab) => (
             <NavbarTextItem
               key={tab.text}
@@ -89,12 +95,130 @@ export const Navbar = ({
             />
           ))}
 
-          <NavShopIcon iconUrl={shopIconUrl} itemCount={itemCount} />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              width: "15%",
+            }}
+          >
+            <NavShopIcon iconUrl={shopIconUrl} itemCount={itemCount} />
 
-          <LanguageSwitcher currentLocale={locale} textColor={textColor} className={navTextStyle} />
+            <LanguageSwitcher
+              currentLocale={locale}
+              textColor={textColor}
+              className={navTextStyle}
+            />
+          </div>
         </div>
 
+        <div className="flex lg:hidden w-full items-center justify-between">
+          <NavLogo signatureUrl={signatureUrl} href={`/${locale}`} />
+
+          <button
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            className={`flex h-10 w-10 items-center justify-center rounded-full border ${
+              textColor === "text-white" ? "border-white" : "border-[#442F0E]"
+            }`}
+          >
+            <svg
+              width="18"
+              height="14"
+              viewBox="0 0 18 14"
+              fill="none"
+              className={textColor}
+            >
+              {isMobileMenuOpen ? (
+                <>
+                  <line
+                    x1="1"
+                    y1="1"
+                    x2="17"
+                    y2="13"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1="17"
+                    y1="1"
+                    x2="1"
+                    y2="13"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </>
+              ) : (
+                <>
+                  <line
+                    x1="0"
+                    y1="1"
+                    x2="18"
+                    y2="1"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1="0"
+                    y1="7"
+                    x2="18"
+                    y2="7"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1="0"
+                    y1="13"
+                    x2="18"
+                    y2="13"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </nav>
+
+      {isMobileMenuOpen && (
+        <div
+          style={{
+            backgroundColor: "rgba(243, 243, 243, 0.8)",
+            backdropFilter: "blur(10px)",
+          }}
+          className="lg:hidden absolute inset-x-0 top-full px-5 py-6"
+        >
+          <div className="flex flex-col gap-5">
+            {tabs.map((tab) => (
+              <NavbarTextItem
+                key={tab.text}
+                text={tab.text}
+                href={`/${locale}${tab.href}`}
+                textColor="text-black"
+                className={`${BASE_NAV_STYLE} text-black text-lg`}
+              />
+            ))}
+
+            <div className="flex items-center justify-between pt-4 border-t border-white/20">
+              <NavShopIcon iconUrl={shopIconUrl} itemCount={itemCount} />
+              <LanguageSwitcher
+                currentLocale={locale}
+                textColor="text-black"
+                className={`${BASE_NAV_STYLE} text-black`}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
