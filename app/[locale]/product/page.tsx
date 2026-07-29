@@ -2,6 +2,7 @@ import Image from "next/image";
 
 export default function ProductPage() {
   return (
+    
     <section className="relative w-full min-h-screen bg-[#FBF9F5] flex items-start justify-between px-10 xl:px-23 pt-35 pb-24 overflow-y-auto">
 
       <div className="absolute left-0 top-70 w-[55%] h-[75%] z-0 pointer-events-none opacity-80">
