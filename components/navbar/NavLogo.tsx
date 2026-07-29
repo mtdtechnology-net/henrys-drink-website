@@ -10,7 +10,11 @@ interface NavLogoProps {
   className?: string;
 }
 
-export const NavLogo = ({ signatureUrl, href = "/", className = "" }: NavLogoProps) => {
+export const NavLogo = ({
+  signatureUrl,
+  href = "/",
+  className = "",
+}: NavLogoProps) => {
   const pathname = usePathname();
   const isActive = pathname === href;
 
@@ -19,11 +23,10 @@ export const NavLogo = ({ signatureUrl, href = "/", className = "" }: NavLogoPro
       <Image
         src={signatureUrl}
         alt="Signature Logo"
-        width={100}
-        height={100}
+        width={45}
+        height={58}
         priority
         className={`
-          h-[clamp(2.5rem,5.5vw,4.5rem)]
           w-auto object-contain shrink-0
           transition-transform duration-300 ease-in-out hover:scale-110
           ${isActive ? "scale-105" : ""}
