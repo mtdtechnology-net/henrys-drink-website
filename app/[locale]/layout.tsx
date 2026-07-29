@@ -32,22 +32,17 @@ export default async function LocaleLayout({
   const shopIconUrl = "/ShopIcon.svg";
 
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <div className="absolute top-0 left-0 w-full z-10">
-          <Navbar
-            tabs={tabs}
-            signatureUrl={signatureUrl}
-            shopIconUrl={shopIconUrl}
-            itemCount={3}
-            locale={locale}
-          />
-        </div>
-        {children}
-      </body>
-    </html>
+    <>
+      <div className="absolute top-0 left-0 w-full z-10">
+        <Navbar
+          tabs={tabs}
+          signatureUrl={signatureUrl}
+          shopIconUrl={shopIconUrl}
+          itemCount={3}
+          locale={locale}
+        />
+      </div>
+      {children}
+    </>
   );
 }
