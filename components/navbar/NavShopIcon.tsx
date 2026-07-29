@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from "next/image";
 
 export interface NavShopIconProps {
   href?: string;
@@ -19,10 +20,12 @@ export const NavShopIcon = ({
       aria-label={`${altText} with ${itemCount} items`}
       className="relative inline-flex items-center justify-center p-2 transition-transform duration-200 ease-in-out hover:scale-110 active:scale-95"
     >
-      <img
+      <Image
         src={iconUrl}
         alt={altText}
-        className="w-6 h-6 object-contain flex-shrink-0"
+        width={24}
+        height={24}
+        className="object-contain flex-shrink-0"
       />
 
       {itemCount > 0 && (
