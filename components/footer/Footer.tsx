@@ -111,7 +111,12 @@ className="relative left-0 top-4 h-auto w-[145px] object-contain min-[701px]:top
 
         {/* Contact details */}
         <div className="flex flex-col items-start gap-5 self-center max-[640px]:self-auto">
-          <h2 className="m-0 text-[18px] font-bold leading-none">Contact</h2>
+          <Link
+  href="/contact"
+  className="m-0 w-fit text-[18px] font-bold leading-none transition-opacity duration-150 hover:opacity-65"
+>
+  Contact
+</Link>
 
           <div className="flex flex-col gap-4 text-[16px] font-normal leading-[1.25]">
             <a
