@@ -8,11 +8,11 @@ export function HeritageHero() {
 
       <div className="relative z-[3] flex h-auto w-full max-w-[1440px] translate-y-[clamp(55px,10vh,120px)] flex-col items-center gap-5 pt-[142px] max-[768px]:w-[90%] max-[768px]:translate-y-[30px] max-[768px]:pt-[130px]">
   <h1
-    id="heritage-title"
-    className="m-0 whitespace-nowrap text-center font-['Perandory',Georgia,serif] text-[clamp(2.5rem,6.5vw,112px)] font-normal leading-[1] tracking-[0] text-[#325175] [font-stretch:semi-condensed] max-[768px]:whitespace-normal max-[768px]:text-[clamp(2.5rem,9vw,5.5rem)]"
-  >
-    WHERE THE STORY BEGINS
-  </h1>
+  id="heritage-title"
+  className="m-0 whitespace-nowrap text-center font-['Perandory',Georgia,serif] text-[112px] font-normal leading-[100%] tracking-[0] text-[#325175] [font-stretch:semi-condensed]"
+>
+  WHERE THE STORY BEGINS
+</h1>
         <p className="m-0 w-[549px] max-w-[90%] text-center font-['Comfortaa',sans-serif] text-[22px] font-medium leading-[1.25] text-[#442f0e] max-[768px]:w-full max-[768px]:max-w-[549px] max-[768px]:text-[18px]">
           From the vineyards of Bordeaux to generations of tradition,
           Henry&apos;s is rooted in heritage, craftsmanship, and the art of

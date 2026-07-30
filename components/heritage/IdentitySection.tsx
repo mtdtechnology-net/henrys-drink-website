@@ -7,7 +7,6 @@ export function IdentitySection() {
       className="relative min-h-[max(900px,100svh)] overflow-hidden bg-[#fffcf9] max-[768px]:min-h-[900px] max-[480px]:min-h-[880px]"
       aria-labelledby="identity-title"
     >
-      {/* Arched background */}
       <div className="absolute left-[-1%] top-[15%] z-[1] h-[78%] w-[103%] overflow-hidden rounded-t-[100%] after:absolute after:inset-0 after:bg-[rgba(255,252,249,0.24)] after:content-[''] max-[768px]:left-[-25%] max-[768px]:top-[24%] max-[768px]:h-[76%] max-[768px]:w-[130%]">
         <Image
           className="object-cover object-[center_48%] opacity-[0.42] grayscale max-[768px]:object-center"
@@ -18,8 +17,6 @@ export function IdentitySection() {
           aria-hidden="true"
         />
       </div>
-
-      {/* Identity text */}
       <div className="relative z-[3] box-border min-h-[max(900px,100svh)] w-full translate-y-[clamp(45px,7vh,85px)] px-[clamp(28px,6vw,110px)] pb-12 pt-[clamp(4rem,8vh,6rem)] max-[768px]:min-h-[900px] max-[768px]:translate-y-0 max-[768px]:px-5 max-[768px]:pb-12 max-[768px]:pt-20 max-[480px]:min-h-[880px]">
         <h2
           id="identity-title"
