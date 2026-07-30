@@ -21,12 +21,12 @@ export default function Section5() {
           MEET THE MAN BEHIND THE STORY
         </h2>
 
-        <p className="font-comfortaa text-lg sm:text-xl md:text-[24px] 2xl:text-[32px] font-medium leading-tight text-white text-center mt-3 md:mt-6 max-w-2xl 2xl:max-w-4xl">
+        <p className="font-comfortaa text-lg sm:text-xl md:text-[25px] 2xl:text-[33px] font-medium leading-tight text-white text-center mt-7 md:mt-7 max-w-2xl 2xl:max-w-4xl">
           Long before Henry's became cocktails, events, and celebrations, it
           was a family tradition.
         </p>
 
-        <button className="mt-4 2xl:mt-6 bg-[#325175] text-white font-comfortaa text-lg md:text-[22px] 2xl:text-[26px] font-medium rounded-full px-10 py-4 2xl:px-14 2xl:py-6 hover:bg-[#28415E] transition-colors duration-300 cursor-pointer">
+        <button className="font-comfortaa text-[22px] 2xl:mt-6 w-72.75 h-16.25 bg-[#325175] text-white mt-5 font-medium leading-none text-center rounded-[160px] flex items-center justify-center hover:bg-[#28415E] transition-colors duration-300 cursor-pointer">
           Discover the Legacy
         </button>
       </div>
