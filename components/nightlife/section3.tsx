@@ -46,7 +46,8 @@ export default function Section3() {
       <div className="w-full flex justify-between items-center z-10 text-[11px] md:text-xs 2xl:text-base tracking-[0.2em] uppercase font-futura font-medium opacity-85 px-12 md:px-24 2xl:px-36 pt-8 md:pt-12">
         <span>SIGNATURE COCKTAILS</span>
         <span>
-          {String(currentIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+          {String(currentIndex + 1).padStart(2, "0")} /{" "}
+          {String(total).padStart(2, "0")}
         </span>
       </div>
 
@@ -92,9 +93,16 @@ export default function Section3() {
         </button>
       </div>
 
-      <div className="w-full flex flex-col gap-4 2xl:gap-8 z-10 px-6 md:px-16 lg:px-28 2xl:px-40 mb-6 md:mb-10 2xl:mb-14">
-        <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-6">
-          <div className="flex flex-col gap-3">
+      <div className="w-full flex flex-col gap-4 2xl:gap-8 z-10 px-6 md:px-16 lg:px-28 2xl:px-40 mb-6 md:mb-10 2xl:mb-14 translate-y-[90px]">
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            padding: "10px 0px",
+          }}
+          className="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-6"
+        >
+          <div style={{ padding: "5px 0px" }} className="flex flex-col gap-3">
             <p className="font-futura font-medium text-[10px] md:text-xs 2xl:text-sm uppercase tracking-[0.3em] opacity-85">
               {currentCocktail.tagline}
             </p>
