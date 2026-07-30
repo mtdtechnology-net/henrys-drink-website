@@ -23,7 +23,6 @@ const footerThemes = {
     logo: "/logo-blue.svg",
     socialIcons: "brightness-0",
   },
-
   dark: {
     background: "bg-[#12120E]",
     text: "text-white",
@@ -59,22 +58,22 @@ export function Footer({
           WebkitTextStroke:
             theme === "light" ? "1.2px #fffcf9" : "1.2px #12120E",
         }}
-        className={`${styles.watermark} pointer-events-none absolute scale-x-[1.28] left-1/2 top-[42%] z-0 m-0 origin-center -translate-x-1/2 -translate-y-1/2 scale-x-[0.72] whitespace-nowrap font-['Perandory',Georgia,serif] text-[clamp(14rem,23vw,31rem)] font-thin leading-[0.8] antialiased max-[900px]:top-1/2 max-[900px]:text-[16rem] max-[700px]:text-[14rem]`}
+        className={`${styles.watermark} pointer-events-none absolute left-1/2 top-[42%] z-0 m-0 origin-center -translate-x-1/2 -translate-y-1/2 scale-x-[0.72] whitespace-nowrap font-['Perandory',Georgia,serif] text-[clamp(14rem,23vw,31rem)] font-thin leading-[0.8] antialiased max-[900px]:top-1/2 max-[900px]:text-[16rem] max-[700px]:text-[14rem]`}
       >
         Henry’s
       </p>
 
-      <div className="pointer-events-auto relative z-20 mx-auto grid min-h-[320px] w-full max-w-[1440px] grid-cols-[minmax(160px,1fr)_auto_auto] items-center gap-[clamp(40px,7vw,130px)] max-[1100px]:grid-cols-[minmax(150px,1fr)_1fr] max-[1100px]:items-start max-[1100px]:gap-x-10 max-[700px]:grid-cols-1 max-[700px]:gap-12">
+      <div className="pointer-events-auto relative z-20 mx-auto grid min-h-[320px] w-full max-w-[1440px] grid-cols-[1fr_auto] items-center gap-[clamp(50px,8vw,150px)] max-[700px]:grid-cols-1 max-[700px]:items-start max-[700px]:gap-14">
         <div className="flex h-full min-w-0 flex-col items-start justify-between gap-16 max-[1100px]:gap-12">
           <Image
             src={styles.logo}
             alt="Henry's"
             width={170}
             height={190}
-            className="relative left-0 top-4 h-auto w-[145px] object-contain min-[701px]:top-0 min-[701px]:w-[150px] min-[1101px]:left-0 min-[1101px]:top-5 min-[1101px]:w-[165px] min-[1600px]:left-[-100px] min-[1850px]:left-[-200px]"
+            className="relative left-0 top-4 h-auto w-[145px] object-contain min-[701px]:top-0 min-[701px]:w-[150px] min-[1101px]:top-5 min-[1101px]:w-[165px] min-[1600px]:left-[-100px] min-[1850px]:left-[-200px]"
           />
 
-          <div className="pointer-events-auto relative z-50 flex left-0 items-center gap-5 max-[700px]:mt-3 min-[1600px]:left-[-100px] min-[1850px]:left-[-200px]">
+          <div className="pointer-events-auto relative left-0 z-50 flex items-center gap-5 max-[700px]:mt-3 min-[1600px]:left-[-100px] min-[1850px]:left-[-200px]">
             <a
               href="https://www.instagram.com/henrys_drink/"
               target="_blank"
@@ -109,52 +108,55 @@ export function Footer({
           </div>
         </div>
 
-        <div className="flex flex-col items-start gap-5 self-center max-[640px]:self-auto">
-          <h2 className="m-0 text-[18px] font-bold uppercase leading-none">
-            <Link
-              href="/contact"
-              className="transition-opacity duration-150 hover:opacity-65"
-            >
-              Contact
-            </Link>
-          </h2>
+        <div className="grid grid-cols-2 items-start gap-[clamp(55px,7vw,120px)] max-[900px]:gap-10 max-[700px]:grid-cols-1 max-[700px]:gap-12">
+          <div className="flex min-w-[210px] flex-col items-start gap-5">
+            <h2 className="m-0 text-[18px] font-bold leading-none">
+              <Link
+                href="/contact"
+                className="transition-opacity duration-150 hover:opacity-65"
+              >
+                Contact
+              </Link>
+            </h2>
 
-          <div className="flex flex-col gap-4 text-[16px] font-normal leading-[1.25]">
-            <a
-              href="mailto:contact@henrysdrink.com"
-              className="transition-opacity duration-150 hover:opacity-65"
-            >
-              contact@henrysdrink.com
-            </a>
+            <div className="flex flex-col gap-4 text-[16px] font-normal leading-[1.25]">
+              <a
+                href="mailto:contact@henrysdrink.com"
+                className="transition-opacity duration-150 hover:opacity-65"
+              >
+                contact@henrysdrink.com
+              </a>
 
-            <p className="m-0 uppercase">Monday–Friday</p>
-            <p className="m-0">09:00–19:00</p>
+              <p className="m-0 uppercase">Monday–Friday</p>
+              <p className="m-0">09:00–19:00</p>
+            </div>
           </div>
+
+          <nav
+            className="flex min-w-[180px] flex-col items-start gap-5"
+            aria-label="Footer policies"
+          >
+            <h2 className="m-0 text-[18px] font-bold uppercase leading-none">
+              Policies
+            </h2>
+
+            <div className="flex flex-col gap-4 text-[16px] font-normal leading-[1.25]">
+              <Link
+                href={privacyHref}
+                className="w-fit underline-offset-4 transition-opacity duration-150 hover:underline hover:opacity-65 active:opacity-50"
+              >
+                Privacy Policy
+              </Link>
+
+              <Link
+                href={shippingHref}
+                className="w-fit underline-offset-4 transition-opacity duration-150 hover:underline hover:opacity-65 active:opacity-50"
+              >
+                Shipping &amp; Delivery
+              </Link>
+            </div>
+          </nav>
         </div>
-        <nav
-          className="flex flex-col items-start gap-5 self-center max-[900px]:col-start-2 max-[640px]:col-start-auto max-[640px]:self-auto"
-          aria-label="Footer policies"
-        >
-          <h2 className="m-0 text-[18px] font-bold uppercase leading-none">
-            Policies
-          </h2>
-
-          <div className="flex flex-col gap-4 text-[16px] font-normal leading-[1.25]">
-            <Link
-              href={privacyHref}
-              className="w-fit underline-offset-4 transition-opacity duration-150 hover:underline hover:opacity-65 active:opacity-50"
-            >
-              Privacy Policy
-            </Link>
-
-            <Link
-              href={shippingHref}
-              className="w-fit underline-offset-4 transition-opacity duration-150 hover:underline hover:opacity-65 active:opacity-50"
-            >
-              Shipping &amp; Delivery
-            </Link>
-          </div>
-        </nav>
       </div>
     </footer>
   );
