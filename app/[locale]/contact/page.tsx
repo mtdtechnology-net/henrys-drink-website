@@ -5,14 +5,14 @@ export default function ContactSection() {
     
     <section className="w-full min-h-screen bg-[#FFFCF9] flex flex-col items-center justify-center px-6 pt-50 pb-20">
       
-      <div className="flex flex-col items-center mb-16">
-        <h1 className="font-['Pinyon_Script'] text-[85px] leading-[100%] text-[#442F0E] text-center w-210 max-w-full h-26.5">
-          Join the Henry's experience
-        </h1>
+      <div className="flex flex-col items-center mb-16 w-full max-w-210">
+       <h1 className="font-['Pinyon_Script'] text-[clamp(40px,6vw,85px)] leading-[110%] text-[#442F0E] text-center w-full mb-4">
+       Join the Henry's experience
+       </h1>
 
-        <p className="font-comfortaa text-[22px] leading-[164%] text-[#442F0E] opacity-80 text-center w-210 max-w-full h-18 mt-4">
-          Whether you're interested in Henry's, planning an event, or looking to place an order, we'd love to hear from you.
-        </p>
+       <p className="font-comfortaa text-[clamp(16px,1.8vw,22px)] leading-[160%] text-[#442F0E] opacity-80 text-center w-full mt-4 mb-2">
+       Whether you're interested in Henry's, planning an event, or looking to place an order, we'd love to hear from you.
+       </p>
       </div>
 
       <form className="w-full max-w-210 flex flex-col items-center gap-12 font-comfortaa">
