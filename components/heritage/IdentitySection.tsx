@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function IdentitySection() {
   return (
@@ -16,13 +17,14 @@ export function IdentitySection() {
           aria-hidden="true"
         />
       </div>
-      <div className="relative z-[3] box-border min-h-[max(900px,100svh)] w-full translate-y-[clamp(45px,7vh,85px)] px-[clamp(28px,6vw,110px)] pb-12 pt-[clamp(4rem,8vh,6rem)] max-[768px]:min-h-[900px] max-[768px]:translate-y-0 max-[768px]:px-5 max-[768px]:pb-12 max-[768px]:pt-20 max-[480px]:min-h-[880px] min-[1600px]:pb-[220px]">
+
+      <div className="relative z-[3] box-border min-h-[max(900px,100svh)] w-full translate-y-[clamp(45px,7vh,85px)] px-[clamp(28px,6vw,110px)] pb-12 pt-[clamp(4rem,8vh,6rem)] max-[768px]:min-h-[900px] max-[768px]:translate-y-0 max-[768px]:px-5 max-[768px]:pb-12 max-[768px]:pt-20 max-[480px]:min-h-[880px]">
         <h2
-          id="identity-title"
-          className="m-0 origin-left scale-x-[0.87] whitespace-nowrap font-['Perandory',Georgia,serif] text-[clamp(2.7rem,3.25vw,4rem)] font-normal leading-none text-[#325175] [font-stretch:semi-condensed] max-[1200px]:text-[clamp(2.4rem,4vw,3.3rem)] max-[1024px]:text-[clamp(2.2rem,4.8vw,3rem)] max-[768px]:max-w-[calc(100%-4rem)] max-[768px]:whitespace-normal max-[768px]:text-[clamp(2rem,8vw,2.8rem)] max-[480px]:max-w-[280px] max-[480px]:text-[2rem]"
-        >
-          HENRY&apos;S IDENTITY
-        </h2>
+  id="identity-title"
+  className="m-0 whitespace-nowrap align-middle font-['Perandory',Georgia,serif] text-[clamp(36px,4.306vw,86px)] font-normal leading-none tracking-[0] text-[#325175] [font-stretch:semi-condensed] max-[768px]:max-w-[calc(100%-4rem)] max-[768px]:whitespace-normal max-[768px]:text-[clamp(32px,7vw,44px)] max-[480px]:max-w-[280px] max-[480px]:text-[32px]"
+>
+  HENRY&apos;S IDENTITY
+</h2>
 
         <p className="mb-0 mt-[clamp(1.2rem,2vh,1.6rem)] font-['Comfortaa',sans-serif] text-[clamp(1.15rem,1.45vw,1.75rem)] leading-[1.2] text-[#325175] max-[1200px]:text-[clamp(1.05rem,1.7vw,1.35rem)] max-[1024px]:text-[clamp(1rem,1.8vw,1.25rem)] max-[768px]:max-w-[calc(100%-5rem)] max-[768px]:text-base">
           A family tradition reimagined.
