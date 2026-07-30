@@ -41,7 +41,7 @@ const COCKTAILS = [
     name: "Apero Chic",
     tagline: "EFFORTLESSLY ELEGANT.",
     description:
-    "Light, sparkling, and celebratory. A cocktail designed for aperitif moments, combining floral notes with the refinement of champagne.",
+      "Light, sparkling, and celebratory. A cocktail designed for aperitif moments, combining floral notes with the refinement of champagne.",
     image: "/aperochic.svg",
   },
   {
@@ -49,7 +49,7 @@ const COCKTAILS = [
     name: "Twilight Fizz",
     tagline: "WHERE THE EVENING BEGINS.",
     description:
-    "Fresh, vibrant, and playful. A lively mix of botanicals and delicate sweetness that captures the transition from day to night.",
+      "Fresh, vibrant, and playful. A lively mix of botanicals and delicate sweetness that captures the transition from day to night.",
     image: "/twilightfizz.svg",
   },
   {
@@ -57,7 +57,7 @@ const COCKTAILS = [
     name: "Ruby Woo",
     tagline: "CONFIDENT, EXPRESSIVE, AND FULL OF ENERGY.",
     description:
-    "Built around fruit-forward notes and a refreshing finish, this cocktail brings a vibrant personality to every occasion.",
+      "Built around fruit-forward notes and a refreshing finish, this cocktail brings a vibrant personality to every occasion.",
     image: "/rubywoo.svg",
   },
   {
@@ -65,7 +65,7 @@ const COCKTAILS = [
     name: "Velvet Kiss",
     tagline: "SOFT, FLORAL, AND REFINED.",
     description:
-    "A delicate balance of elderflower and champagne creates a light and elegant cocktail perfect for slower moments and meaningful conversations.",
+      "A delicate balance of elderflower and champagne creates a light and elegant cocktail perfect for slower moments and meaningful conversations.",
     image: "/velvetkiss.svg",
   },
   {
@@ -73,7 +73,7 @@ const COCKTAILS = [
     name: "Henry's Divine",
     tagline: "A CELEBRATION OF BRIGHTNESS AND JOY.",
     description:
-    "Tropical fruit notes, champagne, and the signature aperitif come together in a cocktail designed to feel vibrant, fresh, and uplifting.",
+      "Tropical fruit notes, champagne, and the signature aperitif come together in a cocktail designed to feel vibrant, fresh, and uplifting.",
     image: "/henrysdivine.svg",
   },
   {
@@ -81,7 +81,7 @@ const COCKTAILS = [
     name: "One Night in Monaco",
     tagline: "MADE FOR UNFORGETTABLE EVENINGS.",
     description:
-    "Playful, energetic, and slightly exotic, this cocktail combines fruit-forward flavors with a smooth finish inspired by nights that never quite end.",
+      "Playful, energetic, and slightly exotic, this cocktail combines fruit-forward flavors with a smooth finish inspired by nights that never quite end.",
     image: "/onenightinmonaco.svg",
   },
   {
@@ -89,7 +89,7 @@ const COCKTAILS = [
     name: "Soirée Mystique",
     tagline: "THE MOST INTRIGUING GUEST AT THE TABLE.",
     description:
-    "A surprising blend of strawberry, banana, and champagne that delivers a cocktail experience that is both playful and sophisticated.",
+      "A surprising blend of strawberry, banana, and champagne that delivers a cocktail experience that is both playful and sophisticated.",
     image: "/soiréemystique.svg",
   },
 ];
@@ -107,7 +107,7 @@ export default function Section3() {
 
   return (
     <section className="h-screen w-full snap-start bg-black text-[#F3EDE6] relative flex flex-col justify-between p-6 md:p-8 2xl:p-16 overflow-hidden">
-      <div className="w-full flex justify-between items-center z-10 text-[11px] md:text-xs 2xl:text-base tracking-[0.2em] uppercase font-futura font-medium opacity-85 px-12 md:px-24 2xl:px-36 pt-8 md:pt-12">
+      <div className="w-full flex justify-between items-center z-10 text-[11px] md:text-xs 2xl:text-base tracking-[0.2em] uppercase font-futura font-medium opacity-85 px-12 md:px-24 2xl:px-36 pt-8 md:pt-12 lg:mb-20 2xl:mb-26">
         <span>SIGNATURE COCKTAILS</span>
         <span>
           {String(currentIndex + 1).padStart(2, "0")} /{" "}
@@ -133,15 +133,16 @@ export default function Section3() {
           </div>
         </button>
 
-<div className="relative w-80 md:w-lg lg:w-2xl 2xl:w-4xl h-full z-10 flex items-center justify-center scale-110 lg:scale-125 2xl:scale-140 -translate-y-5 md:-translate-y-9 transition-all duration-300">
-            <Image
+        <div className="relative w-80 md:w-lg lg:w-2xl 2xl:w-4xl h-full z-10 flex items-center justify-center scale-110 lg:scale-125 2xl:scale-140 -translate-y-5 md:-translate-y-9 transition-all duration-300">
+          <Image
             src={currentCocktail.image}
             alt={currentCocktail.name}
             fill
             priority
             unoptimized
             sizes="(max-width: 768px) 80vw, (max-width: 1200px) 60vw, 50vw"
-            className="object-contain image-rendering-crisp-sharp transform-gpu backface-hidden"          />
+            className="object-contain image-rendering-crisp-sharp transform-gpu backface-hidden"
+          />
         </div>
 
         <button
@@ -162,7 +163,7 @@ export default function Section3() {
         </button>
       </div>
 
-      <div className="w-full flex flex-col gap-4 2xl:gap-8 z-10 px-6 md:px-16 lg:px-28 2xl:px-40 mb-6 md:mb-10 2xl:mb-14">
+      <div className="w-full flex flex-col gap-4 2xl:gap-8 z-10 px-6 md:px-16 lg:px-28 2xl:px-40 mb-6 md:mb-10 lg:mt-10 2xl:mb-14">
         <div
           style={{
             display: "flex",
