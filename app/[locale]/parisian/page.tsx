@@ -21,7 +21,7 @@ export default function ParisianPage() {
                 description="Cocktails, atmosphere, and connection."
                 subtitle="by night"
                 ctaText="Discover the experience"
-                href="/bordeaux"
+                href="/nightlife"
                 textClassName="text-[20px] text-white/90"
                 className="absolute bottom-[5%] left-[20%] z-30 aspect-[453/497] w-[38vw] h-[60vh] sm:w-[35vw] md:w-[40vw] xl:w-[30vw] 2xl:w-[31çvw]"
             />

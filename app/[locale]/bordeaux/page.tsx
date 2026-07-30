@@ -19,7 +19,7 @@ export default function BordeauxPage() {
         description="The vineyard, the family, the craft."
         subtitle="by day"
         ctaText="Discover the story"
-        href="/bordeaux"
+        href="/heritage"
         className="absolute bottom-[10%] left-[7%] z-10 aspect-[536/467] w-[38vw] h-[60vh] sm:w-[35vw] md:w-[40vw] xl:w-[38vw] 2xl:w-[40vw]"
       />
     </main>
