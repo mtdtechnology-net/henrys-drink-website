@@ -17,7 +17,7 @@ export function CraftedSection() {
       </div>
 
       <div className="relative z-[2] mx-auto flex w-[670px] max-w-[90vw] translate-y-[clamp(20px,5vh,60px)] flex-col items-start text-left max-[768px]:w-[85vw] max-[768px]:translate-y-0">
-        <h2 className="mb-[clamp(2.75rem,6vh,4.5rem)] mt-0 flex w-max origin-left scale-x-[0.7] flex-col items-start text-left font-['Perandory',Georgia,serif] text-[clamp(3rem,9vw,101px)] font-normal uppercase leading-[1] tracking-[0] text-[#442f0e] [&_span]:block [&_span]:whitespace-nowrap max-[768px]:mb-10 max-[768px]:scale-x-[0.76] max-[768px]:text-[clamp(3rem,12vw,4.2rem)]">
+        <h2 className="mb-[clamp(2.75rem,6vh,4.5rem)] mt-0 flex w-max origin-left scale-x-[1.13] flex-col items-start text-left font-['Perandory',Georgia,serif] text-[clamp(3rem,9vw,101px)] font-normal uppercase leading-[1] tracking-[0] text-[#442f0e] [&_span]:block [&_span]:whitespace-nowrap max-[768px]:mb-10 max-[768px]:scale-x-[0.76] max-[768px]:text-[clamp(3rem,12vw,4.2rem)]">
           <span>CRAFTED WITH</span>
           <span>PATIENCE</span>
         </h2>
