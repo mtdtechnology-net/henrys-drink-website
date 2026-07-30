@@ -6,27 +6,91 @@ import Image from "next/image";
 const COCKTAILS = [
   {
     id: 1,
+    name: "Henry's Sour",
+    tagline: "A MODERN CLASSIC WITH CHARACTER.",
+    description:
+      "The richness of Henry's aperitif meets the warmth of Irish whiskey, creating a perfectly balanced cocktail with depth, freshness, and a lingering finish.",
+    image: "/henryssour.svg",
+  },
+  {
+    id: 2,
+    name: "Berry orgasm",
+    tagline: "SMOOTH, INDULGENT, AND UNAPOLOGETICALLY DECADENT.",
+    description:
+      "Creamy textures and delicate cacao notes create a cocktail that feels more like a dessert experience than a drink.",
+    image: "/berryorgasm.svg",
+  },
+  {
+    id: 3,
     name: "Boulevard des coeurs",
     tagline: "ELEGANT, UNEXPECTED, UNFORGETTABLE",
     description:
       "A refined combination of almond, white pepper, and citrus that balances softness with subtle spice, creating a sophisticated and layered profile.",
-    image: "/currcocktail.svg",
+    image: "/boulevarddescoeurs.svg",
   },
   {
-    id: 2,
-    name: "Smokey Midnight",
-    tagline: "BOLD, RICH, MEMORABLE",
+    id: 4,
+    name: "Crimson Amour",
+    tagline: "BOLD PASSION IN A GLASS.",
     description:
-      "A deep blend of smoked mezcal, dark cherry bitters, and a touch of agave nectar.",
-    image: "/currcocktail.svg",
+      "A deeper, richer cocktail where botanicals, vermouth, and maple notes meet the signature Henry's character, creating a smooth and seductive experience.",
+    image: "/crimsonamour.svg",
   },
   {
-    id: 3,
-    name: "Citrus Illusion",
-    tagline: "FRESH, VIBRANT, CITRUS",
+    id: 5,
+    name: "Apero Chic",
+    tagline: "EFFORTLESSLY ELEGANT.",
     description:
-      "Crisp gin paired with yuzu, fresh basil, and sparkling elderflower tonic.",
-    image: "/currcocktail.svg",
+    "Light, sparkling, and celebratory. A cocktail designed for aperitif moments, combining floral notes with the refinement of champagne.",
+    image: "/aperochic.svg",
+  },
+  {
+    id: 6,
+    name: "Twilight Fizz",
+    tagline: "WHERE THE EVENING BEGINS.",
+    description:
+    "Fresh, vibrant, and playful. A lively mix of botanicals and delicate sweetness that captures the transition from day to night.",
+    image: "/twilightfizz.svg",
+  },
+  {
+    id: 7,
+    name: "Ruby Woo",
+    tagline: "CONFIDENT, EXPRESSIVE, AND FULL OF ENERGY.",
+    description:
+    "Built around fruit-forward notes and a refreshing finish, this cocktail brings a vibrant personality to every occasion.",
+    image: "/rubywoo.svg",
+  },
+  {
+    id: 8,
+    name: "Velvet Kiss",
+    tagline: "SOFT, FLORAL, AND REFINED.",
+    description:
+    "A delicate balance of elderflower and champagne creates a light and elegant cocktail perfect for slower moments and meaningful conversations.",
+    image: "/velvetkiss.svg",
+  },
+  {
+    id: 9,
+    name: "Henry's Divine",
+    tagline: "A CELEBRATION OF BRIGHTNESS AND JOY.",
+    description:
+    "Tropical fruit notes, champagne, and the signature aperitif come together in a cocktail designed to feel vibrant, fresh, and uplifting.",
+    image: "/henrysdivine.svg",
+  },
+  {
+    id: 10,
+    name: "One Night in Monaco",
+    tagline: "MADE FOR UNFORGETTABLE EVENINGS.",
+    description:
+    "Playful, energetic, and slightly exotic, this cocktail combines fruit-forward flavors with a smooth finish inspired by nights that never quite end.",
+    image: "/onenightinmonaco.svg",
+  },
+  {
+    id: 11,
+    name: "Soirée Mystique",
+    tagline: "THE MOST INTRIGUING GUEST AT THE TABLE.",
+    description:
+    "A surprising blend of strawberry, banana, and champagne that delivers a cocktail experience that is both playful and sophisticated.",
+    image: "/soiréemystique.svg",
   },
 ];
 
@@ -62,7 +126,9 @@ export default function Section3() {
               src={prevCocktail.image}
               alt={prevCocktail.name}
               fill
-              className="object-contain"
+              unoptimized
+              sizes="(max-width: 768px) 30vw, 20vw"
+              className="object-contain image-rendering-crisp-sharp transform-gpu backface-hidden"
             />
           </div>
         </button>
@@ -73,8 +139,9 @@ export default function Section3() {
             alt={currentCocktail.name}
             fill
             priority
-            className="object-contain"
-          />
+            unoptimized
+            sizes="(max-width: 768px) 80vw, (max-width: 1200px) 60vw, 50vw"
+            className="object-contain image-rendering-crisp-sharp transform-gpu backface-hidden"          />
         </div>
 
         <button
@@ -87,7 +154,9 @@ export default function Section3() {
               src={nextCocktail.image}
               alt={nextCocktail.name}
               fill
-              className="object-contain"
+              unoptimized
+              sizes="(max-width: 768px) 30vw, 20vw"
+              className="object-contain image-rendering-crisp-sharp transform-gpu backface-hidden"
             />
           </div>
         </button>
