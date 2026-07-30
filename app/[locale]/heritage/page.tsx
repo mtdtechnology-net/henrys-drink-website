@@ -14,9 +14,9 @@ export default function HeritagePage() {
       <div className="relative">
         <FamilyStorySection />
         <div className="relative overflow-visible [clip-path:inset(-100vh_0_0_0)]">
-  <IdentitySection />
-  <FloatingBottle />
-</div>
+          <IdentitySection />
+          <FloatingBottle />
+        </div>
         <CraftedSection />
         <MoreThanADrinkSection />
         <NightSection />
