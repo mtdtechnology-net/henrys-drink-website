@@ -1,11 +1,12 @@
-import { Comfortaa, Roboto } from "next/font/google";
+import { Comfortaa, Inter } from "next/font/google";
 import { Footer } from "@/components/footer/Footer";
+
 const comfortaa = Comfortaa({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "700"],
 });
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400"],
 });
@@ -14,16 +15,15 @@ export default function PrivacyPolicyPage() {
   return (
     <main className="min-h-screen bg-[#fffcf9] text-[#442f0e]">
       <article className="mx-auto w-full max-w-[850px] px-6 pb-24 pt-[clamp(7rem,14vh,11rem)] sm:px-10 lg:px-0">
-        {/* Page heading */}
         <header className="mb-[clamp(3rem,7vh,5rem)] text-center">
           <p
-            className={`${roboto.className} mb-4 text-[11px] font-normal uppercase leading-none text-[#b30012] sm:text-[12px]`}
+            className={`${inter.className} mb-4 text-[12px] font-normal uppercase leading-[1] tracking-[0] text-[#b30012]`}
           >
             Legal &amp; Policies
           </p>
 
           <h1
-            className={`${comfortaa.className} m-0 text-[clamp(2rem,4vw,3.25rem)] font-normal leading-[1.15] tracking-[-0.035em]`}
+            className={`${comfortaa.className} m-0 text-center text-[48px] font-normal leading-[1] tracking-[0] max-[768px]:text-[clamp(2rem,9vw,3rem)]`}
           >
             Politique de confidentialité
           </h1>
@@ -31,10 +31,9 @@ export default function PrivacyPolicyPage() {
           <div className="mx-auto mt-5 h-[2px] w-[80px] bg-[#b30012]" />
         </header>
 
-        {/* Policy text */}
         <div
-  className={`${roboto.className} space-y-10 text-[17px] font-normal leading-[1.7] text-[#442f0e]/80 sm:text-[18px]`}
->
+          className={`${inter.className} space-y-10 text-[15px] font-normal leading-[1.6] tracking-[0] text-[#442f0e]/80`}
+        >
           <section>
             <p>
               La société SAS MBE, immatriculée au RCS sous le numéro 989 982
@@ -64,7 +63,7 @@ export default function PrivacyPolicyPage() {
               Contact RGPD :{" "}
               <a
                 href="mailto:henrysdrink@gmail.com"
-                className="underline underline-offset-2 hover:text-[#b30012]"
+                className="underline underline-offset-2 transition-colors hover:text-[#b30012]"
               >
                 henrysdrink@gmail.com
               </a>
@@ -146,7 +145,7 @@ export default function PrivacyPolicyPage() {
               Vous pouvez exercer vos droits en écrivant à :{" "}
               <a
                 href="mailto:henrysdrink@gmail.com"
-                className="underline underline-offset-2 hover:text-[#b30012]"
+                className="underline underline-offset-2 transition-colors hover:text-[#b30012]"
               >
                 henrysdrink@gmail.com
               </a>
@@ -183,15 +182,14 @@ export default function PrivacyPolicyPage() {
               tout moment. Nous vous invitons à la consulter régulièrement.
             </p>
           </PolicySection>
-          
         </div>
-        
       </article>
+
       <Footer
-  theme="light"
-  privacyHref="/privacy-policy"
-  shippingHref="/shipping-delivery"
-/>
+        theme="light"
+        privacyHref="/privacy-policy"
+        shippingHref="/shipping-delivery"
+      />
     </main>
   );
 }
@@ -206,7 +204,7 @@ function PolicySection({
   return (
     <section>
       <h2
-        className={`${comfortaa.className} mb-3 text-[18px] font-medium leading-tight text-[#442f0e] sm:text-[20px]`}
+        className={`${comfortaa.className} mb-4 text-[20px] font-bold leading-[1] tracking-[0] text-[#442f0e]`}
       >
         {title}
       </h2>
