@@ -1,30 +1,31 @@
 export function HeritageHero() {
   return (
     <section
-      className="relative grid min-h-screen min-h-[100svh] place-items-start justify-items-center overflow-hidden bg-[#fffcf9] text-center after:pointer-events-none after:absolute after:bottom-[-20px] after:left-[-131px] after:z-[2] after:h-[163px] after:w-[calc(100%+262px)] after:bg-[#fffcf9] after:content-[''] after:[backdrop-filter:blur(52.4px)] after:[filter:blur(52.4px)]"
+      className="relative grid min-h-screen min-h-[100svh] place-items-start justify-items-center overflow-hidden bg-[#fffcf9] text-center after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-[2] after:h-[clamp(180px,26vh,300px)] after:bg-[linear-gradient(to_bottom,rgba(255,252,249,0)_0%,rgba(255,252,249,0.45)_38%,rgba(255,252,249,0.88)_72%,#fffcf9_100%)] after:content-['']"
       aria-labelledby="heritage-title"
     >
       <div className="absolute inset-0 z-[1] bg-[linear-gradient(to_bottom,rgba(255,252,249,0.16),rgba(255,252,249,0.34)),url('/house-light.svg')] bg-cover bg-center bg-no-repeat" />
 
-      <div className="relative z-[3] flex h-auto w-full max-w-[1440px] translate-y-[clamp(55px,10vh,120px)] flex-col items-center gap-5 pt-[142px] max-[768px]:w-[90%] max-[768px]:translate-y-[30px] max-[768px]:pt-[130px]">
-  <h1
+      <div className="relative z-[3] mx-auto flex min-h-screen min-h-[100svh] w-full max-w-[1800px] flex-col items-center px-[clamp(20px,5vw,80px)] pb-[clamp(5rem,9vh,8rem)] pt-[clamp(10rem,18vh,15rem)] max-[768px]:px-5 max-[768px]:pb-16 max-[768px]:pt-[clamp(8rem,17vh,11rem)]">
+        <h1
   id="heritage-title"
-  className="m-0 whitespace-nowrap text-center font-['Perandory',Georgia,serif] text-[112px] font-normal leading-[100%] tracking-[0] text-[#325175] [font-stretch:semi-condensed]"
+  className="m-0 whitespace-nowrap text-center font-['Perandory',Georgia,serif] text-[clamp(42px,7.78vw,112px)] font-normal leading-[1] tracking-[0] text-[#325175] [font-stretch:semi-condensed] max-[768px]:max-w-full max-[768px]:whitespace-normal max-[768px]:text-[clamp(42px,10vw,72px)] max-[768px]:leading-[0.95]"
 >
   WHERE THE STORY BEGINS
 </h1>
-        <p className="m-0 w-[549px] max-w-[90%] text-center font-['Comfortaa',sans-serif] text-[22px] font-medium leading-[1.25] text-[#442f0e] max-[768px]:w-full max-[768px]:max-w-[549px] max-[768px]:text-[18px]">
+
+        <p className="mb-0 mt-[clamp(18px,2vh,28px)] w-[clamp(300px,38.13vw,650px)] max-w-full text-center font-['Comfortaa',sans-serif] text-[clamp(16px,1.53vw,26px)] font-medium leading-[1.25] text-[#442f0e] max-[768px]:w-full max-[768px]:max-w-[550px] max-[768px]:text-[clamp(16px,4vw,18px)]">
           From the vineyards of Bordeaux to generations of tradition,
           Henry&apos;s is rooted in heritage, craftsmanship, and the art of
           taking time.
         </p>
 
         <a
-  href="#family-story"
-  className="mt-[clamp(18rem,46vh,30rem)] inline-flex min-h-11 items-center justify-center rounded-full bg-[#325175] px-6 py-3 font-['Comfortaa',sans-serif] text-[0.85rem] text-white no-underline transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#1c3858] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#95000d] [@media(min-width:769px)_and_(max-height:1000px)]:!mt-[6rem] max-[768px]:!mt-28"
->
-  Discover the Legacy
-</a>
+          href="#family-story"
+          className="mt-auto inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-[#325175] px-[clamp(24px,2vw,32px)] py-[clamp(12px,1vw,16px)] font-['Comfortaa',sans-serif] text-[clamp(0.85rem,1vw,1rem)] text-white no-underline transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#1c3858] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#95000d] motion-reduce:transition-none"
+        >
+          Discover the Legacy
+        </a>
       </div>
     </section>
   );

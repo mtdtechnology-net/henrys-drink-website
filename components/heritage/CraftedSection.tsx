@@ -7,22 +7,17 @@ export function CraftedSection() {
         className="pointer-events-none absolute inset-0 z-[1] h-full w-full [&_img]:block [&_img]:h-full [&_img]:w-full [&_img]:object-cover [&_img]:object-top [&_img]:opacity-[0.78]"
         aria-hidden="true"
       >
-        <Image
-          src="/vinuti.svg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-        />
+        <Image src="/vinuti.svg" alt="" fill priority sizes="100vw" />
       </div>
 
-      <div className="relative z-[2] mx-auto flex w-[670px] max-w-[90vw] translate-y-[clamp(20px,5vh,60px)] flex-col items-start text-left max-[768px]:w-[85vw] max-[768px]:translate-y-0">
-        <h2 className="mb-[clamp(2.75rem,6vh,4.5rem)] mt-0 flex w-max origin-left scale-x-[1.13] flex-col items-start text-left font-['Perandory',Georgia,serif] text-[clamp(3rem,9vw,101px)] font-normal uppercase leading-[1] tracking-[0] text-[#442f0e] [&_span]:block [&_span]:whitespace-nowrap max-[768px]:mb-10 max-[768px]:scale-x-[0.76] max-[768px]:text-[clamp(3rem,12vw,4.2rem)]">
+      <div className="relative z-[2] mx-auto flex w-fit max-w-[90vw] translate-y-[clamp(20px,5vh,60px)] flex-col items-start text-left max-[768px]:w-[85vw] max-[768px]:translate-y-0">
+        <h2 className="mb-[clamp(2.75rem,6vh,4.5rem)] mt-0 flex w-fit max-w-full flex-col items-start text-left font-['Perandory',Georgia,serif] text-[clamp(3rem,7vw,101px)] font-normal uppercase leading-none tracking-[0] text-[#442f0e] [font-stretch:semi-condensed] [&_span]:block [&_span]:whitespace-nowrap max-[768px]:mb-10 max-[768px]:w-full max-[768px]:text-[clamp(3rem,12vw,4.2rem)]">
           <span>CRAFTED WITH</span>
           <span>PATIENCE</span>
         </h2>
 
-<div className="flex w-[520px] max-w-full origin-left scale-x-[1.1] self-start flex-col items-start gap-[32px] text-left font-['Comfortaa',sans-serif] text-[18px] font-medium leading-[28px] tracking-[0] text-[#171717] [&_p]:m-0 [&_p]:w-full [&_p]:whitespace-normal [&_p]:text-left [&_strong]:font-bold max-[768px]:w-full max-[768px]:scale-x-100 max-[768px]:gap-6 max-[768px]:text-[16px] max-[768px]:leading-[25px]">          <p>Every bottle begins long before it reaches the glass.</p>
+        <div className="flex w-[520px] max-w-full flex-col items-start gap-8 text-left font-['Comfortaa',sans-serif] text-[18px] font-medium leading-[28px] tracking-[0] text-[#171717] [&_p]:m-0 [&_p]:w-full [&_p]:whitespace-normal [&_p]:text-left [&_strong]:font-bold max-[768px]:w-full max-[768px]:gap-6 max-[768px]:text-[16px] max-[768px]:leading-[25px]">
+          <p>Every bottle begins long before it reaches the glass.</p>
 
           <p>
             From vineyard to cellar, each step follows the same philosophy:{" "}

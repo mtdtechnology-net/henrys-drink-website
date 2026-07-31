@@ -4,51 +4,49 @@ export function FamilyStorySection() {
   return (
     <section
       id="family-story"
-      className="relative min-h-screen min-h-[100svh] overflow-hidden bg-[#282828] before:pointer-events-none before:absolute before:inset-x-0 before:top-[-80px] before:z-[1] before:h-[300px] before:scale-x-[1.04] before:bg-[linear-gradient(to_bottom,#fffcf9_0%,#fffcf9_30%,rgba(255,252,249,0.94)_43%,rgba(255,252,249,0.72)_58%,rgba(255,252,249,0.34)_76%,rgba(255,252,249,0)_100%)] before:blur-[18px] before:content-[''] max-[768px]:min-h-[100svh] max-[768px]:px-4 max-[768px]:pb-28 max-[768px]:pt-12 max-[480px]:pt-10"
+      className="relative min-h-[max(100svh,min(56.25vw,1080px))] overflow-hidden bg-[#282828] before:pointer-events-none before:absolute before:inset-x-0 before:top-[-80px] before:z-[1] before:h-[300px] before:scale-x-[1.04] before:bg-[linear-gradient(to_bottom,#fffcf9_0%,#fffcf9_30%,rgba(255,252,249,0.94)_43%,rgba(255,252,249,0.72)_58%,rgba(255,252,249,0.34)_76%,rgba(255,252,249,0)_100%)] before:blur-[18px] before:content-[''] max-[768px]:min-h-0 max-[768px]:px-4 max-[768px]:pb-28 max-[768px]:pt-20"
       aria-labelledby="family-story-title"
     >
       <div className="absolute inset-0 z-0 bg-[url('/vines.svg')] bg-cover bg-center bg-no-repeat grayscale after:absolute after:inset-0 after:bg-black/[0.06] after:content-['']" />
 
-      {}
-      <div className="relative z-[2] mx-auto min-h-screen min-h-[100svh] w-full max-[768px]:flex max-[768px]:min-h-0 max-[768px]:flex-col max-[768px]:items-center">
-
+      <div className="relative z-[2] mx-auto min-h-[max(100svh,min(56.25vw,1080px))] w-full max-w-[1920px] max-[768px]:flex max-[768px]:min-h-0 max-[768px]:flex-col max-[768px]:items-center">
         <Image
-          className="absolute left-[calc(50%_-_430px)] top-[359px] z-[2] h-[486px] w-[362px] max-[768px]:-translate-y-[150px]
-          max-[480px]:-translate-y-[110px] object-contain ... [@media(min-width:769px)_and_(max-height:1000px)]:!top-[120px]"    
+          className="absolute left-[18.594%] top-[min(18.698vw,359px)] z-[3] h-auto w-[18.854%] max-w-[362px] object-contain [filter:drop-shadow(0_4px_15.7px_rgba(0,0,0,0.35))] max-[768px]:relative max-[768px]:left-auto max-[768px]:top-auto max-[768px]:mb-14 max-[768px]:w-[210px] max-[768px]:shrink-0 max-[768px]:self-start max-[768px]:translate-x-[8vw] max-[480px]:mb-12 max-[480px]:w-[170px] max-[480px]:translate-x-[5vw]"
           src="/logo-burgundy.svg"
           alt=""
           width={362}
           height={486}
           aria-hidden="true"
         />
-        <article className="absolute right-[6%] top-[7%] z-[2] box-border flex h-auto w-[clamp(350px,33.4vw,565px)] translate-y-[clamp(45px,8vh,100px)] flex-col overflow-hidden bg-[#fffcf9] px-[clamp(24px,2.36vw,40px)] py-[clamp(28px,2.95vw,50px)] text-[#493015] [container-type:inline-size] max-[1200px]:right-[5%] max-[1200px]:top-[6%] max-[1200px]:w-[380px] max-[1200px]:px-7 max-[1200px]:pb-9 max-[1200px]:pt-8 max-[1024px]:right-[4%] max-[1024px]:top-[5%] max-[1024px]:w-[330px] max-[1024px]:px-6 max-[1024px]:pb-8 max-[1024px]:pt-7 max-[768px]:relative max-[768px]:inset-auto max-[768px]:w-full max-[768px]:max-w-[430px] max-[768px]:translate-y-0 max-[768px]:px-6 max-[768px]:pb-10 max-[768px]:pt-8 max-[480px]:px-5 [@media(min-width:769px)_and_(max-height:1000px)]:right-[6%] [@media(min-width:769px)_and_(max-height:1000px)]:top-[4%] [@media(min-width:769px)_and_(max-height:1000px)]:w-[350px] [@media(min-width:769px)_and_(max-height:1000px)]:px-6 [@media(min-width:769px)_and_(max-height:1000px)]:pb-7 [@media(min-width:769px)_and_(max-height:1000px)]:pt-6">
-          <h2
+
+<article className="absolute left-[55.99%] top-[min(10.885vw,209px)] z-[2] box-border flex h-[min(40.938vw,786px)] w-[29.427%] max-w-[565px] flex-col overflow-hidden bg-[#fffcf9] px-[min(2.604vw,50px)] pb-[min(2.604vw,50px)] pt-[min(2.604vw,50px)] text-[#442f0e] min-[1600px]:h-[740px] min-[1600px]:w-[535px] min-[1600px]:px-[45px] min-[1600px]:pb-[38px] min-[1600px]:pt-[38px] max-[768px]:relative max-[768px]:left-auto max-[768px]:top-auto max-[768px]:h-auto max-[768px]:w-full max-[768px]:max-w-[500px] max-[768px]:px-6 max-[768px]:pb-10 max-[768px]:pt-8 max-[480px]:px-5">          <h2
             id="family-story-title"
-            className="relative z-[3] mb-8 mt-0 flex min-h-[68px] w-full origin-center scale-x-[0.82] items-center justify-center whitespace-nowrap text-center font-['Perandory',Georgia,serif] text-[clamp(1.75rem,2.2vw,2.5rem)] font-normal leading-none text-[#442f0e] [font-stretch:semi-condensed] max-[1200px]:text-[clamp(1.8rem,3vw,2.35rem)] max-[1024px]:text-[clamp(1.75rem,3.2vw,2.25rem)] max-[768px]:mb-7 max-[768px]:whitespace-normal max-[768px]:text-[clamp(2rem,9vw,2.7rem)] [@media(min-width:769px)_and_(max-height:1000px)]:mb-6 [@media(min-width:769px)_and_(max-height:1000px)]:min-h-[52px] [@media(min-width:769px)_and_(max-height:1000px)]:text-[clamp(1.75rem,2vw,2.2rem)]"
+            className="relative z-[3] mb-[min(1.042vw,20px)] mt-0 flex h-[min(3.542vw,68px)] w-full shrink-0 items-center justify-center whitespace-nowrap text-center align-middle font-['Perandory',Georgia,serif] text-[min(3.229vw,62px)] font-normal leading-none tracking-[0] text-[#442f0e] [font-stretch:semi-condensed] max-[768px]:mb-6 max-[768px]:h-auto max-[768px]:min-h-[52px] max-[768px]:whitespace-normal max-[768px]:text-[clamp(42px,10vw,56px)]"
           >
             A FAMILY STORY
           </h2>
 
-          <div className="relative z-[2] aspect-[1.07/1] w-full overflow-hidden">
+          <div className="relative z-[2] aspect-[1.07/1] w-full shrink-0 overflow-hidden">
             <Image
               className="object-cover object-center grayscale"
               src="/man.svg"
               alt="Henri, the grandfather who preserved the family recipe"
               fill
-              sizes="(max-width: 768px) 80vw, 420px"
+              sizes="(max-width: 768px) 85vw, 24.22vw"
             />
           </div>
 
-          <div className="static mt-4 min-h-[125px] max-[768px]:min-h-[120px] [@media(min-width:769px)_and_(max-height:1000px)]:mt-3 [@media(min-width:769px)_and_(max-height:1000px)]:min-h-0">
+          <div className="relative mt-[min(0.833vw,16px)] flex min-h-0 flex-1 items-start">
             <Image
-              className="pointer-events-none !absolute !inset-auto !left-[-32px] !top-[460px] !z-10 !h-[333px] !w-[382px] object-contain opacity-95 [filter:brightness(0.7)_saturate(220%)_hue-rotate(-10deg)] max-[768px]:!left-[-93.5px] max-[768px]:!top-[208px] max-[768px]:!h-[321px] max-[768px]:!w-[362px] [@media(min-width:769px)_and_(max-height:1000px)]:!left-[-25px] [@media(min-width:769px)_and_(max-height:1000px)]:!top-[275px] [@media(min-width:769px)_and_(max-height:1000px)]:!h-[213px] [@media(min-width:769px)_and_(max-height:1000px)]:!w-[240px]"
+              className="pointer-events-none absolute bottom-[-18%] left-[-10%] z-[1] h-auto w-[78%] object-contain opacity-65 [filter:saturate(1.5)_brightness(0.95)] max-[768px]:bottom-[-45px] max-[768px]:left-[-75px] max-[768px]:h-[270px] max-[768px]:w-[305px]"
               src="/mark.svg"
               alt=""
-              fill
+              width={362}
+              height={321}
               aria-hidden="true"
             />
 
-            <p className="relative z-[3] m-0 font-['Comfortaa',sans-serif] text-[clamp(1.2rem,2.2vw,22px)] font-medium leading-[1.3] max-[1200px]:text-[clamp(0.85rem,1.2vw,0.95rem)] max-[768px]:text-[0.95rem] [@media(min-width:769px)_and_(max-height:1000px)]:text-[clamp(0.75rem,0.75vw,0.85rem)] [@media(min-width:769px)_and_(max-height:1000px)]:leading-[1.25]">
+            <p className="relative z-[2] m-0 w-full font-['Comfortaa',sans-serif] text-[min(1.146vw,22px)] font-medium leading-[min(1.458vw,28px)] tracking-[0] text-[#442f0e] max-[768px]:text-[18px] max-[768px]:leading-[25px]">
               Preciously guarding his recipe for more than half a century,
               Henri, the grandfather, passed down his passion for delicate
               drinks and warm shared moments.
