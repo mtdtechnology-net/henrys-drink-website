@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Section2() {
   return (
     <section className="h-screen w-full snap-start grid grid-cols-1 md:grid-cols-2 bg-black text-[#F4EFE6] overflow-hidden relative">
-      <div className="absolute top-0 left-0 w-full h-48 bg-linear-to-b from-black via-black/70 to-transparent z-20 pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-black to-transparent z-20 pointer-events-none" />
 
       <div className="relative w-full h-full">
         <Image

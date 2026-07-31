@@ -1,23 +1,17 @@
 import React from "react";
-import Image from "next/image";
 
 export default function Section5() {
   return (
     <section className="h-screen w-full snap-start bg-black text-white relative flex items-center justify-center overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-black to-transparent z-20 pointer-events-none" />
 
-      <div className="absolute inset-0 w-full h-full z-0">
-        <Image
-          src="/bgsection5.svg"
-          alt="Meet the man behind the story background"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-      </div>
+      <div 
+        className="absolute inset-0 w-full h-full z-0 bg-cover bg-no-repeat bg-left-top sm:bg-center"
+        style={{ backgroundImage: "url('/bgsection5.svg')" }}
+      />
 
       <div className="relative z-30 w-full max-w-6xl 2xl:max-w-7xl flex flex-col items-center text-center px-4 gap-6 2xl:gap-10">
-        <h2 className="font-perandory text-4xl sm:text-6xl md:text-7xl lg:text-[90px] xl:text-[100px] 2xl:text-[6.5vw] leading-none font-normal text-white uppercase whitespace-nowrap tracking-normal">
+        <h2 className="font-perandory text-4xl sm:text-6xl md:text-7xl lg:text-[90px] xl:text-[100px] 2xl:text-[6.5vw] leading-tight md:leading-none font-normal text-white uppercase md:whitespace-nowrap tracking-normal">
           MEET THE MAN BEHIND THE STORY
         </h2>
 

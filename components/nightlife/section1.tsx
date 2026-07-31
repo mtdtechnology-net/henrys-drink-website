@@ -31,7 +31,7 @@ export default function Section1() {
         </button>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-linear-to-t from-black via-black/80 to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/80 to-transparent z-20 pointer-events-none" />
     </section>
   );
 }
