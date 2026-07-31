@@ -97,6 +97,8 @@ const COCKTAILS = [
 export default function Section3() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const [touchPosition, setTouchPosition] = useState<number | null>(null);
+
   const total = COCKTAILS.length;
   const prevIndex = (currentIndex - 1 + total) % total;
   const nextIndex = (currentIndex + 1) % total;
@@ -105,9 +107,32 @@ export default function Section3() {
   const prevCocktail = COCKTAILS[prevIndex];
   const nextCocktail = COCKTAILS[nextIndex];
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+  const touchDown = e.touches[0].clientX;
+  setTouchPosition(touchDown);
+};
+
+const handleTouchMove = (e: React.TouchEvent) => {
+  if (touchPosition === null) return;
+
+  const currentTouch = e.touches[0].clientX;
+  const diff = touchPosition - currentTouch;
+
+  if (diff > 50) {
+    setCurrentIndex(nextIndex);
+    setTouchPosition(null);
+  } else if (diff < -50) {
+    setCurrentIndex(prevIndex);
+    setTouchPosition(null);
+  }
+};
   return (
-    <section className="h-screen w-full snap-start bg-black text-[#F3EDE6] relative flex flex-col justify-between p-6 md:p-8 2xl:p-16 overflow-hidden">
-      <div className="w-full flex justify-between items-center z-10 text-[11px] md:text-xs 2xl:text-base tracking-[0.2em] uppercase font-futura font-medium opacity-85 px-12 md:px-24 2xl:px-36 pt-8 md:pt-12 lg:mb-20 2xl:mb-26">
+    <section 
+    onTouchStart={handleTouchStart}
+    onTouchMove={handleTouchMove}
+    className="h-screen w-full snap-start bg-black text-[#F3EDE6] relative flex flex-col justify-between p-6 md:p-8 2xl:p-16 overflow-hidden">
+
+      <div className="w-full flex justify-between items-center z-10 text-[11px] md:text-xs 2xl:text-base tracking-[0.2em] uppercase font-futura font-medium opacity-85 px-12 md:px-24 2xl:px-36 pt-8 md:pt-12">
         <span>SIGNATURE COCKTAILS</span>
         <span>
           {String(currentIndex + 1).padStart(2, "0")} /{" "}
@@ -163,8 +188,7 @@ export default function Section3() {
         </button>
       </div>
 
-      <div className="w-full flex flex-col gap-4 2xl:gap-8 z-10 px-6 md:px-16 lg:px-28 2xl:px-40 mb-6 md:mb-10 lg:mt-10 2xl:mb-14">
-        <div
+<div className="w-full flex flex-col gap-4 2xl:gap-8 z-10 px-6 md:px-16 lg:px-28 2xl:px-40 mb-6 md:mb-10 2xl:mb-14 -translate-y-8 md:translate-y-0">        <div
           style={{
             display: "flex",
             alignItems: "flex-start",
@@ -199,6 +223,7 @@ export default function Section3() {
           ))}
         </div>
       </div>
+      <div className="absolute -bottom-1 left-0 w-full h-18 sm:h-14 bg-gradient-to-t from-black via-black/90 to-transparent z-30 pointer-events-none" />
     </section>
   );
 }

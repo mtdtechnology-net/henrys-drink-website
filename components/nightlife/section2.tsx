@@ -4,9 +4,9 @@ import Image from "next/image";
 export default function Section2() {
   return (
     <section className="h-screen w-full snap-start grid grid-cols-1 md:grid-cols-2 bg-black text-[#F4EFE6] overflow-hidden relative">
-      <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-black to-transparent z-20 pointer-events-none" />
+<div className="absolute top-0 left-0 w-full h-30 sm:h-32 bg-gradient-to-b from-black/70 via-black/30 to-transparent z-20 pointer-events-none" />
 
-      <div className="relative w-full h-full">
+            <div className="relative w-full flex-1 md:h-full min-h-0">
         <Image
           src="/bartender.svg"
           alt="Bartender"
@@ -16,8 +16,8 @@ export default function Section2() {
         />
       </div>
 
-      <div className="w-full h-full bg-black flex flex-col justify-center items-start p-8 md:p-12 lg:p-16 2xl:p-24">
-        <div className="w-full max-w-xl 2xl:max-w-3xl flex flex-col gap-6 lg:gap-8 2xl:gap-10">
+      <div className="w-full flex-1 md:h-full bg-black flex flex-col justify-center items-start p-6 md:p-12 lg:p-16 2xl:p-24">
+          <div className="w-full max-w-xl 2xl:max-w-3xl flex flex-col gap-6 lg:gap-8 2xl:gap-10">
           <h2 className="font-futura text-3xl sm:text-4xl lg:text-[52px] 2xl:text-[68px] font-medium leading-none uppercase text-[#F4EFE6]">
             A DIFFERENT RHYTHM
           </h2>
