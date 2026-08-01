@@ -4,24 +4,24 @@ import React, { useState } from "react";
 
 export default function CheckoutPage() {
   const [formData, setFormData] = useState({
-    firstName: "Jean",
-    lastName: "Dupont",
-    address: "15 Avenue des Champs-Élysées",
-    addressComplement: "Apartment, floor (optional)",
-    postalCode: "75008",
-    city: "Paris",
+    firstName: "",
+    lastName: "",
+    address: "",
+    addressComplement: "",
+    postalCode: "",
+    city: "",
     country: "France",
-    email: "jean.dupont@example.com",
-    phone: "+33 6 00 00 00 00",
+    email: "",
+    phone: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#FFFBF7] pt-28 sm:pt-32 md:pt-36 pb-16 sm:pb-24 px-4 sm:px-8 md:px-16 font-['Comfortaa'] text-[#325175]">
+    <div className="w-full min-h-screen bg-[#FFFBF7] pt-48 sm:pt-36 md:pt-36 pb-16 sm:pb-24 px-4 sm:px-8 md:px-16 font-['Comfortaa'] text-[#325175]">
       <div className="max-w-[1280px] mx-auto">
         <h1 className="font-['Pinyon_Script'] text-[48px] sm:text-[64px] md:text-[82px] leading-none text-center text-[#442F0E] mb-6 sm:mb-8 md:mb-10">
           Complete Your Order
@@ -29,7 +29,7 @@ export default function CheckoutPage() {
 
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16 mb-10">
           
-          <div className="w-full lg:flex-1 bg-white/40 border border-[#325175]/30 rounded-[24px] p-6 sm:p-10">
+          <div className="w-full lg:flex-1 bg-white/40 border border-[#325175]/30 rounded-[24px] pt-4 sm:pt-5 lg:pt-6 px-6 sm:px-10 pb-6 sm:pb-10">
             <h2 className="text-[#325175] font-bold text-[18px] tracking-[0.12em] uppercase mb-8">
               Shipping Address
             </h2>
@@ -45,7 +45,8 @@ export default function CheckoutPage() {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175]/40 focus:outline-none focus:border-[#325175] focus:text-[#325175] transition-colors"
+                    placeholder="Jean"
+                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175] placeholder:text-[#325175]/40 focus:outline-none focus:border-[#325175] transition-colors"
                   />
                 </div>
 
@@ -58,7 +59,8 @@ export default function CheckoutPage() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175]/40 focus:outline-none focus:border-[#325175] focus:text-[#325175] transition-colors"
+                    placeholder="Dupont"
+                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175] placeholder:text-[#325175]/40 focus:outline-none focus:border-[#325175] transition-colors"
                   />
                 </div>
               </div>
@@ -72,7 +74,8 @@ export default function CheckoutPage() {
                   name="address"
                   value={formData.address}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175]/40 focus:outline-none focus:border-[#325175] focus:text-[#325175] transition-colors"
+                  placeholder="15 Avenue des Champs-Élysées"
+                  className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175] placeholder:text-[#325175]/40 focus:outline-none focus:border-[#325175] transition-colors"
                 />
               </div>
 
@@ -86,7 +89,7 @@ export default function CheckoutPage() {
                   value={formData.addressComplement}
                   onChange={handleChange}
                   placeholder="Apartment, floor (optional)"
-                  className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175]/40 placeholder:text-[#325175]/30 focus:outline-none focus:border-[#325175] focus:text-[#325175] transition-colors"
+                  className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175] placeholder:text-[#325175]/40 focus:outline-none focus:border-[#325175] transition-colors"
                 />
               </div>
 
@@ -100,7 +103,8 @@ export default function CheckoutPage() {
                     name="postalCode"
                     value={formData.postalCode}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175]/40 focus:outline-none focus:border-[#325175] focus:text-[#325175] transition-colors"
+                    placeholder="75008"
+                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175] placeholder:text-[#325175]/40 focus:outline-none focus:border-[#325175] transition-colors"
                   />
                 </div>
 
@@ -113,7 +117,8 @@ export default function CheckoutPage() {
                     name="city"
                     value={formData.city}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175]/40 focus:outline-none focus:border-[#325175] focus:text-[#325175] transition-colors"
+                    placeholder="Paris"
+                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175] placeholder:text-[#325175]/40 focus:outline-none focus:border-[#325175] transition-colors"
                   />
                 </div>
               </div>
@@ -123,18 +128,14 @@ export default function CheckoutPage() {
                   Country*
                 </label>
                 <div className="relative">
-                  <select
+                  <input
+                    type="text"
                     name="country"
                     value={formData.country}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175]/40 appearance-none focus:outline-none focus:border-[#325175] focus:text-[#325175] transition-colors cursor-pointer"
-                  >
-                    <option value="France">France</option>
-                    <option value="Belgium">Belgium</option>
-                    <option value="Switzerland">Switzerland</option>
-                    <option value="Luxembourg">Luxembourg</option>
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-1 text-[#325175]/60">
+                    readOnly
+                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175]/40 focus:outline-none cursor-default select-none"
+                  />
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-1 text-[#325175]/40">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
                     </svg>
@@ -152,7 +153,8 @@ export default function CheckoutPage() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175]/40 focus:outline-none focus:border-[#325175] focus:text-[#325175] transition-colors"
+                    placeholder="jean.dupont@example.com"
+                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175] placeholder:text-[#325175]/40 focus:outline-none focus:border-[#325175] transition-colors"
                   />
                 </div>
 
@@ -165,7 +167,8 @@ export default function CheckoutPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175]/40 focus:outline-none focus:border-[#325175] focus:text-[#325175] transition-colors"
+                    placeholder="+33 6 00 00 00 00"
+                    className="w-full bg-transparent border-b border-[#325175]/20 pb-2 text-[16px] text-[#325175] placeholder:text-[#325175]/40 focus:outline-none focus:border-[#325175] transition-colors"
                   />
                 </div>
               </div>
