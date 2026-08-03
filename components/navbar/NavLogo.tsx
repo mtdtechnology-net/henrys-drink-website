@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 interface NavLogoProps {
@@ -15,9 +12,6 @@ export const NavLogo = ({
   href = "/",
   className = "",
 }: NavLogoProps) => {
-  const pathname = usePathname();
-  const isActive = pathname === href;
-
   return (
     <Link href={href} className="flex items-center justify-center">
       <Image
@@ -29,7 +23,6 @@ export const NavLogo = ({
         className={`
           w-auto object-contain shrink-0
           transition-transform duration-300 ease-in-out hover:scale-110
-          ${isActive ? "scale-105" : ""}
           ${className}
         `}
       />

@@ -4,10 +4,8 @@ import Section3 from "@/components/nightlife/section3";
 import Section4 from "@/components/nightlife/section4";
 import Section5 from "@/components/nightlife/section5";
 
-
 export default function NightlifePage() {
   return (
-    
     <main className="h-screen w-full bg-black overflow-y-scroll text-white relative">
       <Section1 />
       <Section2 />

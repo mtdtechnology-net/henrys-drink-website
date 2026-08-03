@@ -1,10 +1,8 @@
-"use client";
-
-import { useState } from "react";
 import { NavbarTextItem } from "./NavTextItem";
 import { NavLogo } from "./NavLogo";
 import { NavShopIcon } from "./NavShopIcon";
 import { LanguageSwitcher } from "@/components/navbar/LanguageSwitcher";
+import { MobileMenu } from "./MobileMenu";
 
 type NavbarMode = "blue" | "white" | "brown";
 
@@ -49,8 +47,6 @@ const tabs = [
 ];
 
 export const Navbar = ({ itemCount, mode = "blue", locale }: NavbarProps) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const leftTabs = tabs.slice(0, 2);
   const rightTabs = tabs.slice(2);
 
@@ -113,112 +109,19 @@ export const Navbar = ({ itemCount, mode = "blue", locale }: NavbarProps) => {
           </div>
         </div>
 
+        {/* Mobile navbar — Logo is server-rendered, menu toggle is a Client Component */}
         <div className="flex lg:hidden w-full items-center justify-between">
           <NavLogo signatureUrl={signatureUrl} href={`/${locale}`} />
 
-          <button
-            type="button"
-            aria-label="Toggle menu"
-            aria-expanded={isMobileMenuOpen}
-            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            className={`flex h-10 w-10 items-center justify-center rounded-full border ${
-              textColor === "text-white" ? "border-white" : "border-[#442F0E]"
-            }`}
-          >
-            <svg
-              width="18"
-              height="14"
-              viewBox="0 0 18 14"
-              fill="none"
-              className={textColor}
-            >
-              {isMobileMenuOpen ? (
-                <>
-                  <line
-                    x1="1"
-                    y1="1"
-                    x2="17"
-                    y2="13"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                  <line
-                    x1="17"
-                    y1="1"
-                    x2="1"
-                    y2="13"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                </>
-              ) : (
-                <>
-                  <line
-                    x1="0"
-                    y1="1"
-                    x2="18"
-                    y2="1"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                  <line
-                    x1="0"
-                    y1="7"
-                    x2="18"
-                    y2="7"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                  <line
-                    x1="0"
-                    y1="13"
-                    x2="18"
-                    y2="13"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                </>
-              )}
-            </svg>
-          </button>
+          <MobileMenu
+            tabs={tabs}
+            locale={locale}
+            textColor={textColor}
+            shopIconUrl={shopIconUrl}
+            itemCount={itemCount}
+          />
         </div>
       </nav>
-
-      {isMobileMenuOpen && (
-        <div
-          style={{
-            backgroundColor: "rgba(243, 243, 243, 0.8)",
-            backdropFilter: "blur(10px)",
-          }}
-          className="lg:hidden absolute inset-x-0 top-full px-5 py-6"
-        >
-          <div className="flex flex-col gap-5">
-            {tabs.map((tab) => (
-              <NavbarTextItem
-                key={tab.text}
-                text={tab.text}
-                href={`/${locale}${tab.href}`}
-                textColor="text-black"
-                className={`${BASE_NAV_STYLE} text-black text-lg`}
-              />
-            ))}
-
-            <div className="flex items-center justify-between pt-4 border-t border-white/20">
-              <NavShopIcon iconUrl={shopIconUrl} itemCount={itemCount} />
-              <LanguageSwitcher
-                currentLocale={locale}
-                textColor="text-black"
-                className={`${BASE_NAV_STYLE} text-black`}
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

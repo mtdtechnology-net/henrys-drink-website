@@ -73,8 +73,7 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col">
         <div className="absolute top-0 left-0 w-full z-50">
-          <Navbar locale={locale} itemCount={1} mode="white" />
-
+          <Navbar locale={locale} itemCount={1} mode="blue" />
         </div>
         {children}
       </body>
