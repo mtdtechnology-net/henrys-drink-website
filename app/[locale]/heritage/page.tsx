@@ -22,5 +22,6 @@ export default function HeritagePage() {
         <NightSection />
       </div>
     </main>
+    
   );
 }
