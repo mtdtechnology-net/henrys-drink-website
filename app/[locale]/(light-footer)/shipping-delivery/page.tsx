@@ -112,11 +112,6 @@ export default function ShippingDeliveryPage() {
           </PolicySection>
         </div>
       </article>
-        <Footer
-    theme="light"
-    privacyHref="/privacy-policy"
-    shippingHref="/shipping-delivery"
-  />
     </main>
   );
 }
