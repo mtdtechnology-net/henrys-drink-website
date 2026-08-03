@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "motion/react";
 
 export default function CheckoutPage() {
   const [formData, setFormData] = useState({
@@ -21,24 +22,41 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#FFFBF7] pt-48 sm:pt-36 md:pt-36 pb-16 sm:pb-24 px-4 sm:px-8 md:px-16 font-['Comfortaa'] text-[#325175]">
+    <div className="w-full min-h-screen bg-[#FFFBF7] pt-28 sm:pt-36 md:pt-40 pb-16 sm:pb-24 px-4 sm:px-8 md:px-16 font-['Comfortaa'] text-[#325175]">
       <div className="max-w-[1280px] mx-auto">
-        <h1 className="font-['Pinyon_Script'] text-[48px] sm:text-[64px] md:text-[82px] leading-none text-center text-[#442F0E] mb-6 sm:mb-8 md:mb-10">
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="font-['Pinyon_Script'] text-[48px] sm:text-[64px] md:text-[82px] leading-none text-center text-[#442F0E] mb-6 sm:mb-8 md:mb-10"
+        >
           Complete Your Order
-        </h1>
+        </motion.h1>
 
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16 mb-10">
-          
-          <div className="w-full lg:flex-1 bg-white/40 border border-[#325175]/30 rounded-[24px] pt-4 sm:pt-5 lg:pt-6 px-6 sm:px-10 pb-6 sm:pb-10">
-            <h2 className="text-[#325175] font-bold text-[18px] tracking-[0.12em] uppercase mb-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="w-full lg:flex-1 bg-white/40 border border-[#325175]/30 rounded-[24px] pt-4 sm:pt-5 lg:pt-6 px-6 sm:px-10 pb-6 sm:pb-10"
+          >
+            <motion.h2 
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-[#325175] font-bold text-[18px] tracking-[0.12em] uppercase mb-8"
+            >
               Shipping Address
-            </h2>
+            </motion.h2>
 
             <form className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="flex flex-col">
                   <label className="text-[14px] text-[#325175]/80 font-medium mb-1">
-                    First Name*
+                    First Name<span className="text-[#95000D] ml-0.5">*</span>
                   </label>
                   <input
                     type="text"
@@ -52,7 +70,7 @@ export default function CheckoutPage() {
 
                 <div className="flex flex-col">
                   <label className="text-[14px] text-[#325175]/80 font-medium mb-1">
-                    Last Name*
+                    Last Name<span className="text-[#95000D] ml-0.5">*</span>
                   </label>
                   <input
                     type="text"
@@ -67,7 +85,7 @@ export default function CheckoutPage() {
 
               <div className="flex flex-col">
                 <label className="text-[14px] text-[#325175]/80 font-medium mb-1">
-                  Address*
+                  Address<span className="text-[#95000D] ml-0.5">*</span>
                 </label>
                 <input
                   type="text"
@@ -96,7 +114,7 @@ export default function CheckoutPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="flex flex-col">
                   <label className="text-[14px] text-[#325175]/80 font-medium mb-1">
-                    Postal Code*
+                    Postal Code<span className="text-[#95000D] ml-0.5">*</span>
                   </label>
                   <input
                     type="text"
@@ -110,7 +128,7 @@ export default function CheckoutPage() {
 
                 <div className="flex flex-col">
                   <label className="text-[14px] text-[#325175]/80 font-medium mb-1">
-                    City*
+                    City<span className="text-[#95000D] ml-0.5">*</span>
                   </label>
                   <input
                     type="text"
@@ -125,7 +143,7 @@ export default function CheckoutPage() {
 
               <div className="flex flex-col">
                 <label className="text-[14px] text-[#325175]/80 font-medium mb-1">
-                  Country*
+                  Country<span className="text-[#95000D] ml-0.5">*</span>
                 </label>
                 <div className="relative">
                   <input
@@ -146,7 +164,7 @@ export default function CheckoutPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
                 <div className="flex flex-col">
                   <label className="text-[14px] text-[#325175]/80 font-medium mb-1">
-                    Email*
+                    Email<span className="text-[#95000D] ml-0.5">*</span>
                   </label>
                   <input
                     type="email"
@@ -173,44 +191,91 @@ export default function CheckoutPage() {
                 </div>
               </div>
             </form>
-          </div>
+          </motion.div>
 
-          <div className="w-full lg:w-[351px] space-y-6 pt-2 lg:pt-6">
-            <h2 className="font-['Pinyon_Script'] text-[36px] sm:text-[42px] leading-tight text-left text-[#325175] mb-4 sm:mb-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="w-full lg:w-[351px] space-y-6 pt-2 lg:pt-6"
+          >
+            <motion.h2 
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="font-['Pinyon_Script'] text-[36px] sm:text-[42px] leading-tight text-left text-[#325175] mb-4 sm:mb-6"
+            >
               Summary
-            </h2>
+            </motion.h2>
 
-            <div className="flex justify-between items-start pb-4 border-b border-[#325175]/10">
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex justify-between items-start pb-4 border-b border-[#325175]/10"
+            >
               <div>
                 <p className="text-[16px] font-bold text-[#325175]">The Signature Apéritif</p>
                 <p className="text-[13px] text-[#325175]/60">Bordeaux · Quantity: 1</p>
               </div>
               <p className="text-[16px] font-semibold text-[#325175]">290.00 €</p>
-            </div>
+            </motion.div>
 
-            <div className="space-y-4 text-[#325175]">
-              <div className="flex justify-between items-center text-[15px] sm:text-[16px] pb-4 border-b border-[#325175]/10">
+            <div className="space-y-2 text-[#325175]">
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex justify-between items-center text-[15px] sm:text-[16px]"
+              >
                 <span className="text-[#325175]">Subtotal</span>
                 <span className="text-[#325175]">290.00 €</span>
-              </div>
+              </motion.div>
 
-              <div className="flex justify-between items-center text-[15px] sm:text-[16px] pb-4 border-b border-[#325175]/10">
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.35 }}
+                className="flex justify-between items-center text-[15px] sm:text-[16px] pb-4 border-b border-[#325175]/10"
+              >
                 <span className="text-[#325175]">Shipping</span>
                 <span className="text-[#325175]">15.00 €</span>
-              </div>
+              </motion.div>
 
-              <div className="pt-2 flex justify-between items-center text-[18px] sm:text-[20px] font-bold text-[#325175]">
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="pt-2 flex justify-between items-center text-[18px] sm:text-[20px] font-bold text-[#325175]"
+              >
                 <span>Total</span>
                 <span>305.00 €</span>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="w-full space-y-3 pt-2">
-          <button className="w-full h-[60px] bg-[#325175] text-white rounded-[160px] font-semibold text-[18px] hover:bg-[#253d5a] transition-colors border border-[#325175]">
+        <motion.div 
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="w-full space-y-3 pt-2"
+        >
+          <motion.button 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.2 }}
+            className="w-full h-[60px] bg-[#325175] text-white rounded-[160px] font-semibold text-[18px] hover:bg-[#253d5a] transition-colors border border-[#325175] cursor-pointer"
+          >
             Confirm Order
-          </button>
+          </motion.button>
 
           <div className="flex items-center justify-center gap-1.5 text-[12px] text-[#325175]/60 pt-1">
             <svg className="w-3.5 h-3.5 text-[#325175]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -218,7 +283,7 @@ export default function CheckoutPage() {
             </svg>
             <span>Secure checkout powered by Henry&apos;s Luxury</span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
