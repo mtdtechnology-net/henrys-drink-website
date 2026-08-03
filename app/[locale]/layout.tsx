@@ -3,8 +3,6 @@ import "../globals.css";
 import { Pinyon_Script, Comfortaa } from "next/font/google";
 import localFont from "next/font/local";
 import { Navbar } from "@/components/navbar/Navbar";
-import { Pinyon_Script, Comfortaa } from "next/font/google";
-import localFont from "next/font/local";
 
 const pinyonScript = Pinyon_Script({
   weight: "400",
