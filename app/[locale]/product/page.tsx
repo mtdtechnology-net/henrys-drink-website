@@ -1,9 +1,17 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
 
 export default function ProductPage() {
   return (
     <section className="relative w-full min-h-screen bg-[#FBF9F5] flex flex-col lg:flex-row items-center lg:items-start justify-between px-10 xl:px-23 pt-35 pb-24 overflow-x-hidden gap-12 lg:gap-0">
-      <div className="absolute left-0 top-70 w-[55%] h-[75%] z-0 pointer-events-none opacity-80">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.8 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="absolute left-0 top-70 w-[55%] h-[75%] z-0 pointer-events-none opacity-80"
+      >
         <Image
           src="/productbg.svg"
           alt="Illustration Background"
@@ -11,9 +19,15 @@ export default function ProductPage() {
           priority
           className="object-contain object-top-left"
         />
-      </div>
+      </motion.div>
 
-      <div className="relative z-10 flex flex-col justify-between min-h-131.5 w-full lg:w-102.75 max-w-102.75 shrink-0 items-center text-center lg:items-start lg:text-left">
+      <motion.div 
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+        className="relative z-10 flex flex-col justify-between min-h-131.5 w-full lg:w-102.75 max-w-102.75 shrink-0 items-center text-center lg:items-start lg:text-left"
+      >
         <div className="flex flex-col gap-11.5">
           <div>
             <h1 className="font-perandory text-[60px] xl:text-[64px] leading-[1.02] uppercase text-[#325175] tracking-wide">
@@ -34,15 +48,26 @@ export default function ProductPage() {
         </div>
 
         <div className="mb-8">
-          <button className="w-[190px] h-[65px] bg-[#325175] hover:bg-[#233a54] rounded-[160px] flex items-center justify-center transition-colors cursor-pointer shadow-sm">
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="w-[190px] h-[65px] bg-[#325175] hover:bg-[#233a54] rounded-[160px] flex items-center justify-center transition-colors cursor-pointer shadow-sm"
+          >
             <span className="font-comfortaa text-[22px] font-medium leading-none text-white text-center">
               Add to cart
             </span>
-          </button>
+          </motion.button>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="relative z-20 w-full max-w-84.25 h-auto lg:h-244.25 shrink-0 flex justify-center pt-3">
+      <motion.div 
+        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+        className="relative z-20 w-full max-w-84.25 h-auto lg:h-244.25 shrink-0 flex justify-center pt-3"
+      >
         <Image
           src="/henrybottle.svg"
           alt="Henry's Signature Aperitif Bottle"
@@ -50,11 +75,17 @@ export default function ProductPage() {
           height={1954}
           priority
           unoptimized
-          className="w-full max-w-84.25 h-auto max-h-244.25 object-contain"
+          className="w-full max-w-84.25 h-auto max-h-244.25 object-contain drop-shadow-xl"
         />
-      </div>
+      </motion.div>
 
-      <div className="font-comfortaa relative z-10 flex flex-col justify-start gap-15 w-full lg:w-[435px] max-w-[435px] shrink-0 items-center text-center lg:items-start lg:text-left">
+      <motion.div 
+        initial={{ opacity: 0, x: 40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.95, ease: "easeOut" }}
+        className="font-comfortaa relative z-10 flex flex-col justify-start gap-15 w-full lg:w-[435px] max-w-[435px] shrink-0 items-center text-center lg:items-start lg:text-left"
+      >
         <div className="space-y-3">
           <h3 className="font-bold text-[18px] text-[#325175] leading-[25px]">
             About This Aperitif
@@ -116,7 +147,7 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
