@@ -1,0 +1,446 @@
+/* [next]/internal/font/google/pinyon_script_69d88a2d.module.css [app-client] (css) */
+@font-face {
+  font-family: Pinyon Script;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/f909a269f494b794-s.03cejzym9p802.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: Pinyon Script;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/521c263860cc4ed1-s.082vh6smfhzu4.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Pinyon Script;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/db3f01ae0719bbb0-s.p.2c0pkezzij_il.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Pinyon Script Fallback;
+  src: local(Arial);
+  ascent-override: 107.82%;
+  descent-override: 48.0%;
+  line-gap-override: 0.0%;
+  size-adjust: 80.07%;
+}
+
+.pinyon_script_69d88a2d-module__q1_uQG__className {
+  font-family: Pinyon Script, Pinyon Script Fallback;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.pinyon_script_69d88a2d-module__q1_uQG__variable {
+  --font-pinyon: "Pinyon Script", "Pinyon Script Fallback";
+}
+
+/* [next]/internal/font/google/comfortaa_c699538c.module.css [app-client] (css) */
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../media/e3dfc854017cd189-s.0ornw44cqt18i.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../media/ca59e9eae7934b24-s.1zimd0smwfdd-.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../media/d4d7dfbfbdcfb829-s.1g6_yfgrgot7g.woff2") format("woff2");
+  unicode-range: U+370-377, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../media/60598ce2a46fbffb-s.0ll4btu1cp91c.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../media/2a3a498894ba15cf-s.3kyqqorhbenil.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../media/7f20430e44eb7422-s.p.36oubx4qeurhb.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/e3dfc854017cd189-s.0ornw44cqt18i.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/ca59e9eae7934b24-s.1zimd0smwfdd-.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/d4d7dfbfbdcfb829-s.1g6_yfgrgot7g.woff2") format("woff2");
+  unicode-range: U+370-377, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/60598ce2a46fbffb-s.0ll4btu1cp91c.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/2a3a498894ba15cf-s.3kyqqorhbenil.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/7f20430e44eb7422-s.p.36oubx4qeurhb.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../media/e3dfc854017cd189-s.0ornw44cqt18i.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../media/ca59e9eae7934b24-s.1zimd0smwfdd-.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../media/d4d7dfbfbdcfb829-s.1g6_yfgrgot7g.woff2") format("woff2");
+  unicode-range: U+370-377, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../media/60598ce2a46fbffb-s.0ll4btu1cp91c.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../media/2a3a498894ba15cf-s.3kyqqorhbenil.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../media/7f20430e44eb7422-s.p.36oubx4qeurhb.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/e3dfc854017cd189-s.0ornw44cqt18i.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/ca59e9eae7934b24-s.1zimd0smwfdd-.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/d4d7dfbfbdcfb829-s.1g6_yfgrgot7g.woff2") format("woff2");
+  unicode-range: U+370-377, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/60598ce2a46fbffb-s.0ll4btu1cp91c.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/2a3a498894ba15cf-s.3kyqqorhbenil.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/7f20430e44eb7422-s.p.36oubx4qeurhb.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/e3dfc854017cd189-s.0ornw44cqt18i.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/ca59e9eae7934b24-s.1zimd0smwfdd-.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/d4d7dfbfbdcfb829-s.1g6_yfgrgot7g.woff2") format("woff2");
+  unicode-range: U+370-377, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/60598ce2a46fbffb-s.0ll4btu1cp91c.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/2a3a498894ba15cf-s.3kyqqorhbenil.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/7f20430e44eb7422-s.p.36oubx4qeurhb.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Comfortaa Fallback;
+  src: local(Arial);
+  ascent-override: 74.95%;
+  descent-override: 19.91%;
+  line-gap-override: 0.0%;
+  size-adjust: 117.54%;
+}
+
+.comfortaa_c699538c-module__pR63iW__className {
+  font-family: Comfortaa, Comfortaa Fallback;
+  font-style: normal;
+}
+
+.comfortaa_c699538c-module__pR63iW__variable {
+  --font-comfortaa: "Comfortaa", "Comfortaa Fallback";
+}
+
+/* [project]/app/[locale]/interdisplay_c4ae05ed.module.css [app-client] (css) */
+@font-face {
+  font-family: interDisplay;
+  src: url("../media/InterDisplay_Regular-s.p.0x6wo7vwddxok.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: interDisplay;
+  src: url("../media/InterDisplay_Medium-s.p.2uvfgl47bh0te.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: interDisplay;
+  src: url("../media/InterDisplay_SemiBold-s.p.0jso_21a879zu.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: interDisplay;
+  src: url("../media/InterDisplay_Bold-s.p.0x9rjzv218erf.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: interDisplay Fallback;
+  src: local(Arial);
+  ascent-override: 98.56%;
+  descent-override: 24.54%;
+  line-gap-override: 0.0%;
+  size-adjust: 98.29%;
+}
+
+.interdisplay_c4ae05ed-module__ZSRKKW__className {
+  font-family: interDisplay, interDisplay Fallback;
+}
+
+.interdisplay_c4ae05ed-module__ZSRKKW__variable {
+  --font-inter-display: "interDisplay", "interDisplay Fallback";
+}
+
+/* [project]/app/[locale]/futurapt_759d4034.module.css [app-client] (css) */
+@font-face {
+  font-family: futuraPt;
+  src: url("../media/FuturaCyrillicBook-s.p.145sav_l0vdnq.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: futuraPt;
+  src: url("../media/FuturaCyrillicMedium-s.p.0dw93ok0-xg7x.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: futuraPt;
+  src: url("../media/FuturaCyrillicBold-s.p.097i7pe2q_z5m.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: futuraPt Fallback;
+  src: local(Arial);
+  ascent-override: 111.54%;
+  descent-override: 34.07%;
+  line-gap-override: 0.0%;
+  size-adjust: 88.04%;
+}
+
+.futurapt_759d4034-module__VZT04q__className {
+  font-family: futuraPt, futuraPt Fallback;
+}
+
+.futurapt_759d4034-module__VZT04q__variable {
+  --font-futura: "futuraPt", "futuraPt Fallback";
+}
+
+/* [project]/app/[locale]/perandory_bccb798a.module.css [app-client] (css) */
+@font-face {
+  font-family: perandory;
+  src: url("../media/PerandorySemiCondensed-s.p.2n9u2y1h7-fr3.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: perandory Fallback;
+  src: local(Arial);
+  ascent-override: 86.82%;
+  descent-override: 28.94%;
+  line-gap-override: 11.58%;
+  size-adjust: 86.39%;
+}
+
+.perandory_bccb798a-module__Lzqf-q__className {
+  font-family: perandory, perandory Fallback;
+}
+
+.perandory_bccb798a-module__Lzqf-q__variable {
+  --font-perandory: "perandory", "perandory Fallback";
+}
+
+/*# sourceMappingURL=%5Broot-of-the-server%5D__134rhm2._.css.map*/
