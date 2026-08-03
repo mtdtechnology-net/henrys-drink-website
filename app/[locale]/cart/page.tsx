@@ -13,7 +13,7 @@ interface CartItem {
 
 export function useCartEngine(initialItems: CartItem[] = []) {
   const [items, setItems] = useState<CartItem[]>(initialItems);
-  const shipping = 15.00;
+  const shipping = 15.0;
 
   const updateQuantity = (id: string, delta: number) => {
     setItems((prevItems) =>
@@ -23,7 +23,7 @@ export function useCartEngine(initialItems: CartItem[] = []) {
           return { ...item, quantity: newQuantity };
         }
         return item;
-      })
+      }),
     );
   };
 
@@ -33,7 +33,7 @@ export function useCartEngine(initialItems: CartItem[] = []) {
 
   const subtotal = items.reduce(
     (acc, item) => acc + item.pricePerUnit * item.quantity,
-    0
+    0,
   );
 
   const total = items.length > 0 ? subtotal + shipping : 0;
@@ -55,24 +55,25 @@ export default function CartPage() {
         id: "1",
         name: "The Signature Aperitif",
         origin: "Bordeaux",
-        pricePerUnit: 290.00,
+        pricePerUnit: 290.0,
         quantity: 1,
       },
     ]);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
       className="w-full min-h-screen bg-[#FFFBF7] pt-28 sm:pt-32 md:pt-40 pb-16 sm:pb-24 px-4 sm:px-8 md:px-16 font-['Comfortaa'] text-[#442F0E]"
     >
       <div className="max-w-[1280px] mx-auto">
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="font-['Pinyon_Script'] text-[48px] sm:text-[64px] md:text-[82px] leading-none text-center text-[#442F0E] mb-10 sm:mb-16 md:mb-20">
+          className="font-['Pinyon_Script'] text-[48px] sm:text-[64px] md:text-[82px] leading-none text-center text-[#442F0E] mb-10 sm:mb-16 md:mb-20"
+        >
           Votre Panier
         </motion.h1>
 
@@ -90,21 +91,24 @@ export default function CartPage() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 gap-6 sm:gap-4 border-b border-[#442F0E]/10 sm:border-b-0 w-full overflow-hidden">
+                    className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 gap-6 sm:gap-4 border-b border-[#442F0E]/10 sm:border-b-0 w-full overflow-hidden"
+                  >
                     <div className="flex justify-between items-start sm:block">
                       <div>
-                        <motion.h2 
+                        <motion.h2
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.5, delay: 0.1 }}
-                          className="text-[18px] sm:text-[21.27px] font-bold text-[#442F0E] leading-tight">
+                          className="text-[18px] sm:text-[21.27px] font-bold text-[#442F0E] leading-tight"
+                        >
                           {item.name}
                         </motion.h2>
-                        <motion.p 
+                        <motion.p
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.5, delay: 0.2 }}
-                          className="text-[15px] sm:text-[18.13px] leading-none opacity-60 text-[#442F0E] mt-1">
+                          className="text-[15px] sm:text-[18.13px] leading-none opacity-60 text-[#442F0E] mt-1"
+                        >
                           {item.origin}
                         </motion.p>
                       </div>
@@ -112,9 +116,20 @@ export default function CartPage() {
                       <button
                         onClick={() => removeItem(item.id)}
                         className="sm:hidden text-[#442F0E]/40 hover:text-[#442F0E] transition-colors p-1"
-                        aria-label="Remove item">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        aria-label="Remove item"
+                      >
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                          />
                         </svg>
                       </button>
                     </div>
@@ -130,7 +145,7 @@ export default function CartPage() {
                         −
                       </motion.button>
 
-                      <motion.span 
+                      <motion.span
                         key={item.quantity}
                         initial={{ scale: 0.8, opacity: 0.5 }}
                         animate={{ scale: 1, opacity: 1 }}
@@ -152,7 +167,7 @@ export default function CartPage() {
                     </div>
 
                     <div className="text-left sm:text-right">
-                      <motion.p 
+                      <motion.p
                         key={itemSubtotal}
                         initial={{ opacity: 0.5, y: -4 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -161,13 +176,14 @@ export default function CartPage() {
                       >
                         {itemSubtotal.toFixed(2).replace(".", ",")} €
                       </motion.p>
-                      <motion.p 
+                      <motion.p
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
                         className="text-[12px] sm:text-[14px] leading-none opacity-50 text-[#442F0E] mt-1"
                       >
-                        {item.pricePerUnit.toFixed(2).replace(".", ",")} € / unité
+                        {item.pricePerUnit.toFixed(2).replace(".", ",")} € /
+                        unité
                       </motion.p>
                     </div>
 
@@ -178,8 +194,18 @@ export default function CartPage() {
                       className="hidden sm:block text-[#442F0E]/40 hover:text-[#442F0E] transition-colors cursor-pointer"
                       aria-label="Remove item"
                     >
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.5}
+                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                        />
                       </svg>
                     </motion.button>
                   </motion.div>
@@ -188,14 +214,13 @@ export default function CartPage() {
             </AnimatePresence>
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="w-full lg:w-[351px] space-y-6"
           >
-        
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -207,9 +232,9 @@ export default function CartPage() {
             <div className="space-y-4 text-[#442F0E]">
               <div className="flex justify-between items-center text-[15px] sm:text-[16px] pb-4 border-b border-[#442F0E]/10">
                 <span>Sous-total</span>
-                <motion.span 
-                  key={subtotal} 
-                  initial={{ opacity: 0.5, y: -2 }} 
+                <motion.span
+                  key={subtotal}
+                  initial={{ opacity: 0.5, y: -2 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -224,9 +249,9 @@ export default function CartPage() {
 
               <div className="pt-2 flex justify-between items-center text-[18px] sm:text-[20px] font-bold text-[#325175]">
                 <span>Total</span>
-                <motion.span 
-                  key={total} 
-                  initial={{ opacity: 0.5, scale: 0.95 }} 
+                <motion.span
+                  key={total}
+                  initial={{ opacity: 0.5, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.25 }}
                 >
@@ -236,7 +261,7 @@ export default function CartPage() {
             </div>
 
             <div className="space-y-3 pt-4">
-              <motion.button 
+              <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2 }}
@@ -246,10 +271,22 @@ export default function CartPage() {
               </motion.button>
 
               <div className="flex items-center justify-center gap-1.5 text-[12px] text-[#442F0E]/60 pt-1">
-                <svg className="w-3.5 h-3.5 text-[#442F0E]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                <svg
+                  className="w-3.5 h-3.5 text-[#442F0E]/60"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#325175"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  />
                 </svg>
-                <span>Paiement sécurisé par Henry&apos;s Luxury</span>
+                <span style={{ color: "#325175" }}>
+                  Paiement sécurisé par Henry&apos;s Luxury
+                </span>
               </div>
             </div>
           </motion.div>
