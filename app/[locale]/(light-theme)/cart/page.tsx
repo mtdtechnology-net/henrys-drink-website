@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useRouter } from "next/navigation";
 
 interface CartItem {
   id: string;
@@ -59,6 +60,11 @@ export default function CartPage() {
         quantity: 1,
       },
     ]);
+
+  const router = useRouter();
+  const handleGoToCheckout = () => {
+    router.push("/checkout");
+  };
 
   return (
     <motion.div
@@ -265,6 +271,7 @@ export default function CartPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2 }}
+                onClick={handleGoToCheckout}
                 className="w-full h-[56px] sm:h-[60px] bg-[#325175] text-white rounded-[160px] font-semibold text-[16px] sm:text-[18px] hover:bg-[#253d5a] transition-colors border border-[#325175] cursor-pointer"
               >
                 Passer la commande

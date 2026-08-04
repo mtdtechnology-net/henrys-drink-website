@@ -16,7 +16,7 @@ export interface NotificationTemplateProps {
 }
 
 export const NotificationTemplate = ({
-  userEmail = 'customer@example.com',
+  userEmail,
   message,
   itemCount = 3,
 }: NotificationTemplateProps) => (
