@@ -184,12 +184,6 @@ export default function PrivacyPolicyPage() {
           </PolicySection>
         </div>
       </article>
-
-      <Footer
-        theme="light"
-        privacyHref="/privacy-policy"
-        shippingHref="/shipping-delivery"
-      />
     </main>
   );
 }
