@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
 @import "tailwindcss";
 
@@ -8,7 +7,6 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-
 }
 
 :root {
@@ -21,14 +19,15 @@
   --heritage-cream: #fffcf9;
 }
 
-@theme inline {
+@theme {
+  --font-pinyon: var(--font-pinyon), serif;
+  --font-comfortaa: var(--font-comfortaa), sans-serif;
+  --font-perandory: var(--font-perandory), sans-serif;
+  --font-inter: var(--font-inter), sans-serif;
+  --font-futura: var(--font-futura), sans-serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-comfortaa: "Comfortaa", sans-serif;
-  --font-perandory: "Perandory", Georgia, serif;
 }
 
 * {
@@ -135,4 +134,3 @@ video {
   display: block;
   max-width: 100%;
 }
-
