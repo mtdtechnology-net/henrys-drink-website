@@ -72,9 +72,6 @@ export default async function LocaleLayout({
       className={` ${pinyonScript.variable} ${comfortaa.variable} ${perandory.variable} ${futuraPt.variable} ${interDisplay.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-
-        <Navbar itemCount={1} locale={locale} ></Navbar>
-
         {children}
       </body>
     </html>
