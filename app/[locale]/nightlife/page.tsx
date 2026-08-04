@@ -8,7 +8,7 @@ import Section5 from "@/components/nightlife/section5";
 export default function NightlifePage() {
   return (
     
-    <main className="h-screen w-full bg-black overflow-y-scroll text-white relative">
+    <main className="w-full bg-black text-white relative">
       <Section1 />
       <Section2 />
       <Section3 />

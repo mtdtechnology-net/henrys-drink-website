@@ -148,11 +148,9 @@ export default function Section3() {
       </motion.div>
 
       <div className="relative w-full h-[48%] md:h-[52%] flex items-center justify-center my-auto translate-y-3 md:translate-y-5">
-        <motion.button
+        <button
           onClick={() => setCurrentIndex(prevIndex)}
-          whileHover={{ scale: 0.9 }}
-          whileTap={{ scale: 0.75 }}
-          className="absolute left-0 translate-x-[-55%] w-48 md:w-64 lg:w-80 h-full opacity-35 hover:opacity-70 transition-opacity cursor-pointer flex items-center justify-center z-20 pointer-events-auto scale-75 md:scale-80 lg:scale-85"
+          className="absolute left-0 translate-x-[-55%] w-48 md:w-64 lg:w-80 h-full opacity-35 hover:opacity-70 transition-opacity duration-300 cursor-pointer flex items-center justify-center z-20 pointer-events-auto scale-75 md:scale-80 lg:scale-85"
           aria-label="Previous Cocktail"
         >
           <div className="relative w-full h-full">
@@ -165,7 +163,7 @@ export default function Section3() {
               className="object-contain image-rendering-crisp-sharp transform-gpu backface-hidden"
             />
           </div>
-        </motion.button>
+        </button>
 
         <div className="relative w-80 md:w-lg lg:w-2xl 2xl:w-4xl h-full z-10 flex items-center justify-center scale-110 lg:scale-125 2xl:scale-140 -translate-y-5 md:-translate-y-9">
           <AnimatePresence mode="wait">
@@ -190,11 +188,9 @@ export default function Section3() {
           </AnimatePresence>
         </div>
 
-        <motion.button
+        <button
           onClick={() => setCurrentIndex(nextIndex)}
-          whileHover={{ scale: 0.9 }}
-          whileTap={{ scale: 0.75 }}
-          className="absolute right-0 translate-x-[55%] w-48 md:w-64 lg:w-80 h-full opacity-35 hover:opacity-70 transition-opacity cursor-pointer flex items-center justify-center z-20 pointer-events-auto scale-75 md:scale-80 lg:scale-85"
+          className="absolute right-0 translate-x-[55%] w-48 md:w-64 lg:w-80 h-full opacity-35 hover:opacity-70 transition-opacity duration-300 cursor-pointer flex items-center justify-center z-20 pointer-events-auto scale-75 md:scale-80 lg:scale-85"
           aria-label="Next Cocktail"
         >
           <div className="relative w-full h-full">
@@ -207,7 +203,7 @@ export default function Section3() {
               className="object-contain image-rendering-crisp-sharp transform-gpu backface-hidden"
             />
           </div>
-        </motion.button>
+        </button>
       </div>
 
       <div className="w-full flex flex-col gap-4 2xl:gap-8 z-10 px-6 md:px-16 lg:px-28 2xl:px-40 mb-6 md:mb-10 2xl:mb-14 -translate-y-8 md:translate-y-0">
