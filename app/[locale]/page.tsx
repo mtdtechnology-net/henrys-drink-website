@@ -1,8 +1,15 @@
 import Image from "next/image";
 import { InfoCard } from "@/components/common/InfoCard";
 import { HoverVideo } from "@/components/video/HoverVideo";
+import { Navbar } from "@/components/navbar/Navbar";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  
   const sharedCardClasses = `
     absolute z-20 pointer-events-none
     

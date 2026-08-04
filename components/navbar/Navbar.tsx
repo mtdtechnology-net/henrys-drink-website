@@ -4,7 +4,7 @@ import { NavShopIcon } from "./NavShopIcon";
 import { LanguageSwitcher } from "@/components/navbar/LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 
-type NavbarMode = "blue" | "white" | "brown";
+type NavbarMode = "light" | "dark";
 
 const BASE_NAV_STYLE =
   "italic font-normal transition-all duration-200 ease-in-out font-['Inter_Variable',_sans-serif] whitespace-nowrap text-[clamp(0.7rem,1.1vw,1.125rem)]";
@@ -16,20 +16,15 @@ interface StyleConfig {
 }
 
 const MODE_STYLES: Record<NavbarMode, StyleConfig> = {
-  blue: {
-    textColor: "text-[#442F0E]",
+  light: {
+    textColor: "text-[#325175]",
     shopIconUrl: "/shopIconRed.svg",
     signatureUrl: "/blueSignature.svg",
   },
-  white: {
+  dark: {
     textColor: "text-white",
     shopIconUrl: "/shopIconWhite.svg",
     signatureUrl: "/whiteSignature.svg",
-  },
-  brown: {
-    textColor: "text-white",
-    shopIconUrl: "/shopIconWhite.svg",
-    signatureUrl: "/brownSignature.svg",
   },
 };
 
@@ -46,12 +41,14 @@ const tabs = [
   { text: "Contact", href: "/contact" },
 ];
 
-export const Navbar = ({ itemCount, mode = "blue", locale }: NavbarProps) => {
+
+export const Navbar = ({ itemCount, mode = "light", locale }: NavbarProps) => {
+
   const leftTabs = tabs.slice(0, 2);
   const rightTabs = tabs.slice(2);
 
   const { textColor, shopIconUrl, signatureUrl } =
-    MODE_STYLES[mode] ?? MODE_STYLES.blue;
+    MODE_STYLES[mode] ?? MODE_STYLES.light;
   const navTextStyle = `${BASE_NAV_STYLE} ${textColor}`;
 
   return (

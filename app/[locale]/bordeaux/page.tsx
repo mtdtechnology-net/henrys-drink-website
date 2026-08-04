@@ -1,11 +1,14 @@
 "use client";
 
 import { InfoCard } from "@/components/common/InfoCard";
+import { Navbar } from "@/components/navbar/Navbar";
 import { HoverVideo } from "@/components/video/HoverVideo";
+import { use } from "react";
 
 export default function BordeauxPage() {
-  return (
+    return (
     <main className="relative min-h-screen min-h-[100svh] w-full overflow-hidden">
+
       <div className="absolute inset-0">
         <HoverVideo
           src="/grandchildWalking.mp4"
