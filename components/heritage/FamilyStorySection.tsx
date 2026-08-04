@@ -32,32 +32,22 @@ export function FamilyStorySection() {
           />
         </motion.div>
 
-<<<<<<< HEAD
-        <article className="absolute left-[55.99%] top-[min(10.885vw,209px)] z-[2] box-border flex h-[min(40.938vw,786px)] w-[29.427%] max-w-[565px] flex-col overflow-hidden bg-[#fffcf9] px-[min(2.604vw,50px)] pb-[min(2.604vw,50px)] pt-[min(2.604vw,50px)] text-[#442f0e] min-[1600px]:h-[740px] min-[1600px]:w-[535px] min-[1600px]:px-[45px] min-[1600px]:pb-[38px] min-[1600px]:pt-[38px] max-[768px]:relative max-[768px]:left-auto max-[768px]:top-auto max-[768px]:h-auto max-[768px]:w-full max-[768px]:max-w-[500px] max-[768px]:px-6 max-[768px]:pb-10 max-[768px]:pt-8 max-[480px]:px-5">
-          {" "}
-          <h2
-=======
         <motion.article
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 2.2, delay: 0.2, ease: SLOW_EASE }}
-          className="absolute left-[55.99%] top-[min(10.885vw,209px)] z-[2] box-border flex h-[min(40.938vw,786px)] w-[29.427%] max-w-[565px] flex-col overflow-hidden bg-[#fffcf9] px-[min(2.604vw,50px)] pb-[min(2.604vw,50px)] pt-[min(2.604vw,50px)] text-[#442f0e] min-[1600px]:h-[740px] min-[1600px]:w-[535px] min-[1600px]:px-[45px] min-[1600px]:pb-[38px] min-[1600px]:pt-[38px] max-[768px]:relative max-[768px]:left-auto max-[768px]:top-auto max-[768px]:h-auto max-[768px]:w-full max-[768px]:max-w-[500px] max-[768px]:px-6 max-[768px]:pb-10 max-[768px]:pt-8 max-[480px]:px-5"
+          className="absolute left-[55.99%] top-[min(10.885vw,209px)] z-[2] box-border flex h-[min(40.938vw,786px)] w-[29.427%] max-w-[565px] flex-col overflow-hidden bg-[#FFFCF9] px-[min(2.604vw,50px)] pb-[min(2.604vw,50px)] pt-[min(2.604vw,50px)] text-[#442F0E] min-[1600px]:h-[740px] min-[1600px]:w-[535px] min-[1600px]:px-[45px] min-[1600px]:pb-[38px] min-[1600px]:pt-[38px] max-[768px]:relative max-[768px]:left-auto max-[768px]:top-auto max-[768px]:h-auto max-[768px]:w-full max-[768px]:max-w-[500px] max-[768px]:px-6 max-[768px]:pb-10 max-[768px]:pt-8 max-[480px]:px-5"
         >
           <motion.h2
->>>>>>> e93d459 (heritage animations implementation)
             id="family-story-title"
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 2.2, delay: 0.4, ease: SLOW_EASE }}
-            className="relative z-[3] mb-[min(1.042vw,20px)] mt-0 flex h-[min(3.542vw,68px)] w-full shrink-0 items-center justify-center whitespace-nowrap text-center align-middle font-['Perandory',Georgia,serif] text-[min(3.229vw,62px)] font-normal leading-none tracking-[0] text-[#442f0e] [font-stretch:semi-condensed] max-[768px]:mb-6 max-[768px]:h-auto max-[768px]:min-h-[52px] max-[768px]:whitespace-normal max-[768px]:text-[clamp(42px,10vw,56px)]"
+            className="relative z-[3] mb-[min(1.042vw,20px)] mt-0 flex h-[min(3.542vw,68px)] w-full shrink-0 items-center justify-center whitespace-nowrap text-center align-middle font-['Perandory',Georgia,serif] text-[min(3.229vw,62px)] font-normal leading-none tracking-[0] text-[#442F0E] [font-stretch:semi-condensed] max-[768px]:mb-6 max-[768px]:h-auto max-[768px]:min-h-[52px] max-[768px]:whitespace-normal max-[768px]:text-[clamp(42px,10vw,56px)]"
           >
             A FAMILY STORY
-<<<<<<< HEAD
-          </h2>
-          <div className="relative z-[2] aspect-[1.07/1] w-full shrink-0 overflow-hidden">
-=======
           </motion.h2>
 
           <motion.div
@@ -67,7 +57,6 @@ export function FamilyStorySection() {
             transition={{ duration: 2.4, delay: 0.9, ease: SLOW_EASE }}
             className="relative z-[2] aspect-[1.07/1] w-full shrink-0 overflow-hidden"
           >
->>>>>>> e93d459 (heritage animations implementation)
             <Image
               className="object-cover object-center grayscale"
               src="/man.svg"
@@ -75,12 +64,8 @@ export function FamilyStorySection() {
               fill
               sizes="(max-width: 768px) 85vw, 24.22vw"
             />
-<<<<<<< HEAD
-          </div>
-=======
           </motion.div>
 
->>>>>>> e93d459 (heritage animations implementation)
           <div className="relative mt-[min(0.833vw,16px)] flex min-h-0 flex-1 items-start">
             <motion.img
               initial={{ opacity: 0 }}
@@ -100,7 +85,7 @@ export function FamilyStorySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 2.4, delay: 1.4, ease: SLOW_EASE }}
-              className="relative z-[2] m-0 w-full font-['Comfortaa',sans-serif] text-[min(1.146vw,22px)] font-medium leading-[min(1.458vw,28px)] tracking-[0] text-[#442f0e] max-[768px]:text-[18px] max-[768px]:leading-[25px]"
+              className="relative z-[2] m-0 w-full font-['Comfortaa',sans-serif] text-[min(1.146vw,22px)] font-medium leading-[min(1.458vw,28px)] tracking-[0] text-[#442F0E] max-[768px]:text-[18px] max-[768px]:leading-[25px]"
             >
               Preciously guarding his recipe for more than half a century,
               Henri, the grandfather, passed down his passion for delicate
