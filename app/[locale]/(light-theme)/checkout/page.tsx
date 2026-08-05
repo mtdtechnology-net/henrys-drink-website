@@ -1,10 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { useRouter } from "next/navigation";
 import { processMockPaymentAction } from "@/app/actions/order";
 
-export default function MockCheckoutPage() {
+export default function MockCheckoutPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = use(params);  
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
@@ -22,6 +27,7 @@ export default function MockCheckoutPage() {
       userEmail: email,
       itemCount: mockItemCount,
       total: mockTotal,
+      locale: locale
     });
 
     setIsProcessing(false);

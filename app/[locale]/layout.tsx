@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { Pinyon_Script, Comfortaa } from "next/font/google";
+import { Pinyon_Script, Comfortaa, Noto_Serif } from "next/font/google";
 import localFont from "next/font/local";
 import { Navbar } from "@/components/navbar/Navbar";
 
@@ -8,6 +8,12 @@ const pinyonScript = Pinyon_Script({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-pinyon",
+});
+
+export const notoSerif = Noto_Serif({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-noto-serif',
 });
 
 const comfortaa = Comfortaa({
@@ -67,16 +73,12 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   return (
-    <html
-      lang="en"
-      className={` ${pinyonScript.variable} ${comfortaa.variable} ${perandory.variable} ${futuraPt.variable} ${interDisplay.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <>
+      <div className="min-h-full flex flex-col">
         <div className="absolute top-0 left-0 w-full z-50">
-          <Navbar locale={locale} itemCount={1} mode="blue" />
         </div>
         {children}
-      </body>
-    </html>
+      </div>
+    </>
   );
 }
