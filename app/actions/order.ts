@@ -20,16 +20,18 @@ export async function processMockPaymentAction({
   try {
     console.log(`[MOCK STRIPE] Payment processing for: ${userEmail} (${total}€)`);
 
-    await sendNotificationEmail({
+    const emailResult = await sendNotificationEmail({
       to: userEmail,
       userEmail: userEmail,
       subject: "Confirmation de votre commande - Henry's",
-      message: `Merci pour votre achat ! Nous avons bien reçu votre paiement de ${total.toFixed(
+      title: "Merci pour votre commande !",
+      description: `Merci pour votre achat ! Nous avons bien reçu votre paiement de ${total.toFixed(
         2
       )} € pour ${itemCount} article(s).`,
-      itemCount,
       locale: locale
     });
+
+    console.log('[MOCK STRIPE] Email send result:', JSON.stringify(emailResult));
 
     return { success: true };
   } catch (error) {

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { Pinyon_Script, Comfortaa, Noto_Serif } from "next/font/google";
 import localFont from "next/font/local";
-import { Navbar } from "@/components/navbar/Navbar";
 
 const pinyonScript = Pinyon_Script({
   weight: "400",

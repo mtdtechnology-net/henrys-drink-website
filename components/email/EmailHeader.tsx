@@ -10,7 +10,7 @@ export const EmailHeader = ({ signatureLogoUrl }: EmailHeaderProps) => {
 
     return (
         <Container className="w-full mx-auto" align="center">
-            <Section className="py-[24px]" align="center">
+            <Section className="pt-[20px]" align="center">
                 <EmailNavLogo signatureUrl={signatureLogoUrl} href={siteUrl} />
             </Section>
         </Container>

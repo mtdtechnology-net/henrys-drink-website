@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "stripe": "stripe listen --forward to localhost:3000/api/checkout"
+    "stripe": "stripe listen --forward to localhost:3000/api/checkout",
+    "email": "email dev --dir ./emails --port 3001"
   },
   "dependencies": {
     "@react-email/components": "^1.0.12",
@@ -21,7 +22,7 @@
     "resend": "^6.18.1",
     "sharp": "^0.34.5",
     "stripe": "^22.4.0"
-  },
+    },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
@@ -29,6 +30,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.11",
+    "react-email": "^6.9.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

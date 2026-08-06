@@ -7,41 +7,64 @@ import {
   Text,
   Tailwind,
 } from '@react-email/components';
+import type { ReactNode } from 'react';
 import { EmailHeader } from './EmailHeader';
 import { EmailFooter } from './EmailFooter';
-import type { EmailImageSrcs } from '@/lib/services/email-images';
 import { EmailMessageSection } from './EmailMessageSection';
+
+export interface EmailImageSrcs {
+  header: string;
+  footer: string;
+  instagram: string;
+  linkedin: string;
+}
 
 export interface NotificationTemplateProps {
   userEmail: string;
-  message?: string;
-  itemCount?: number;
+  title: string;
+  description: string;
   locale: string;
   imageSrcs: EmailImageSrcs;
+  content?: ReactNode;
 }
 
 export const EmailNotificationTemplate = ({
   userEmail,
-  message,
-  itemCount = 3,
+  title,
+  description,
   imageSrcs,
+  content,
 }: NotificationTemplateProps) => (
   <Tailwind>
     <Html>
-      <Head />
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Noto+Serif&family=Comfortaa:wght@700&display=swap"
+          rel="stylesheet"
+        />
+        <style>{`@font-face {
+  font-family: 'Comfortaa';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/s/comfortaa/v47/1Pt_g8LJRfWJmhDAuUsSQamb1W0lwk4S4Y_LDr4fIB1Zyc61YBlG.woff2) format('woff2');
+}`}</style>
+      </Head>
       <Body className="bg-[#f4f4f5] font-sans text-black py-10 px-2 my-0 mx-auto">
-        {/* Outer Layout Container */}
         <Container className="max-w-[600px] mx-auto">
-          
-          {/* Main Card Element */}
-          <Section className="bg-white rounded-lg border border-solid border-[#e4e4e7] overflow-hidden shadow-sm">
+
+          <Section className="bg-white">
             <EmailHeader signatureLogoUrl={imageSrcs.header} />
 
-            <EmailMessageSection description={message} />
+            <EmailMessageSection title={title} description={description} />
 
+            {content && (
+              <Section className="px-4 pb-6">
+                {content}
+              </Section>
+            )}
 
             <EmailFooter
-              imageUrl={imageSrcs.footer}
+              bgImageUrl={imageSrcs.footer}
               instagramSrc={imageSrcs.instagram}
               linkedinSrc={imageSrcs.linkedin}
             />

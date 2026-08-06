@@ -17,7 +17,7 @@ export const EmailNavLogo = ({
         alt="Logo"
         width="46" 
         height="59" 
-        className="mx-auto block" // <-- Ensures block-level images center themselves
+        className="mx-auto block"
       />
     </Link>
   );
