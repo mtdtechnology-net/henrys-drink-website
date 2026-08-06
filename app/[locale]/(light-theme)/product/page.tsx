@@ -1,6 +1,13 @@
 import Image from "next/image";
+//import { addToCartAction } from "./actions";
+import { AddToCartButton } from "@/components/cart/AddToCartButton";
 
-export default function ProductPage() {
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   return (
     <section className="relative w-full min-h-screen bg-[#FBF9F5] flex flex-col lg:flex-row items-center lg:items-start justify-between px-10 xl:px-23 pt-35 pb-24 overflow-x-hidden gap-12 lg:gap-0">
       <div className="absolute left-0 top-70 w-[55%] h-[75%] z-0 pointer-events-none opacity-80">
@@ -34,12 +41,8 @@ export default function ProductPage() {
         </div>
 
         <div className="mb-8">
-          <button className="w-[190px] h-[65px] bg-[#325175] hover:bg-[#233a54] rounded-[160px] flex items-center justify-center transition-colors cursor-pointer shadow-sm">
-            <span className="font-comfortaa text-[22px] font-medium leading-none text-white text-center">
-              Add to cart
-            </span>
-          </button>
-        </div>
+  <AddToCartButton productId={1} locale={locale} />
+</div>
       </div>
 
       <div className="relative z-20 w-full max-w-84.25 h-auto lg:h-244.25 shrink-0 flex justify-center pt-3">
