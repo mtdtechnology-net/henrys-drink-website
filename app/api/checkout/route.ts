@@ -1,20 +1,22 @@
 import { NextResponse } from 'next/server';
-import {stripe} from '@/lib/stripe'
+import { stripe } from '@/lib/stripe';
 
 interface CheckoutRequestBody {
   productName: string;
   priceInEur: number;
-  quantity: number; 
+  quantity: number;
+  locale: string;
 }
 
-export async function POST(request: Request, locale: string) {
+export async function POST(request: Request) {
   try {
     const body: CheckoutRequestBody = await request.json();
 
     const quantity = body.quantity && body.quantity > 0 ? body.quantity : 1;
+    const locale = body.locale || 'en';
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
+      mode: 'payment',
       line_items: [
         {
           price_data: {
@@ -22,13 +24,16 @@ export async function POST(request: Request, locale: string) {
             product_data: {
               name: body.productName,
             },
-            unit_amount: Math.round(body.priceInEur * 100), 
+            unit_amount: Math.round(body.priceInEur * 100),
           },
-          quantity: quantity, 
+          quantity,
         },
       ],
-      mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/success`,
+      metadata: {
+        productName: body.productName,
+        quantity: String(quantity),
+      },
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/cancel`,
     });
 
