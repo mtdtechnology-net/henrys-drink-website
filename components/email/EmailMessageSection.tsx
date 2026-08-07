@@ -3,11 +3,13 @@ import { Section, Heading, Text, Font } from '@react-email/components';
 export interface EmailMessageSectionProps {
   title?: string;
   description?: string;
+  firstName?: string;
 }
 
 export const EmailMessageSection = ({
   title = "Merci pour votre commande",
   description,
+  firstName,
 }: EmailMessageSectionProps) => {
   return (
     <Section className="text-center py-6 px-8 pb-8">
@@ -34,6 +36,14 @@ export const EmailMessageSection = ({
       >
         {title}
       </Heading>
+
+      {firstName && (
+        <Text
+          className="text-[#442F0E] text-[15px] leading-[160%] font-normal tracking-normal m-0 mb-4 text-center font-['Noto_Serif',Georgia,serif]"
+        >
+          Bonjour {firstName},
+        </Text>
+      )}
 
       {description && (
         <Text

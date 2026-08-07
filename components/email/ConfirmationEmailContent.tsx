@@ -7,9 +7,30 @@ import {
   Hr,
 } from '@react-email/components';
 
-export type ConfirmationEmailContentProps = Record<string, never>;
+export type ConfirmationEmailContentProps = {
+  quantity: number;
+  productsAmount: number;
+  shippingTotal: number;
+  recipientName: string;
+  addressLine: string;
+  city: string;
+  postalCode: string;
+  country: string;
+}
 
-export const ConfirmationEmailContent = ({ }: ConfirmationEmailContentProps) => {
+export const ConfirmationEmailContent = ({ 
+  quantity, 
+  productsAmount, 
+  shippingTotal, 
+  recipientName,
+  addressLine,
+  city,
+  postalCode,
+  country
+}: ConfirmationEmailContentProps) => {
+
+  const total = productsAmount + shippingTotal
+
   return (
     <Tailwind>
       <Column>
@@ -27,14 +48,14 @@ export const ConfirmationEmailContent = ({ }: ConfirmationEmailContentProps) => 
               </Text>
 
               <Text className="text-[#7A6E60] font-['Geist','Noto_Serif',sans-serif] text-[10px] my-0 ">
-                Bordeaux · Quantité 1
+                Bordeaux · Quantité {quantity}
               </Text>
 
             </Column>
 
             <Column align="right" >
               <Text className="text-[#442F0E] font-['Geist','Noto_Serif',sans-serif] font-extrabold text-[13px] my-0">
-                290,00 €
+                {productsAmount.toFixed(2)}€
               </Text>
             </Column>
           </Row>
@@ -47,7 +68,7 @@ export const ConfirmationEmailContent = ({ }: ConfirmationEmailContentProps) => 
                 <Text className="m-0 text-left font-['Geist','Noto_Serif',sans-serif] text-xs text-[#7A6E60]">Sous-total</Text>
               </Column>
               <Column align="right">
-                <Text className="m-0 text-right font-['Geist','Noto_Serif',sans-serif] text-xs text-[#442F0E]">290,00 € </Text>
+                <Text className="m-0 text-right font-['Geist','Noto_Serif',sans-serif] text-xs text-[#442F0E]">{productsAmount.toFixed(2)}€ </Text>
               </Column>
             </Row>
 
@@ -56,7 +77,7 @@ export const ConfirmationEmailContent = ({ }: ConfirmationEmailContentProps) => 
                 <Text className="m-0 text-left font-['Geist','Noto_Serif',sans-serif] text-xs text-[#7A6E60]">Livraison (Bordeaux Heritage Express)</Text>
               </Column>
               <Column align="right">
-                <Text className="m-0 text-right font-['Geist','Noto_Serif',sans-serif] text-xs text-[#442F0E]">15,00 €</Text>
+                <Text className="m-0 text-right font-['Geist','Noto_Serif',sans-serif] text-xs text-[#442F0E]">{shippingTotal.toFixed(2)}€</Text>
               </Column>
             </Row>
 
@@ -67,7 +88,7 @@ export const ConfirmationEmailContent = ({ }: ConfirmationEmailContentProps) => 
                 <Text className="m-0 pt-2 text-left font-['Comfortaa','Noto_Serif',sans-serif] text-bold text-xs text-[#325175] text-[13px]">TOTAL</Text>
               </Column>
               <Column align="right">
-                <Text className="m-0 mt-2 text-right font-['Geist','Noto_Serif',sans-serif] font-bold text-xs text-[#95000D] text-[16px]">305,00 €</Text>
+                <Text className="m-0 mt-2 text-right font-['Geist','Noto_Serif',sans-serif] font-bold text-xs text-[#95000D] text-[16px]">{total.toFixed(2)}€</Text>
               </Column>
             </Row>
           </Section>
@@ -86,19 +107,19 @@ export const ConfirmationEmailContent = ({ }: ConfirmationEmailContentProps) => 
             <Section className="bg-white border border-solid border-[#F0E7D5] rounded-xl p-6 max-w-[580px] mx-auto">
               <Column>
                 <Text className="text-[#442F0E] font-['Geist','Noto_Serif',sans-serif] font-bold text-[13px] my-0 ">
-                  Jean Dupont
+                  {recipientName}
                 </Text>
 
                 <Text className="m-0 text-left font-['Geist','Noto_Serif',sans-serif] text-xs text-[#7A6E60]">
-                  18 Rue de la Devise
+                  {addressLine}
                 </Text>
 
                 <Text className="m-0 text-left font-['Geist','Noto_Serif',sans-serif] text-xs text-[#7A6E60]">
-                  33000 Bordeaux
+                  {postalCode} {city}
                 </Text>
 
                 <Text className="m-0 text-left font-['Geist','Noto_Serif',sans-serif] text-xs text-[#7A6E60]">
-                  France
+                  {country}
                 </Text>
 
               </Column>

@@ -2,22 +2,23 @@ import { render } from "@react-email/render";
 import { EmailNotificationTemplate } from "@/components/email/EmailNotificationTemplate";
 import { ConfirmationEmailContent } from "@/components/email/ConfirmationEmailContent";
 
-const imageSrcs = {
-  header: "/email/blueSignature.png",
-  footer: "/email/Footer.png",
-  instagram: "/email/instagram.png",
-  linkedin: "/email/linkedin.png",
-};
-
 export default async function EmailPreviewPage() {
   const html = await render(
     <EmailNotificationTemplate
       userEmail="test@example.com"
       title="Merci pour votre commande"
+      firstName="Jean"
       locale="en"
-      imageSrcs={imageSrcs}
       description={"Votre commande a bien été enregistrée. Nous préparons vos précieux flacons avec le plus grand soin dans nos caves de Bordeaux pour une expédition imminente."} 
-      content=<ConfirmationEmailContent/>
+      content=<ConfirmationEmailContent 
+        quantity={1} 
+        productsAmount={290.00} 
+        shippingTotal={15.00} 
+        recipientName={"Jean Dupont"} 
+        addressLine={"18 Roue de la Devise"} 
+        city={"Bordeaux"} 
+        postalCode={"33000"} 
+        country={"France"}/>
     />
   );
 

@@ -12,28 +12,30 @@ import { EmailHeader } from './EmailHeader';
 import { EmailFooter } from './EmailFooter';
 import { EmailMessageSection } from './EmailMessageSection';
 
-export interface EmailImageSrcs {
-  header: string;
-  footer: string;
-  instagram: string;
-  linkedin: string;
-}
-
 export interface NotificationTemplateProps {
   userEmail: string;
   title: string;
   description: string;
   locale: string;
-  imageSrcs: EmailImageSrcs;
   content?: ReactNode;
+  firstName?: string;
+  showFooterButton?: boolean;
 }
+
+const imageSrcs = {
+  header: "/email/blueSignature.png",
+  footer: "/email/Footer.png",
+  instagram: "/email/instagram.png",
+  linkedin: "/email/linkedin.png",
+};
 
 export const EmailNotificationTemplate = ({
   userEmail,
   title,
   description,
-  imageSrcs,
   content,
+  firstName,
+  showFooterButton,
 }: NotificationTemplateProps) => (
   <Tailwind>
     <Html>
@@ -55,10 +57,10 @@ export const EmailNotificationTemplate = ({
           <Section className="bg-white">
             <EmailHeader signatureLogoUrl={imageSrcs.header} />
 
-            <EmailMessageSection title={title} description={description} />
+            <EmailMessageSection title={title} description={description} firstName={firstName} />
 
             {content && (
-              <Section className="px-4 pb-6">
+              <Section className="">
                 {content}
               </Section>
             )}
@@ -67,6 +69,7 @@ export const EmailNotificationTemplate = ({
               bgImageUrl={imageSrcs.footer}
               instagramSrc={imageSrcs.instagram}
               linkedinSrc={imageSrcs.linkedin}
+              showButton={showFooterButton}
             />
           </Section>
 

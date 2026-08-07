@@ -51,7 +51,7 @@ export async function sendNotificationEmail(props: SendNotificationEmailProps) {
       <Html>
         <Head />
         <Body>
-          <EmailNotificationTemplate {...props} imageSrcs={srcs} />
+          <EmailNotificationTemplate {...props} />
         </Body>
       </Html>
     ),

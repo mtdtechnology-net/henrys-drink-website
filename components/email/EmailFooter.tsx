@@ -5,9 +5,10 @@ export interface EmailFooterProps {
     bgImageUrl: string;
     instagramSrc: string;
     linkedinSrc: string;
+    showButton?: boolean;
 }
 
-export const EmailFooter = ({ bgImageUrl, instagramSrc, linkedinSrc }: EmailFooterProps) => {
+export const EmailFooter = ({ bgImageUrl, instagramSrc, linkedinSrc, showButton = true }: EmailFooterProps) => {
     const siteUrl = process.env.NEXT_PUBLIC_BASE_URL || '#';
 
     return (
@@ -21,11 +22,13 @@ export const EmailFooter = ({ bgImageUrl, instagramSrc, linkedinSrc }: EmailFoot
                     className="block w-full border-0 h-[260px]"
                 />
                 <Section className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center text-center py-[40px] px-[20px]">
-                    <Section className="pb-[16px]">
-                        <EmailButton href={siteUrl}>
-                            Découvrir Henry&apos;s
-                        </EmailButton>
-                    </Section>
+                    {showButton && (
+                        <Section className="pb-[16px]">
+                            <EmailButton href={siteUrl}>
+                                Découvrir Henry&apos;s
+                            </EmailButton>
+                        </Section>
+                    )}
 
                     <Section className="pb-[16px]">
                         <Text className="text-[#F3EDE6] text-[12px] leading-[20px] font-['Geist','Noto_Serif',sans-serif] m-0 font-light uppercase pb-[4px] [text-shadow:0px_1px_3px_rgba(0,0,0,0.8)]">
