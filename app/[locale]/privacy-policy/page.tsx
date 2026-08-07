@@ -55,7 +55,7 @@ export default function PrivacyPolicyPage() {
       <article className="mx-auto w-full max-w-[1000px] px-6 pb-28 pt-[clamp(7rem,14vh,11rem)] sm:px-10 lg:px-8">
         <motion.header 
           style={{ y: headerY, scale: headerScale, opacity: headerOpacity }}
-          className="mb-[clamp(3.5rem,7vh,5.5rem)] text-center relative z-10"
+          className="relative z-10 mb-[clamp(3.5rem,7vh,5.5rem)] text-center"
         >
           <motion.p
             initial={{ opacity: 0, y: -20, letterSpacing: "0.25em" }}
@@ -80,7 +80,7 @@ export default function PrivacyPolicyPage() {
             animate={{ scaleX: 1, opacity: 1 }}
             transition={{ duration: 2.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ scaleX: 1.2, transition: { duration: 0.5 } }}
-            className="mx-auto mt-6 h-[2px] w-[125px] bg-[#b30012] origin-center cursor-pointer shadow-sm"
+            className="mx-auto mt-6 h-[2px] w-[125px] origin-center cursor-pointer bg-[#b30012] shadow-sm"
           />
         </motion.header>
 
@@ -91,48 +91,80 @@ export default function PrivacyPolicyPage() {
           viewport={{ once: true, amount: 0.05 }}
           className={`${roboto.className} space-y-10 text-[17px] font-normal leading-[1.7] text-[#442f0e]/80 sm:text-[18px]`}
         >
-          <PolicySection title="Data Collection">
+          <motion.section variants={itemVariants} className="space-y-4">
             <p>
-              We collect personal information that you provide directly to us when
-              creating an account, placing an order, or contacting our support team.
+              The company SAS MBE, registered with the Trade and Companies Register (RCS) under number 980 803 921, whose registered office is located at 65 Impasse des Mouilles, Parc de Montfleur, 69400 Gleizé, France, attaches great importance to the protection of your personal data.
+            </p>
+            <p>
+              This privacy policy aims to inform you in a transparent manner about how we collect, use, and protect your information, in accordance with the General Data Protection Regulation (GDPR) and applicable French legislation.
+            </p>
+          </motion.section>
+
+          <PolicySection title="Data Controller">
+            <p>
+              The data controller for your data is SAS MBE, located at 65 Impasse des Mouilles, Parc de Montfleur, 69400 Gleizé – France (GDPR Contact:{" "}
+              <a
+                href="mailto:henrysdrink@gmail.com"
+                className="underline underline-offset-2 transition-colors hover:text-[#b30012]"
+              >
+                henrysdrink@gmail.com
+              </a>
+              ).
             </p>
           </PolicySection>
 
-          <PolicySection title="Use of Information">
+          <PolicySection title="Personal Data Collected">
             <p>
-              Your personal data is strictly used to process your orders, improve
-              our products and services, and maintain account security.
-            </p>
-            <p>
-              We do not sell or rent your personal information to third parties under
-              any circumstances.
+              We only collect the data necessary within the scope of our activity, including identity details (first name, last name), contact information (postal address, email, phone number), message content sent via the contact form, newsletter subscriptions, and browsing data (connection timestamps, pages viewed, site activity via Google Analytics and similar cookies).
             </p>
           </PolicySection>
 
-          <PolicySection title="Data Security & Rights">
-            <div className="space-y-6">
-              <p>
-                We implement robust physical and technical security measures to protect
-                your information against unauthorized access, loss, or alteration.
-              </p>
-              <p>
-                In accordance with applicable privacy laws, you have the right to access,
-                rectify, or request the deletion of your personal data at any time by contacting us at{" "}
-                <a
-                  href="mailto:henrysdrink@gmail.com"
-                  className="underline underline-offset-2 transition-colors hover:text-[#b30012]"
-                >
-                  henrysdrink@gmail.com
-                </a>
-                .
-              </p>
-            </div>
+          <PolicySection title="Purposes of Collection">
+            <p>
+              Your data is strictly used to respond to your requests via the contact form, manage your newsletter subscriptions, improve site navigation and user experience, conduct statistical analyses via Google Analytics, and comply with our legal and regulatory obligations.
+            </p>
           </PolicySection>
 
-          <PolicySection title="Cookies & Analytics">
+          <PolicySection title="Retention Period">
             <p>
-              Our website uses essential cookies to ensure proper site performance and functional features.
-              Analytics cookies are only utilized to understand aggregated usage patterns and improve experience.
+              Data related to prospects (contact forms and newsletters) is retained for 5 years after the last contact, customer data is kept for 5 years following the end of the contractual relationship (or longer if required by French law), and browsing data from cookies/Analytics is stored according to Google's settings, generally for 14 months.
+            </p>
+          </PolicySection>
+
+          <PolicySection title="Data Sharing and Hosting">
+            <p>
+              Your data may be processed by our web provider AGORATECH (SIRET 979 819 125), our host Wix.com Ltd. located outside the European Union under standard contractual clauses approved by the European Commission, and our technical partners (for payments, newsletters, or carriers if applicable), and we never resell your personal data to third parties.
+            </p>
+          </PolicySection>
+
+          <PolicySection title="Your Rights">
+            <p>
+              In accordance with the GDPR and the Data Protection Act (Loi Informatique et Libertés), you have the right to access, rectify, erase, object to processing for direct marketing, and request the portability of your personal data by contacting{" "}
+              <a
+                href="mailto:henrysdrink@gmail.com"
+                className="underline underline-offset-2 transition-colors hover:text-[#b30012]"
+              >
+                henrysdrink@gmail.com
+              </a>
+              , with a response guaranteed within a maximum of 30 days.
+            </p>
+          </PolicySection>
+
+          <PolicySection title="Cookies and Tracking">
+            <p>
+              Our site uses Google Analytics to analyze traffic and improve user experience, and you can manage or refuse the use of cookies directly through your browser settings.
+            </p>
+          </PolicySection>
+
+          <PolicySection title="Security">
+            <p>
+              We implement all technical and organizational measures necessary to protect your personal data against unauthorized access, loss, alteration, or disclosure.
+            </p>
+          </PolicySection>
+
+          <PolicySection title="Policy Changes">
+            <p>
+              This privacy policy may be updated at any time, and we invite you to review it regularly.
             </p>
           </PolicySection>
         </motion.div>
@@ -151,17 +183,18 @@ function PolicySection({
   title,
   children,
 }: {
-  title: string;
+  title?: string;
   children: React.ReactNode;
 }) {
   return (
     <motion.section variants={itemVariants}>
-      <h2
-        className={`${comfortaa.className} mb-4 text-[24px] font-medium leading-tight text-[#442f0e] transition-colors duration-300 hover:text-[#b30012] sm:text-[27px]`}
-      >
-        {title}
-      </h2>
-
+      {title && (
+        <h2
+          className={`${comfortaa.className} mb-4 text-[24px] font-medium leading-tight text-[#442f0e] transition-colors duration-300 hover:text-[#b30012] sm:text-[27px]`}
+        >
+          {title}
+        </h2>
+      )}
       {children}
     </motion.section>
   );
