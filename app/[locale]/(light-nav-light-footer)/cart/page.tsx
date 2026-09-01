@@ -1,38 +1,94 @@
 "use client";
 
-import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-
+import React, { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 interface CartItem {
-  id: string;
+  id: number;
   name: string;
   origin: string;
   pricePerUnit: number;
   quantity: number;
 }
 
-export function useCartEngine(initialItems: CartItem[] = []) {
-  const [items, setItems] = useState<CartItem[]>(initialItems);
-  const shipping = 15.0;
+export function useCartEngine() {
+  const params = useParams<{ locale: string }>();
+  const [items, setItems] = useState<CartItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const shipping = 15;
 
-  const updateQuantity = (id: string, delta: number) => {
-    setItems((prevItems) =>
-      prevItems.map((item) => {
-        if (item.id === id) {
-          const newQuantity = Math.max(1, item.quantity + delta);
-          return { ...item, quantity: newQuantity };
+  useEffect(() => {
+    const loadCart = async () => {
+      try {
+        const response = await fetch(
+          `/api/cart/details?locale=${params.locale}`,
+          {
+            credentials: "include",
+            cache: "no-store",
+          },
+        );
+
+        if (!response.ok) {
+          throw new Error("Unable to load the cart");
         }
-        return item;
+
+        const cart = await response.json();
+        setItems(cart.items);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadCart();
+  }, [params.locale]);
+
+  const updateQuantity = async (id: number, quantity: number) => {
+    if (quantity < 1) {
+      return;
+    }
+
+    const response = await fetch("/api/cart", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        productId: id,
+        quantity,
       }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Unable to update the quantity");
+    }
+
+    setItems((currentItems) =>
+      currentItems.map((item) =>
+        item.id === id ? { ...item, quantity } : item,
+      ),
     );
   };
 
-  const removeItem = (id: string) => {
-    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  const removeItem = async (id: number) => {
+    const response = await fetch(`/api/cart?productId=${id}`, {
+      method: "DELETE",
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      throw new Error("Unable to remove the product");
+    }
+
+    setItems((currentItems) =>
+      currentItems.filter((item) => item.id !== id),
+    );
   };
 
   const subtotal = items.reduce(
-    (acc, item) => acc + item.pricePerUnit * item.quantity,
+    (sum, item) => sum + item.pricePerUnit * item.quantity,
     0,
   );
 
@@ -43,22 +99,25 @@ export function useCartEngine(initialItems: CartItem[] = []) {
     shipping,
     subtotal,
     total,
+    isLoading,
     updateQuantity,
     removeItem,
   };
 }
 
 export default function CartPage() {
-  const { items, shipping, subtotal, total, updateQuantity, removeItem } =
-    useCartEngine([
-      {
-        id: "1",
-        name: "The Signature Aperitif",
-        origin: "Bordeaux",
-        pricePerUnit: 290.0,
-        quantity: 1,
-      },
-    ]);
+  const router = useRouter();
+  const params = useParams<{ locale: string }>();
+
+  const {
+    items,
+    shipping,
+    subtotal,
+    total,
+    isLoading,
+    updateQuantity,
+    removeItem,
+  } = useCartEngine();
 
   return (
     <motion.div
@@ -138,7 +197,8 @@ export default function CartPage() {
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => updateQuantity(item.id, -1)}
+                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+disabled={item.quantity <= 1}
                         className="w-8 h-8 rounded-full border border-[#442F0E] flex items-center justify-center hover:bg-[#442F0E]/5 transition-colors text-base font-medium select-none leading-none cursor-pointer"
                         aria-label="Decrease quantity"
                       >
@@ -158,7 +218,7 @@ export default function CartPage() {
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => updateQuantity(item.id, 1)}
+                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
                         className="w-8 h-8 rounded-full border border-[#442F0E] flex items-center justify-center hover:bg-[#442F0E]/5 transition-colors text-base font-medium select-none leading-none cursor-pointer"
                         aria-label="Increase quantity"
                       >
@@ -262,11 +322,14 @@ export default function CartPage() {
 
             <div className="space-y-3 pt-4">
               <motion.button
+                type="button"
+                onClick={() => router.push(`/${params.locale}/checkout`)}
+                disabled={items.length === 0 || isLoading}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2 }}
-                className="w-full h-[56px] sm:h-[60px] bg-[#325175] text-white rounded-[160px] font-semibold text-[16px] sm:text-[18px] hover:bg-[#253d5a] transition-colors border border-[#325175] cursor-pointer"
-              >
+                className="w-full h-[56px] sm:h-[60px] bg-[#325175] text-white rounded-[160px] font-semibold text-[16px] sm:text-[18px] hover:bg-[#253d5a] transition-colors border border-[#325175] cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+            >
                 Passer la commande
               </motion.button>
 
