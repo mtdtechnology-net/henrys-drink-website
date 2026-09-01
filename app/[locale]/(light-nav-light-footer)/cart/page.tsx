@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+
 interface CartItem {
   id: number;
   name: string;
@@ -82,9 +83,7 @@ export function useCartEngine() {
       throw new Error("Unable to remove the product");
     }
 
-    setItems((currentItems) =>
-      currentItems.filter((item) => item.id !== id),
-    );
+    setItems((currentItems) => currentItems.filter((item) => item.id !== id));
   };
 
   const subtotal = items.reduce(
@@ -118,6 +117,10 @@ export default function CartPage() {
     updateQuantity,
     removeItem,
   } = useCartEngine();
+
+  const handleGoToCheckout = () => {
+    router.push("/checkout");
+  };
 
   return (
     <motion.div
@@ -197,8 +200,10 @@ export default function CartPage() {
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
-disabled={item.quantity <= 1}
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity - 1)
+                        }
+                        disabled={item.quantity <= 1}
                         className="w-8 h-8 rounded-full border border-[#442F0E] flex items-center justify-center hover:bg-[#442F0E]/5 transition-colors text-base font-medium select-none leading-none cursor-pointer"
                         aria-label="Decrease quantity"
                       >
@@ -218,7 +223,9 @@ disabled={item.quantity <= 1}
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity + 1)
+                        }
                         className="w-8 h-8 rounded-full border border-[#442F0E] flex items-center justify-center hover:bg-[#442F0E]/5 transition-colors text-base font-medium select-none leading-none cursor-pointer"
                         aria-label="Increase quantity"
                       >
@@ -323,13 +330,13 @@ disabled={item.quantity <= 1}
             <div className="space-y-3 pt-4">
               <motion.button
                 type="button"
-                onClick={() => router.push(`/${params.locale}/checkout`)}
                 disabled={items.length === 0 || isLoading}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2 }}
-                className="w-full h-[56px] sm:h-[60px] bg-[#325175] text-white rounded-[160px] font-semibold text-[16px] sm:text-[18px] hover:bg-[#253d5a] transition-colors border border-[#325175] cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
-            >
+                onClick={handleGoToCheckout}
+                className="w-full h-[56px] sm:h-[60px] bg-[#325175] text-white rounded-[160px] font-semibold text-[16px] sm:text-[18px] hover:bg-[#253d5a] transition-colors border border-[#325175] cursor-pointer"
+              >
                 Passer la commande
               </motion.button>
 
