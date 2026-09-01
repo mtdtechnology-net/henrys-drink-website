@@ -15,7 +15,7 @@ export const NavbarTextItem = ({
 }: NavbarTextItemProps) => (
   <Link
     href={href}
-    className={`cursor-pointer hover:scale-105 active:scale-95 text-black ${textColor} ${className}`}
+    className={`cursor-pointer hover:scale-105 active:scale-95 ${textColor} ${className}`}
   >
     {text}
   </Link>

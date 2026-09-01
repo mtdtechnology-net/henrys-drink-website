@@ -3,11 +3,12 @@ import { NavLogo } from "./NavLogo";
 import { NavShopIcon } from "./NavShopIcon";
 import { LanguageSwitcher } from "@/components/navbar/LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
+import { NavBackground } from "./NavBackground";
 
-type NavbarMode = "blue" | "white" | "brown";
+export type NavbarTheme = "light" | "dark";
 
 const BASE_NAV_STYLE =
-  "italic font-normal transition-all duration-200 ease-in-out font-['Inter_Variable',_sans-serif] whitespace-nowrap text-[clamp(0.7rem,1.1vw,1.125rem)]";
+  "italic font-medium transition-all duration-200 ease-in-out font-['Inter_Variable',_sans-serif] whitespace-nowrap text-[clamp(0.7rem,1.1vw,1.125rem)]";
 
 interface StyleConfig {
   textColor: string;
@@ -15,54 +16,48 @@ interface StyleConfig {
   signatureUrl: string;
 }
 
-const MODE_STYLES: Record<NavbarMode, StyleConfig> = {
-  blue: {
-    textColor: "text-[#442F0E]",
+const MODE_STYLES: Record<NavbarTheme, StyleConfig> = {
+  light: {
+    textColor: "text-[#325175]",
     shopIconUrl: "/shopIconRed.svg",
     signatureUrl: "/blueSignature.svg",
   },
-  white: {
+  dark: {
     textColor: "text-white",
     shopIconUrl: "/shopIconWhite.svg",
     signatureUrl: "/whiteSignature.svg",
-  },
-  brown: {
-    textColor: "text-white",
-    shopIconUrl: "/shopIconWhite.svg",
-    signatureUrl: "/brownSignature.svg",
   },
 };
 
 interface NavbarProps {
   itemCount: number;
-  mode?: NavbarMode;
+  theme?: NavbarTheme;
   locale: string;
+  background_theme?: NavbarTheme;
 }
 
 const tabs = [
   { text: "Our Story", href: "/heritage" },
   { text: "French Vermouth", href: "/product" },
   { text: "Cocktails", href: "/nightlife" },
-  { text: "Contact", href: "/contact" },
+  { text: "Contact", href: "/contact" }
 ];
 
-export const Navbar = ({ itemCount, mode = "blue", locale }: NavbarProps) => {
+
+export const Navbar = ({ itemCount, theme: mode = "light", locale, background_theme: background_mode = "dark" }: NavbarProps) => {
+
   const leftTabs = tabs.slice(0, 2);
   const rightTabs = tabs.slice(2);
 
   const { textColor, shopIconUrl, signatureUrl } =
-    MODE_STYLES[mode] ?? MODE_STYLES.blue;
+    MODE_STYLES[mode] ?? MODE_STYLES.light;
   const navTextStyle = `${BASE_NAV_STYLE} ${textColor}`;
 
   return (
     <header className="fixed inset-x-0 z-50 py-3 sm:py-5">
-      <div
-        className="absolute inset-0 -z-10 backdrop-blur-md pointer-events-none [mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_100%)]"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 15%, rgba(0,0,0,0.32) 30%, rgba(0,0,0,0.20) 45%, rgba(0,0,0,0.10) 65%, rgba(0,0,0,0.04) 80%, transparent 100%)",
-        }}
-      />
+
+      <NavBackground mode = {background_mode}></NavBackground>
+
       <nav className="relative flex w-full items-center justify-between bg-transparent px-5 sm:px-8 md:px-12 lg:px-[80px]">
         <div className="hidden lg:flex flex-1 items-center justify-start gap-3 sm:gap-5 md:gap-8 lg:gap-[110px] pr-2">
           {leftTabs.map((tab) => (
