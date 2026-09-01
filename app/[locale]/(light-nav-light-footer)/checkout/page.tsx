@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { motion } from "motion/react";
 import Link from "next/link";
-
+import { processMockPaymentAction } from "@/app/actions/order";
 type CartItem = {
   productId: number;
   quantity: number;
@@ -162,12 +162,25 @@ setCartItems(
       }
 
       if (data.paymentUrl) {
-        window.location.assign(data.paymentUrl);
-        return;
-      }
+  window.location.assign(data.paymentUrl);
+  return;
+}
 
-      setCompletedOrder(data);
-      setCartItems([]);
+const emailResult = await processMockPaymentAction({
+  userEmail: formData.email,
+  itemCount: cartItems.reduce((sum, item) => sum + item.quantity, 0),
+  total,
+  locale,
+});
+
+if (!emailResult.success) {
+  throw new Error(
+    "Your order was created, but we could not send the confirmation email.",
+  );
+}
+
+setCompletedOrder(data);
+setCartItems([]);
     } catch (error) {
       setCheckoutError(
         error instanceof Error ? error.message : "Could not create order.",
