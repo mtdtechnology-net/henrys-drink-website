@@ -1,14 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Perandory";
-  src: url("/fonts/Perandory.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --background: #fffcf9;
   --foreground: #171717;
@@ -28,6 +20,11 @@
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-comfortaa: "Comfortaa", sans-serif;
+  --font-perandory: var(--font-perandory), Georgia, serif;
 }
 
 * {
@@ -112,7 +109,6 @@ body {
   overflow-x: clip;
   background: var(--background);
   color: var(--foreground);
-
   font-family: "Comfortaa", sans-serif;
 }
 

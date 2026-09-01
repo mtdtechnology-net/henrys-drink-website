@@ -1,188 +1,173 @@
-import { Comfortaa, Inter } from "next/font/google";
+"use client";
+
+import { Comfortaa, Roboto } from "next/font/google";
 import { Footer } from "@/components/footer/Footer";
+import { motion, useScroll, useTransform, Variants } from "motion/react";
+import { useRef } from "react";
 
 const comfortaa = Comfortaa({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500"],
 });
 
-const inter = Inter({
+const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400"],
 });
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.18,
+      delayChildren: 1.0,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.6,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
 export default function PrivacyPolicyPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const headerY = useTransform(scrollYProgress, [0, 0.25], [0, -25]);
+  const headerScale = useTransform(scrollYProgress, [0, 0.25], [1, 0.98]);
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.22], [1, 0.5]);
+
   return (
-    <main className="min-h-screen bg-[#fffcf9] text-[#442f0e]">
-      <article className="mx-auto w-full max-w-[850px] px-6 pb-24 pt-[clamp(7rem,14vh,11rem)] sm:px-10 lg:px-0">
-        <header className="mb-[clamp(3rem,7vh,5rem)] text-center">
-          <p
-            className={`${inter.className} mb-4 text-[12px] font-normal uppercase leading-[1] tracking-[0] text-[#b30012]`}
+    <main ref={containerRef} className="min-h-screen bg-[#fffcf9] text-[#442f0e]">
+      <article className="mx-auto w-full max-w-[1000px] px-6 pb-28 pt-[clamp(7rem,14vh,11rem)] sm:px-10 lg:px-8">
+        <motion.header 
+          style={{ y: headerY, scale: headerScale, opacity: headerOpacity }}
+          className="relative z-10 mb-[clamp(3.5rem,7vh,5.5rem)] text-center"
+        >
+          <motion.p
+            initial={{ opacity: 0, y: -20, letterSpacing: "0.25em" }}
+            animate={{ opacity: 1, y: 0, letterSpacing: "0em" }}
+            transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1] }}
+            className={`${roboto.className} mb-5 text-[14px] uppercase leading-none text-[#b30012] sm:text-[15px]`}
           >
             Legal &amp; Policies
-          </p>
+          </motion.p>
 
-          <h1
-            className={`${comfortaa.className} m-0 text-center text-[48px] font-normal leading-[1] tracking-[0] max-[768px]:text-[clamp(2rem,9vw,3rem)]`}
+          <motion.h1
+            initial={{ opacity: 0, y: 35, filter: "blur(12px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 2.6, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
+            className={`${comfortaa.className} m-0 text-[clamp(2.75rem,5vw,4.25rem)] font-normal leading-[1.1] tracking-[-0.035em]`}
           >
-            Politique de confidentialité
-          </h1>
+            Privacy Policy
+          </motion.h1>
 
-          <div className="mx-auto mt-5 h-[2px] w-[80px] bg-[#b30012]" />
-        </header>
+          <motion.div 
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ duration: 2.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ scaleX: 1.2, transition: { duration: 0.5 } }}
+            className="mx-auto mt-6 h-[2px] w-[125px] origin-center cursor-pointer bg-[#b30012] shadow-sm"
+          />
+        </motion.header>
 
-        <div
-          className={`${inter.className} space-y-10 text-[15px] font-normal leading-[1.6] tracking-[0] text-[#442f0e]/80`}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.05 }}
+          className={`${roboto.className} space-y-10 text-[17px] font-normal leading-[1.7] text-[#442f0e]/80 sm:text-[18px]`}
         >
-          <section>
+          <motion.section variants={itemVariants} className="space-y-4">
             <p>
-              La société SAS MBE, immatriculée au RCS sous le numéro 989 982
-              921, dont le siège social est situé 65 Impasse des Mouilles, Parc
-              de Montfleuri, 69400 Gleizé, France, accorde une grande importance
-              à la protection de vos données personnelles.
+              The company SAS MBE, registered with the Trade and Companies Register (RCS) under number 980 803 921, whose registered office is located at 65 Impasse des Mouilles, Parc de Montfleur, 69400 Gleizé, France, attaches great importance to the protection of your personal data.
             </p>
-
-            <p className="mt-1">
-              La présente politique a pour objectif de vous informer de manière
-              transparente sur la manière dont nous collectons, utilisons et
-              protégeons vos informations, conformément au Règlement Général
-              sur la Protection des Données (RGPD) et à la législation française
-              applicable.
+            <p>
+              This privacy policy aims to inform you in a transparent manner about how we collect, use, and protect your information, in accordance with the General Data Protection Regulation (GDPR) and applicable French legislation.
             </p>
-          </section>
+          </motion.section>
 
-          <PolicySection title="Responsable du traitement">
-            <p>Le responsable du traitement de vos données est :</p>
-
-            <p className="mt-1">
-              SAS MBE
-              <br />
-              65 Impasse des Mouilles, Parc de Montfleuri, 69400 Gleizé –
-              France
-              <br />
-              Contact RGPD :{" "}
+          <PolicySection title="Data Controller">
+            <p>
+              The data controller for your data is SAS MBE, located at 65 Impasse des Mouilles, Parc de Montfleur, 69400 Gleizé – France (GDPR Contact:{" "}
               <a
                 href="mailto:henrysdrink@gmail.com"
                 className="underline underline-offset-2 transition-colors hover:text-[#b30012]"
               >
                 henrysdrink@gmail.com
               </a>
+              ).
             </p>
           </PolicySection>
 
-          <PolicySection title="Données personnelles collectées">
+          <PolicySection title="Personal Data Collected">
             <p>
-              Nous collectons uniquement les données nécessaires dans le cadre
-              de notre activité :
+              We only collect the data necessary within the scope of our activity, including identity details (first name, last name), contact information (postal address, email, phone number), message content sent via the contact form, newsletter subscriptions, and browsing data (connection timestamps, pages viewed, site activity via Google Analytics and similar cookies).
             </p>
-
-            <ul className="mt-1 list-none">
-              <li>Identité : prénom, nom</li>
-              <li>Coordonnées : adresse postale, email, téléphone</li>
-              <li>Contenu des messages envoyés via le formulaire de contact</li>
-              <li>Inscription à la newsletter</li>
-              <li>
-                Données de navigation : horaires de connexion, pages consultées,
-                activité sur le site via Google Analytics et cookies similaires
-              </li>
-            </ul>
           </PolicySection>
 
-          <PolicySection title="Finalités de la collecte">
-            <p>Vos données sont utilisées pour :</p>
-
-            <PolicyList
-              items={[
-                "Répondre à vos demandes via le formulaire de contact",
-                "Gérer vos inscriptions à la newsletter",
-                "Améliorer la navigation et l’expérience utilisateur sur le site",
-                "Réaliser des analyses statistiques avec Google Analytics",
-                "Respecter nos obligations légales et réglementaires",
-              ]}
-            />
-          </PolicySection>
-
-          <PolicySection title="Durée de conservation">
-            <PolicyList
-              items={[
-                "Données liées aux prospects (formulaire, newsletter) : 5 ans après le dernier contact",
-                "Données clients : 5 ans après la fin de la relation contractuelle, ou plus si la loi française l’exige",
-                "Données de navigation (cookies/Analytics) : selon les paramètres de Google, généralement 14 mois",
-              ]}
-            />
-          </PolicySection>
-
-          <PolicySection title="Partage et hébergement des données">
-            <p>Vos données peuvent être traitées par :</p>
-
-            <PolicyList
-              items={[
-                "Notre prestataire web : AGORATECH (SIRET 979 819 125)",
-                "Notre hébergeur : Wix.com Ltd., situé hors Union européenne. Wix applique des garanties de conformité pour protéger vos données.",
-                "Nos partenaires techniques (paiement, newsletter, transporteurs, si applicable)",
-                "Nous ne revendons jamais vos données personnelles à des tiers.",
-              ]}
-            />
-          </PolicySection>
-
-          <PolicySection title="Vos droits">
+          <PolicySection title="Purposes of Collection">
             <p>
-              Conformément au RGPD et à la loi Informatique et Libertés, vous
-              disposez des droits suivants :
+              Your data is strictly used to respond to your requests via the contact form, manage your newsletter subscriptions, improve site navigation and user experience, conduct statistical analyses via Google Analytics, and comply with our legal and regulatory obligations.
             </p>
+          </PolicySection>
 
-            <PolicyList
-              items={[
-                "Accès : obtenir une copie de vos données personnelles",
-                "Rectification : corriger vos données si elles sont inexactes ou incomplètes",
-                "Suppression : demander l’effacement de vos données",
-                "Opposition : refuser l’utilisation de vos données pour certains traitements",
-                "Portabilité : recevoir vos données dans un format structuré",
-              ]}
-            />
+          <PolicySection title="Retention Period">
+            <p>
+              Data related to prospects (contact forms and newsletters) is retained for 5 years after the last contact, customer data is kept for 5 years following the end of the contractual relationship (or longer if required by French law), and browsing data from cookies/Analytics is stored according to Google's settings, generally for 14 months.
+            </p>
+          </PolicySection>
 
-            <p className="mt-1">
-              Vous pouvez exercer vos droits en écrivant à :{" "}
+          <PolicySection title="Data Sharing and Hosting">
+            <p>
+              Your data may be processed by our web provider AGORATECH (SIRET 979 819 125), our host Wix.com Ltd. located outside the European Union under standard contractual clauses approved by the European Commission, and our technical partners (for payments, newsletters, or carriers if applicable), and we never resell your personal data to third parties.
+            </p>
+          </PolicySection>
+
+          <PolicySection title="Your Rights">
+            <p>
+              In accordance with the GDPR and the Data Protection Act (Loi Informatique et Libertés), you have the right to access, rectify, erase, object to processing for direct marketing, and request the portability of your personal data by contacting{" "}
               <a
                 href="mailto:henrysdrink@gmail.com"
                 className="underline underline-offset-2 transition-colors hover:text-[#b30012]"
               >
                 henrysdrink@gmail.com
               </a>
-              .
-              <br />
-              Une réponse vous sera apportée dans un délai de 30 jours maximum.
+              , with a response guaranteed within a maximum of 30 days.
             </p>
           </PolicySection>
 
-          <PolicySection title="Cookies et suivi">
+          <PolicySection title="Cookies and Tracking">
             <p>
-              Notre site utilise Google Analytics pour analyser la fréquentation
-              et améliorer l’expérience utilisateur.
-            </p>
-
-            <p className="mt-1">
-              Vous pouvez gérer ou refuser l’utilisation des cookies directement
-              depuis votre navigateur.
+              Our site uses Google Analytics to analyze traffic and improve user experience, and you can manage or refuse the use of cookies directly through your browser settings.
             </p>
           </PolicySection>
 
-          <PolicySection title="Sécurité">
+          <PolicySection title="Security">
             <p>
-              Nous mettons en œuvre toutes les mesures techniques et
-              organisationnelles nécessaires pour protéger vos données
-              personnelles contre tout accès non autorisé, perte, altération ou
-              divulgation.
+              We implement all technical and organizational measures necessary to protect your personal data against unauthorized access, loss, alteration, or disclosure.
             </p>
           </PolicySection>
 
-          <PolicySection title="Évolutions de la politique">
+          <PolicySection title="Policy Changes">
             <p>
-              La présente politique de confidentialité peut être mise à jour à
-              tout moment. Nous vous invitons à la consulter régulièrement.
+              This privacy policy may be updated at any time, and we invite you to review it regularly.
             </p>
           </PolicySection>
-        </div>
+        </motion.div>
       </article>
     </main>
   );
@@ -192,28 +177,19 @@ function PolicySection({
   title,
   children,
 }: {
-  title: string;
+  title?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section>
-      <h2
-        className={`${comfortaa.className} mb-4 text-[20px] font-bold leading-[1] tracking-[0] text-[#442f0e]`}
-      >
-        {title}
-      </h2>
-
+    <motion.section variants={itemVariants}>
+      {title && (
+        <h2
+          className={`${comfortaa.className} mb-4 text-[24px] font-medium leading-tight text-[#442f0e] transition-colors duration-300 hover:text-[#b30012] sm:text-[27px]`}
+        >
+          {title}
+        </h2>
+      )}
       {children}
-    </section>
-  );
-}
-
-function PolicyList({ items }: { items: string[] }) {
-  return (
-    <ul className="mt-1 list-disc space-y-0.5 pl-5 marker:text-[#442f0e]/70">
-      {items.map((item) => (
-        <li key={item}>{item}</li>
-      ))}
-    </ul>
+    </motion.section>
   );
 }
