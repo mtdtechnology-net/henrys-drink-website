@@ -1,24 +1,43 @@
+"use client";
+
 import React from "react";
+import { motion } from "motion/react";
 
 export default function ContactSection() {
   return (
-    <section className="w-full min-h-screen bg-[#FFFCF9] flex flex-col items-center justify-center px-6 pt-50 pb-20">
-      <div className="flex flex-col items-center mb-16 w-full max-w-210">
-        <h1 className="font-['Pinyon_Script'] text-[clamp(40px,6vw,85px)] leading-[110%] text-[#442F0E] text-center w-full mb-4">
-          Join the Henry's experience
-        </h1>
+    <section className="w-full min-h-screen bg-[#FFFCF9] flex flex-col items-center justify-center px-6 pt-28 sm:pt-36 md:pt-40 pb-20">
+      <motion.h1
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="font-['Pinyon_Script'] text-[clamp(40px,6vw,85px)] leading-[110%] text-[#442F0E] text-center w-full mb-4"
+      >
+        Join the Henry&apos;s experience
+      </motion.h1>
 
-        <p className="font-comfortaa text-[clamp(16px,1.8vw,22px)] leading-[160%] text-[#442F0E] opacity-80 text-center w-full mt-4 mb-2">
-          Whether you're interested in Henry's, planning an event, or looking to
-          place an order, we'd love to hear from you.
-        </p>
-      </div>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+        className="font-['Comfortaa'] text-[clamp(16px,1.8vw,22px)] leading-[160%] text-[#442F0E] opacity-80 text-center w-full max-w-[840px] mb-12"
+      >
+        Whether you&apos;re interested in Henry&apos;s, planning an event, or
+        looking to place an order, we&apos;d love to hear from you.
+      </motion.p>
 
-      <form className="w-full max-w-210 flex flex-col items-center gap-12 font-comfortaa">
-        <div className="w-full max-w-160 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <motion.form
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+        className="w-full max-w-[840px] flex flex-col items-center gap-12 font-['Comfortaa']"
+      >
+        <div className="w-full max-w-[640px] grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col gap-2">
             <label className="text-[14px] text-[#442F0E] font-medium">
-              First name <span className="text-red-500">*</span>
+              First name <span className="text-[#95000D] ml-0.5">*</span>
             </label>
             <input
               type="text"
@@ -30,7 +49,7 @@ export default function ContactSection() {
 
           <div className="flex flex-col gap-2">
             <label className="text-[14px] text-[#442F0E] font-medium">
-              Last name <span className="text-red-500">*</span>
+              Last name <span className="text-[#95000D] ml-0.5">*</span>
             </label>
             <input
               type="text"
@@ -41,9 +60,9 @@ export default function ContactSection() {
           </div>
         </div>
 
-        <div className="w-full max-w-160 flex flex-col gap-2">
+        <div className="w-full max-w-[640px] flex flex-col gap-2">
           <label className="text-[14px] text-[#442F0E] font-medium">
-            E-mail <span className="text-red-500">*</span>
+            E-mail <span className="text-[#95000D] ml-0.5">*</span>
           </label>
           <input
             type="email"
@@ -53,7 +72,7 @@ export default function ContactSection() {
           />
         </div>
 
-        <div className="w-full max-w-160 flex flex-col gap-2">
+        <div className="w-full max-w-[640px] flex flex-col gap-2">
           <label className="text-[14px] text-[#442F0E] font-medium">
             Phone
           </label>
@@ -64,7 +83,7 @@ export default function ContactSection() {
           />
         </div>
 
-        <div className="w-full max-w-160 flex flex-col gap-2">
+        <div className="w-full max-w-[640px] flex flex-col gap-2">
           <label className="text-[14px] text-[#442F0E] font-medium">
             Company Name
           </label>
@@ -75,7 +94,13 @@ export default function ContactSection() {
           />
         </div>
 
-        <div className="w-full max-w-160 flex flex-col gap-4 mt-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.45, ease: "easeOut" }}
+          className="w-full max-w-[640px] flex flex-col gap-4 mt-4"
+        >
           <label className="flex items-start gap-3 cursor-pointer">
             <input
               type="checkbox"
@@ -95,20 +120,29 @@ export default function ContactSection() {
             <span className="text-[14px] leading-[140%] text-[#442F0E]">
               By this, I affirm that I am over 18 years old and agree to the
               general terms and conditions of the website.{" "}
-              <span className="text-red-500">*</span>
+              <span className="text-[#95000D] ml-0.5">*</span>
             </span>
           </label>
-        </div>
+        </motion.div>
 
-        <div className="flex justify-center mt-6">
-          <button
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.55, ease: "easeOut" }}
+          className="flex justify-center mt-6"
+        >
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.2 }}
             type="submit"
-            className="bg-[#325175] text-[#F3EDE6] font-semibold text-[18px] whitespace-nowrap px-10 py-4 min-w-65 rounded-full hover:bg-[#233a54] transition-colors cursor-pointer flex items-center justify-center shadow-sm"
+            className="bg-[#325175] text-[#F3EDE6] font-semibold text-[18px] whitespace-nowrap px-10 py-4 min-w-[260px] rounded-full hover:bg-[#233a54] transition-colors cursor-pointer flex items-center justify-center shadow-sm"
           >
             Send my message
-          </button>
-        </div>
-      </form>
+          </motion.button>
+        </motion.div>
+      </motion.form>
     </section>
   );
 }
