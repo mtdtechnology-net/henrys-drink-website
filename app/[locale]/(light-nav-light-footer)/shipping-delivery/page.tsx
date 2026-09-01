@@ -168,11 +168,6 @@ export default function ShippingDeliveryPage() {
         </motion.div>
       </article>
 
-      <Footer
-        theme="light"
-        privacyHref="/privacy-policy"
-        shippingHref="/shipping-delivery"
-      />
     </main>
   );
 }
