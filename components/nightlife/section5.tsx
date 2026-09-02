@@ -50,7 +50,7 @@ export default function Section5() {
           className="mt-2 sm:mt-0"
         >
           <a
-            href="/legacy"
+            href="/heritage"
             className="font-comfortaa text-[15px] sm:text-[22px] 2xl:mt-6 w-52 sm:w-72.75 h-13 sm:h-16.25 bg-[#325175] text-white mt-2 sm:mt-5 font-medium leading-none text-center rounded-[160px] flex items-center justify-center cursor-pointer shadow-lg transition-all duration-300 hover:bg-[#3a5d87] hover:shadow-[0_0_25px_rgba(50,81,117,0.5)] active:opacity-100 select-none no-underline"
           >
             Discover the Legacy
