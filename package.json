@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "stripe": "stripe listen --forward to localhost:3000/api/checkout",
+    "stripe": "stripe listen --forward-to localhost:3000/api/stripe/webhook",
     "email": "email dev --dir ./emails --port 3001"
   },
   "dependencies": {
