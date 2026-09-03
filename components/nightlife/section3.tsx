@@ -4,117 +4,72 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 
-const COCKTAILS = [
-  {
-    id: 1,
-    name: "Henry's Sour",
-    tagline: "A MODERN CLASSIC WITH CHARACTER.",
-    description:
-      "The richness of Henry's aperitif meets the warmth of Irish whiskey, creating a perfectly balanced cocktail with depth, freshness, and a lingering finish.",
-    image: "/henryssour.svg",
-  },
-  {
-    id: 2,
-    name: "Berry orgasm",
-    tagline: "SMOOTH, INDULGENT, AND UNAPOLOGETICALLY DECADENT.",
-    description:
-      "Creamy textures and delicate cacao notes create a cocktail that feels more like a dessert experience than a drink.",
-    image: "/berryorgasm.svg",
-  },
-  {
-    id: 3,
-    name: "Boulevard des coeurs",
-    tagline: "ELEGANT, UNEXPECTED, UNFORGETTABLE",
-    description:
-      "A refined combination of almond, white pepper, and citrus that balances softness with subtle spice, creating a sophisticated and layered profile.",
-    image: "/boulevarddescoeurs.svg",
-  },
-  {
-    id: 4,
-    name: "Crimson Amour",
-    tagline: "BOLD PASSION IN A GLASS.",
-    description:
-      "A deeper, richer cocktail where botanicals, vermouth, and maple notes meet the signature Henry's character, creating a smooth and seductive experience.",
-    image: "/crimsonamour.svg",
-  },
-  {
-    id: 5,
-    name: "Apero Chic",
-    tagline: "EFFORTLESSLY ELEGANT.",
-    description:
-      "Light, sparkling, and celebratory. A cocktail designed for aperitif moments, combining floral notes with the refinement of champagne.",
-    image: "/aperochic.svg",
-  },
-  {
-    id: 6,
-    name: "Twilight Fizz",
-    tagline: "WHERE THE EVENING BEGINS.",
-    description:
-      "Fresh, vibrant, and playful. A lively mix of botanicals and delicate sweetness that captures the transition from day to night.",
-    image: "/twilightfizz.svg",
-  },
-  {
-    id: 7,
-    name: "Ruby Woo",
-    tagline: "CONFIDENT, EXPRESSIVE, AND FULL OF ENERGY.",
-    description:
-      "Built around fruit-forward notes and a refreshing finish, this cocktail brings a vibrant personality to every occasion.",
-    image: "/rubywoo.svg",
-  },
-  {
-    id: 8,
-    name: "Velvet Kiss",
-    tagline: "SOFT, FLORAL, AND REFINED.",
-    description:
-      "A delicate balance of elderflower and champagne creates a light and elegant cocktail perfect for slower moments and meaningful conversations.",
-    image: "/velvetkiss.svg",
-  },
-  {
-    id: 9,
-    name: "Henry's Divine",
-    tagline: "A CELEBRATION OF BRIGHTNESS AND JOY.",
-    description:
-      "Tropical fruit notes, champagne, and the signature aperitif come together in a cocktail designed to feel vibrant, fresh, and uplifting.",
-    image: "/henrysdivine.svg",
-  },
-  {
-    id: 10,
-    name: "One Night in Monaco",
-    tagline: "MADE FOR UNFORGETTABLE EVENINGS.",
-    description:
-      "Playful, energetic, and slightly exotic, this cocktail combines fruit-forward flavors with a smooth finish inspired by nights that never quite end.",
-    image: "/onenightinmonaco.svg",
-  },
-  {
-    id: 11,
-    name: "Soirée Mystique",
-    tagline: "THE MOST INTRIGUING GUEST AT THE TABLE.",
-    description:
-      "A surprising blend of strawberry, banana, and champagne that delivers a cocktail experience that is both playful and sophisticated.",
-    image: "/soiréemystique.svg",
-  },
+interface SectionProps {
+  data?: Record<string, any>;
+}
+
+const COCKTAIL_IMAGES = [
+  "/henryssour.svg",
+  "/berryorgasm.svg",
+  "/boulevarddescoeurs.svg",
+  "/crimsonamour.svg",
+  "/aperochic.svg",
+  "/twilightfizz.svg",
+  "/rubywoo.svg",
+  "/velvetkiss.svg",
+  "/henrysdivine.svg",
+  "/onenightinmonaco.svg",
+  "/soiréemystique.svg",
 ];
 
-export default function Section3() {
+const FALLBACK_COCKTAILS = [
+  { id: 1, name: "Henry's Sour", tagline: "A MODERN CLASSIC WITH CHARACTER.", description: "The richness of Henry's aperitif meets the warmth of Irish whiskey..." },
+  { id: 2, name: "Berry orgasm", tagline: "SMOOTH, INDULGENT, AND UNAPOLOGETICALLY DECADENT.", description: "Creamy textures and delicate cacao notes create a cocktail..." },
+  { id: 3, name: "Boulevard des coeurs", tagline: "ELEGANT, UNEXPECTED, UNFORGETTABLE", description: "A refined combination of almond, white pepper, and citrus..." },
+  { id: 4, name: "Crimson Amour", tagline: "BOLD PASSION IN A GLASS.", description: "A deeper, richer cocktail where botanicals, vermouth, and maple..." },
+  { id: 5, name: "Apero Chic", tagline: "EFFORTLESSLY ELEGANT.", description: "Light, sparkling, and celebratory. A cocktail designed for aperitif..." },
+  { id: 6, name: "Twilight Fizz", tagline: "WHERE THE EVENING BEGINS.", description: "Fresh, vibrant, and playful. A lively mix of botanicals..." },
+  { id: 7, name: "Ruby Woo", tagline: "CONFIDENT, EXPRESSIVE, AND FULL OF ENERGY.", description: "Built around fruit-forward notes and a refreshing finish..." },
+  { id: 8, name: "Velvet Kiss", tagline: "SOFT, FLORAL, AND REFINED.", description: "A delicate balance of elderflower and champagne..." },
+  { id: 9, name: "Henry's Divine", tagline: "A CELEBRATION OF BRIGHTNESS AND JOY.", description: "Tropical fruit notes, champagne, and the signature aperitif..." },
+  { id: 10, name: "One Night in Monaco", tagline: "MADE FOR UNFORGETTABLE EVENINGS.", description: "Playful, energetic, and slightly exotic..." },
+  { id: 11, name: "Soirée Mystique", tagline: "THE MOST INTRIGUING GUEST AT THE TABLE.", description: "A surprising blend of strawberry, banana, and champagne..." },
+];
+
+export default function Section3({ data }: SectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
-  const total = COCKTAILS.length;
+  const cornerTitle = data?.CocktailCornerTitle || "SIGNATURE COCKTAILS";
+
+  // Generăm dinamice cele 11 cocktailuri mapând datele din Strapi
+  const cocktails = Array.from({ length: 11 }).map((_, index) => {
+    const i = index + 1;
+    const fallback = FALLBACK_COCKTAILS[index];
+
+    return {
+      id: i,
+      name: data?.[`CocktailName${i}`] || fallback.name,
+      tagline: data?.[`CocktailTagline${i}`] || fallback.tagline,
+      description: data?.[`CocktailDescription${i}`] || fallback.description,
+      image: COCKTAIL_IMAGES[index],
+    };
+  });
+
+  const total = cocktails.length;
   const prevIndex = (currentIndex - 1 + total) % total;
   const nextIndex = (currentIndex + 1) % total;
 
-  const currentCocktail = COCKTAILS[currentIndex];
-  const prevCocktail = COCKTAILS[prevIndex];
-  const nextCocktail = COCKTAILS[nextIndex];
+  const currentCocktail = cocktails[currentIndex];
+  const prevCocktail = cocktails[prevIndex];
+  const nextCocktail = cocktails[nextIndex];
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    const touchDown = e.touches[0].clientX;
-    setTouchPosition(touchDown);
+    setTouchPosition(e.touches[0].clientX);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (touchPosition === null) return;
-
     const currentTouch = e.touches[0].clientX;
     const diff = touchPosition - currentTouch;
 
@@ -128,19 +83,19 @@ export default function Section3() {
   };
 
   return (
-    <section 
+    <section
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       className="h-screen w-full snap-start bg-black text-[#F3EDE6] relative flex flex-col justify-between p-6 md:p-8 2xl:p-16 overflow-hidden"
     >
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         className="w-full flex justify-between items-center z-10 text-[11px] md:text-xs 2xl:text-base tracking-[0.2em] uppercase font-futura font-medium opacity-85 px-12 md:px-24 2xl:px-36 pt-8 md:pt-12"
       >
-        <span>SIGNATURE COCKTAILS</span>
+        <span>{cornerTitle}</span>
         <span>
           {String(currentIndex + 1).padStart(2, "0")} /{" "}
           {String(total).padStart(2, "0")}
@@ -238,7 +193,7 @@ export default function Section3() {
         </AnimatePresence>
 
         <div className="w-full flex gap-2 pt-3 md:pt-4">
-          {COCKTAILS.map((_, index) => (
+          {cocktails.map((_, index) => (
             <motion.button
               key={index}
               onClick={() => setCurrentIndex(index)}

@@ -5,7 +5,23 @@ import { motion } from "motion/react";
 
 const SLOW_EASE = [0.05, 0.7, 0.1, 1] as const;
 
-export function FamilyStorySection() {
+interface FamilyStorySectionProps {
+  data?: {
+    familyHistorySection?: {
+      FamilyTitle?: string;
+      FamilyDescription?: string;
+    };
+  };
+}
+
+export function FamilyStorySection({ data }: FamilyStorySectionProps) {
+  const sectionData = data?.familyHistorySection;
+
+  const titleText = sectionData?.FamilyTitle || "A FAMILY STORY";
+  const descriptionText =
+    sectionData?.FamilyDescription ||
+    "Preciously guarding his recipe for more than half a century, Henri, the grandfather, passed down his passion for delicate drinks and warm shared moments.";
+
   return (
     <section
       id="family-story"
@@ -45,9 +61,9 @@ export function FamilyStorySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 2.2, delay: 0.4, ease: SLOW_EASE }}
-            className="relative z-[3] mb-[min(1.042vw,20px)] mt-0 flex h-[min(3.542vw,68px)] w-full shrink-0 items-center justify-center whitespace-nowrap text-center align-middle font-['Perandory',Georgia,serif] text-[min(3.229vw,62px)] font-normal leading-none tracking-[0] text-[#442F0E] [font-stretch:semi-condensed] max-[768px]:mb-6 max-[768px]:h-auto max-[768px]:min-h-[52px] max-[768px]:whitespace-normal max-[768px]:text-[clamp(42px,10vw,56px)]"
+            className="relative z-[3] mb-[min(1.042vw,20px)] mt-0 flex h-[min(3.542vw,68px)] w-full shrink-0 items-center justify-center whitespace-nowrap text-center align-middle font-['Perandory',Georgia,serif] text-[min(3.229vw,62px)] font-normal leading-none tracking-[0] text-[#442F0E] [font-stretch:semi-condensed] whitespace-pre-line max-[768px]:mb-6 max-[768px]:h-auto max-[768px]:min-h-[52px] max-[768px]:whitespace-normal max-[768px]:text-[clamp(42px,10vw,56px)]"
           >
-            A FAMILY STORY
+            {titleText}
           </motion.h2>
 
           <motion.div
@@ -85,11 +101,9 @@ export function FamilyStorySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 2.4, delay: 1.4, ease: SLOW_EASE }}
-              className="relative z-[2] m-0 w-full font-['Comfortaa',sans-serif] text-[min(1.146vw,22px)] font-medium leading-[min(1.458vw,28px)] tracking-[0] text-[#442F0E] max-[768px]:text-[18px] max-[768px]:leading-[25px]"
+              className="relative z-[2] m-0 w-full font-['Comfortaa',sans-serif] text-[min(1.146vw,22px)] font-medium leading-[min(1.458vw,28px)] tracking-[0] text-[#442F0E] whitespace-pre-line max-[768px]:text-[18px] max-[768px]:leading-[25px]"
             >
-              Preciously guarding his recipe for more than half a century,
-              Henri, the grandfather, passed down his passion for delicate
-              drinks and warm shared moments.
+              {descriptionText}
             </motion.p>
           </div>
         </motion.article>

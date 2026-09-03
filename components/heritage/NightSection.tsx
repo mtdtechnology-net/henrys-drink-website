@@ -2,6 +2,7 @@
 
 import { Pinyon_Script } from "next/font/google";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { motion } from "motion/react";
 
 const pinyonScript = Pinyon_Script({
@@ -11,7 +12,32 @@ const pinyonScript = Pinyon_Script({
 
 const SLOW_EASE = [0.05, 0.7, 0.1, 1] as const;
 
-export function NightSection() {
+interface NightSectionProps {
+  data?: {
+    enterthenightSection?: {
+      EnterTheNightTitle?: string;
+      EnterTheNightDescription?: string;
+      EnterTheNightButton?: string;
+    };
+  };
+}
+
+export function NightSection({ data }: NightSectionProps) {
+  const params = useParams();
+  const locale = params.locale as string;
+
+  const sectionData = data?.enterthenightSection;
+
+  const titleText = sectionData?.EnterTheNightTitle || "Enter the night";
+
+  const descriptionText =
+    sectionData?.EnterTheNightDescription ||
+    "COCKTAILS. ATMOSPHERE. MUSIC. CONNECTION.";
+
+  const buttonText =
+    sectionData?.EnterTheNightButton ||
+    "Discover the experience by night";
+
   return (
     <section
       className="relative flex min-h-screen min-h-[100svh] w-full items-center justify-center overflow-hidden bg-black px-8 py-16 max-[768px]:px-5 max-[768px]:py-12"
@@ -42,9 +68,9 @@ export function NightSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 2.2, delay: 0.2, ease: SLOW_EASE }}
-          className={`${pinyonScript.className} m-0 text-center text-[clamp(4rem,15vw,232px)] font-normal leading-none text-white [text-shadow:0_4px_20px_rgba(0,0,0,0.4)]`}
+          className={`${pinyonScript.className} m-0 text-center text-[clamp(4rem,15vw,232px)] font-normal leading-none text-white [text-shadow:0_4px_20px_rgba(0,0,0,0.4)] whitespace-pre-line`}
         >
-          Enter the night
+          {titleText}
         </motion.h2>
 
         <motion.p
@@ -52,9 +78,9 @@ export function NightSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 2.4, delay: 0.9, ease: SLOW_EASE }}
-          className="my-14 text-center font-['Futura','Trebuchet_MS',sans-serif] text-[clamp(14px,1.8vw,25px)] font-medium uppercase leading-none text-white max-[768px]:mb-10 max-[768px]:mt-4 max-[768px]:tracking-[0.05em]"
+          className="my-14 text-center font-['Futura','Trebuchet_MS',sans-serif] text-[clamp(14px,1.8vw,25px)] font-medium uppercase leading-none text-white whitespace-pre-line max-[768px]:mb-10 max-[768px]:mt-4 max-[768px]:tracking-[0.05em]"
         >
-          COCKTAILS. ATMOSPHERE. MUSIC. CONNECTION.
+          {descriptionText}
         </motion.p>
 
         <motion.div
@@ -65,14 +91,16 @@ export function NightSection() {
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
         >
-          <a
-            href="/nightlife"
+          <Link
+            href={`/${locale}/nightlife`}
             className="inline-flex h-[63px] min-w-[356px] shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-[#b50012] px-7 font-['Futura','Trebuchet_MS',sans-serif] text-[20px] font-medium leading-none text-white no-underline shadow-[0_8px_24px_rgba(149,0,13,0.4)] transition-[transform,background-color] duration-200 hover:bg-[#95000d] max-[480px]:h-[56px] max-[480px]:min-w-0 max-[480px]:w-full max-[480px]:px-5 max-[480px]:text-[15px]"
           >
-            Discover the experience by night
-          </a>
+            {buttonText}
+          </Link>
         </motion.div>
       </div>
     </section>
   );
 }
+
+export default NightSection;

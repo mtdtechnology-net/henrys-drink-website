@@ -6,11 +6,13 @@ import { useState } from "react";
 type AddToCartButtonProps = {
   productId: number;
   locale: string;
+  buttonText?: string;
 };
 
 export function AddToCartButton({
   productId,
   locale,
+  buttonText,
 }: AddToCartButtonProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +53,7 @@ export function AddToCartButton({
       disabled={isLoading}
       className="flex h-[65px] w-[190px] cursor-pointer items-center justify-center rounded-[160px] bg-[#325175] font-comfortaa text-[22px] font-medium leading-none text-white shadow-sm transition-colors hover:bg-[#233a54] disabled:cursor-not-allowed disabled:opacity-60"
     >
-      {isLoading ? "Adding..." : "Add to cart"}
+      {isLoading ? "Adding..." : buttonText || "Add to cart"}
     </button>
   );
 }

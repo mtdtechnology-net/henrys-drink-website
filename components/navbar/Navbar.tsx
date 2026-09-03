@@ -1,9 +1,13 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { NavbarTextItem } from "./NavTextItem";
 import { NavLogo } from "./NavLogo";
 import { NavShopIcon } from "./NavShopIcon";
 import { LanguageSwitcher } from "@/components/navbar/LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 import { NavBackground } from "./NavBackground";
+import { getGlobalData } from "@/lib/strapi";
 
 export type NavbarTheme = "light" | "dark";
 
@@ -36,33 +40,60 @@ interface NavbarProps {
   background_theme?: NavbarTheme;
 }
 
-const tabs = [
-  { text: "Our Story", href: "/heritage" },
-  { text: "French Vermouth", href: "/product" },
-  { text: "Cocktails", href: "/nightlife" },
-  { text: "Contact", href: "/contact" }
-];
+export const Navbar = ({
+  itemCount,
+  theme: mode = "light",
+  locale,
+  background_theme: background_mode = "dark",
+}: NavbarProps) => {
+  const [navData, setNavData] = useState<Record<string, any> | null>(null);
 
+  useEffect(() => {
+    async function loadNavbarData() {
+      try {
+        const res = await getGlobalData(locale);
+        const attributes = res?.data?.attributes || res?.attributes || res;
+        setNavData(attributes?.Navbar || attributes?.navbar || null);
+      } catch (err) {
+        console.error("Error fetching navbar data:", err);
+      }
+    }
+    loadNavbarData();
+  }, [locale]);
 
-export const Navbar = ({ itemCount, theme: mode = "light", locale, background_theme: background_mode = "dark" }: NavbarProps) => {
+  const tabs = [
+    { text: navData?.NavbarOurStory || "Our Story", href: "/heritage" },
+    { text: navData?.NavbarFrenchVermouth || "French Vermouth", href: "/product" },
+    { text: navData?.NavbarCocktails || "Cocktails", href: "/nightlife" },
+    { text: navData?.NavbarContact || "Contact", href: "/contact" },
+  ];
 
   const leftTabs = tabs.slice(0, 2);
   const rightTabs = tabs.slice(2);
 
-  const { textColor, shopIconUrl, signatureUrl } =
+  const { textColor, shopIconUrl, signatureUrl: defaultSignatureUrl } =
     MODE_STYLES[mode] ?? MODE_STYLES.light;
+
+  const strapiLogoUrl =
+    mode === "dark"
+      ? navData?.LogoDarkTheme?.data?.attributes?.url
+      : navData?.LogoLightTheme?.data?.attributes?.url;
+
+  const signatureUrl = strapiLogoUrl
+    ? `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${strapiLogoUrl}`
+    : defaultSignatureUrl;
+
   const navTextStyle = `${BASE_NAV_STYLE} ${textColor}`;
 
   return (
     <header className="fixed inset-x-0 z-50 py-3 sm:py-5">
-
-      <NavBackground mode = {background_mode}></NavBackground>
+      <NavBackground mode={background_mode}></NavBackground>
 
       <nav className="relative flex w-full items-center justify-between bg-transparent px-5 sm:px-8 md:px-12 lg:px-[80px]">
-        <div className="hidden lg:flex flex-1 items-center justify-start gap-3 sm:gap-5 md:gap-8 lg:gap-[110px] pr-2">
+        <div className="hidden flex-1 items-center justify-start gap-3 sm:gap-5 md:gap-8 lg:flex lg:gap-[110px] pr-2">
           {leftTabs.map((tab) => (
             <NavbarTextItem
-              key={tab.text}
+              key={tab.href}
               text={tab.text}
               href={`/${locale}${tab.href}`}
               textColor={textColor}
@@ -71,14 +102,14 @@ export const Navbar = ({ itemCount, theme: mode = "light", locale, background_th
           ))}
         </div>
 
-        <div className="hidden lg:flex items-center justify-center shrink-0">
+        <div className="hidden shrink-0 items-center justify-center lg:flex">
           <NavLogo signatureUrl={signatureUrl} href={`/${locale}`} />
         </div>
 
-        <div className="hidden lg:flex flex-1 items-center justify-end gap-5 sm:gap-8 md:gap-12 lg:gap-[110px] pl-2">
+        <div className="hidden flex-1 items-center justify-end gap-5 sm:gap-8 md:gap-12 lg:flex lg:gap-[110px] pl-2">
           {rightTabs.map((tab) => (
             <NavbarTextItem
-              key={tab.text}
+              key={tab.href}
               text={tab.text}
               href={`/${locale}${tab.href}`}
               textColor={textColor}
@@ -104,8 +135,7 @@ export const Navbar = ({ itemCount, theme: mode = "light", locale, background_th
           </div>
         </div>
 
-        {/* Mobile navbar — Logo is server-rendered, menu toggle is a Client Component */}
-        <div className="flex lg:hidden w-full items-center justify-between">
+        <div className="flex w-full items-center justify-between lg:hidden">
           <NavLogo signatureUrl={signatureUrl} href={`/${locale}`} />
 
           <MobileMenu
