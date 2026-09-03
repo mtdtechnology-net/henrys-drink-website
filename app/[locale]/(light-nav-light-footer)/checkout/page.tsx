@@ -3,8 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { motion } from "motion/react";
-import Link from "next/link";
-import { processMockPaymentAction } from "@/app/actions/order";
+
 type CartItem = {
   productId: number;
   quantity: number;
@@ -12,16 +11,6 @@ type CartItem = {
   origin?: string;
   price?: number;
   pricePerUnit?: number;
-};
-
-type CheckoutResult = {
-  ok: boolean;
-  orderId: number;
-  reference: string;
-  subtotal: number;
-  shipping: number;
-  total: number;
-  paymentUrl?: string;
 };
 
 export default function CheckoutPage() {
@@ -44,8 +33,6 @@ export default function CheckoutPage() {
   const [loadingCart, setLoadingCart] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
-  const [completedOrder, setCompletedOrder] =
-    useState<CheckoutResult | null>(null);
 
   const formatter = new Intl.NumberFormat(
     locale === "fr" ? "fr-FR" : locale === "pt" ? "pt-PT" : "en-IE",
@@ -161,26 +148,11 @@ setCartItems(
         throw new Error(data.error ?? "Could not create order.");
       }
 
-      if (data.paymentUrl) {
-  window.location.assign(data.paymentUrl);
-  return;
-}
+      if (!data.paymentUrl) {
+        throw new Error("Could not start checkout with the payment provider.");
+      }
 
-const emailResult = await processMockPaymentAction({
-  userEmail: formData.email,
-  itemCount: cartItems.reduce((sum, item) => sum + item.quantity, 0),
-  total,
-  locale,
-});
-
-if (!emailResult.success) {
-  throw new Error(
-    "Your order was created, but we could not send the confirmation email.",
-  );
-}
-
-setCompletedOrder(data);
-setCartItems([]);
+      window.location.assign(data.paymentUrl);
     } catch (error) {
       setCheckoutError(
         error instanceof Error ? error.message : "Could not create order.",
@@ -393,38 +365,6 @@ setCartItems([]);
           </div>
         </motion.div>
       </div>
-
-      {completedOrder && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#442F0E]/35 px-4">
-          <div className="w-full max-w-[460px] rounded-[28px] bg-[#FFFBF7] px-8 py-10 text-center shadow-2xl">
-            <p className="font-['Pinyon_Script'] text-[48px] leading-none text-[#442F0E]">
-              Thank you
-            </p>
-
-            <h2 className="mt-5 text-[24px] font-bold text-[#325175]">
-              Order confirmation email sent
-            </h2>
-
-            <p className="mt-4 text-[15px] leading-relaxed text-[#325175]/75">
-              Your order reference is{" "}
-              <strong className="text-[#325175]">
-                {completedOrder.reference || `#${completedOrder.orderId}`}
-              </strong>
-              .
-            </p>
-
-            <p className="mt-3 text-[14px] text-[#325175]/70">
-              Payment method: Pay when shipped.
-            </p>
-            <Link
-  href={`/${locale}/product`}
-  className="mt-8 inline-flex rounded-full bg-[#325175] px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#253d5a]"
->
-  Continue shopping
-</Link>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
