@@ -6,7 +6,39 @@ import { motion } from "motion/react";
 
 const SLOW_EASE = [0.05, 0.7, 0.1, 1] as const;
 
-export function IdentitySection() {
+interface IdentitySectionProps {
+  data?: {
+    identitySection?: {
+      IdentityTitle?: string;
+      IdentitySubtitle?: string;
+      IdentityParagraph1?: string;
+      IdentityParagraph2?: string;
+      IdentityParagraph3?: string;
+      IdentityParagraph4?: string;
+      IdentityTextButton?: string;
+    };
+  };
+}
+
+export function IdentitySection({ data }: IdentitySectionProps) {
+  const sectionData = data?.identitySection;
+
+  const titleText = sectionData?.IdentityTitle || "HENRY'S IDENTITY";
+  const subtitleText = sectionData?.IdentitySubtitle || "A family tradition reimagined.";
+  const p1 =
+    sectionData?.IdentityParagraph1 ||
+    "Built around carefully selected Bordeaux wine, it combines rich walnut notes, delicate elderflower aromas, and carefully balanced spirits to create a unique and elegant taste.";
+  const p2 =
+    sectionData?.IdentityParagraph2 ||
+    "At the heart of Henry's is a recipe inspired by a traditional Bordeaux apéritif passed down through generations.";
+  const p3 =
+    sectionData?.IdentityParagraph3 ||
+    "Every ingredient plays a role. The wine provides depth and structure, the walnut brings warmth and character, while the elderflower adds a lighter, more floral dimension.";
+  const p4 =
+    sectionData?.IdentityParagraph4 ||
+    "The result is a drink that feels both timeless and contemporary.";
+  const buttonText = sectionData?.IdentityTextButton || "See more";
+
   return (
     <section
       className="relative min-h-[max(900px,100svh)] overflow-hidden bg-[#fffcf9] max-[768px]:min-h-[900px] max-[480px]:min-h-[880px]"
@@ -36,9 +68,9 @@ export function IdentitySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 2.2, delay: 0.2, ease: SLOW_EASE }}
-          className="m-0 whitespace-nowrap align-middle font-['Perandory',Georgia,serif] text-[clamp(36px,4.306vw,86px)] font-normal leading-none tracking-[0] text-[#325175] [font-stretch:semi-condensed] max-[768px]:max-w-[calc(100%-4rem)] max-[768px]:whitespace-normal max-[768px]:text-[clamp(40px,9vw,56px)] max-[480px]:max-w-[320px] max-[480px]:text-[42px]"
+          className="m-0 whitespace-nowrap align-middle font-['Perandory',Georgia,serif] text-[clamp(36px,4.306vw,86px)] font-normal leading-none tracking-[0] text-[#325175] [font-stretch:semi-condensed] whitespace-pre-line max-[768px]:max-w-[calc(100%-4rem)] max-[768px]:whitespace-normal max-[768px]:text-[clamp(40px,9vw,56px)] max-[480px]:max-w-[320px] max-[480px]:text-[42px]"
         >
-          HENRY&apos;S IDENTITY
+          {titleText}
         </motion.h2>
 
         <motion.p
@@ -46,9 +78,9 @@ export function IdentitySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 2.2, delay: 0.8, ease: SLOW_EASE }}
-          className="mb-0 mt-[clamp(1.2rem,2vh,1.6rem)] font-['Comfortaa',sans-serif] text-[clamp(1.15rem,1.45vw,1.75rem)] leading-[1.2] text-[#325175] max-[1200px]:text-[clamp(1.05rem,1.7vw,1.35rem)] max-[1024px]:text-[clamp(1rem,1.8vw,1.25rem)] max-[768px]:max-w-[calc(100%-5rem)] max-[768px]:text-base"
+          className="mb-0 mt-[clamp(1.2rem,2vh,1.6rem)] font-['Comfortaa',sans-serif] text-[clamp(1.15rem,1.45vw,1.75rem)] leading-[1.2] text-[#325175] whitespace-pre-line max-[1200px]:text-[clamp(1.05rem,1.7vw,1.35rem)] max-[1024px]:text-[clamp(1rem,1.8vw,1.25rem)] max-[768px]:max-w-[calc(100%-5rem)] max-[768px]:text-base"
         >
-          A family tradition reimagined.
+          {subtitleText}
         </motion.p>
 
         <div className="mt-[clamp(2.5rem,5vh,4rem)] flex w-[39vw] max-w-[650px] flex-col gap-[clamp(1.8rem,4vh,3rem)] font-['Comfortaa',sans-serif] text-[clamp(1rem,1.08vw,1.3rem)] leading-[1.35] text-[#171717] [&_p]:m-0 max-[1200px]:w-[44vw] max-[1200px]:gap-7 max-[1200px]:text-[clamp(0.9rem,1.2vw,1.05rem)] max-[1024px]:w-[48vw] max-[1024px]:gap-6 max-[1024px]:text-[clamp(0.85rem,1.4vw,1rem)] max-[768px]:mt-10 max-[768px]:w-[72%] max-[768px]:gap-6 max-[768px]:text-[0.9rem] max-[480px]:w-[76%] max-[480px]:text-[0.82rem]">
@@ -57,10 +89,9 @@ export function IdentitySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 2.2, delay: 1.5, ease: SLOW_EASE }}
+            className="whitespace-pre-line"
           >
-            Built around carefully selected Bordeaux wine, it combines rich
-            walnut notes, delicate elderflower aromas, and carefully balanced
-            spirits to create a unique and elegant taste.
+            {p1}
           </motion.p>
 
           <motion.p
@@ -68,9 +99,9 @@ export function IdentitySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 2.4, delay: 2.0, ease: SLOW_EASE }}
+            className="whitespace-pre-line"
           >
-            At the heart of Henry&apos;s is a recipe inspired by a traditional
-            Bordeaux apéritif passed down through generations.
+            {p2}
           </motion.p>
 
           <motion.p
@@ -78,12 +109,9 @@ export function IdentitySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 2.6, delay: 2.6, ease: SLOW_EASE }}
+            className="whitespace-pre-line"
           >
-            Every ingredient plays a role.
-            <br />
-            The wine provides depth and structure, the walnut brings warmth and
-            character, while the elderflower adds a lighter, more floral
-            dimension.
+            {p3}
           </motion.p>
 
           <motion.p
@@ -91,9 +119,9 @@ export function IdentitySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 2.8, delay: 3.3, ease: SLOW_EASE }}
-            className="w-[min(31vw,520px)] text-[clamp(1.6rem,2.15vw,2.5rem)] leading-[1.08] max-[1200px]:text-[clamp(1.45rem,2vw,2rem)] max-[1024px]:text-[clamp(1.3rem,2.5vw,1.7rem)] max-[768px]:w-full max-[768px]:max-w-[280px] max-[768px]:text-[1.4rem]"
+            className="w-[min(31vw,520px)] text-[clamp(1.6rem,2.15vw,2.5rem)] leading-[1.08] whitespace-pre-line max-[1200px]:text-[clamp(1.45rem,2vw,2rem)] max-[1024px]:text-[clamp(1.3rem,2.5vw,1.7rem)] max-[768px]:w-full max-[768px]:max-w-[280px] max-[768px]:text-[1.4rem]"
           >
-            The result is a drink that feels both timeless and contemporary.
+            {p4}
           </motion.p>
 
           <motion.div
@@ -106,7 +134,7 @@ export function IdentitySection() {
               className="w-fit font-['Comfortaa',sans-serif] text-[clamp(1.05rem,1.25vw,1.4rem)] text-[#95000d] underline decoration-1 underline-offset-4 hover:text-[#c21a28] active:scale-[0.97] active:opacity-70 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#95000d] max-[768px]:text-base"
               href="/product"
             >
-              See more
+              {buttonText}
             </Link>
           </motion.div>
         </div>

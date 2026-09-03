@@ -5,7 +5,31 @@ import { motion } from "motion/react";
 
 const SLOW_EASE = [0.05, 0.7, 0.1, 1] as const;
 
-export function MoreThanADrinkSection() {
+interface MoreThanADrinkSectionProps {
+  data?: {
+    morethanadrinkSection?: {
+      MoreThanADrinkTitle?: string;
+      MoreThanADrinkParagraph1?: string;
+      MoreThanADrinkParagraph2?: string;
+      MoreThanADrinkParagraph3?: string;
+    };
+  };
+}
+
+export function MoreThanADrinkSection({ data }: MoreThanADrinkSectionProps) {
+  const sectionData = data?.morethanadrinkSection;
+
+  const titleText = sectionData?.MoreThanADrinkTitle || "MORE THAN A DRINK";
+  const p1 =
+    sectionData?.MoreThanADrinkParagraph1 ||
+    "Henry's is not only about what is inside the bottle. It is about the moments created around it.";
+  const p2 =
+    sectionData?.MoreThanADrinkParagraph2 ||
+    "Long conversations, shared meals, celebrations, and the people who make those moments memorable.";
+  const p3 =
+    sectionData?.MoreThanADrinkParagraph3 ||
+    "French Vermouth becomes the reason people gather.";
+
   return (
     <section
       className="relative flex min-h-screen min-h-[100svh] w-full items-center justify-center overflow-hidden bg-black"
@@ -56,9 +80,9 @@ export function MoreThanADrinkSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 2.2, delay: 0.2, ease: SLOW_EASE }}
-            className="mb-10 mt-0 whitespace-nowrap text-center font-['Perandory',Georgia,serif] text-[clamp(2.5rem,6.5vw,101px)] font-normal leading-none text-white [text-shadow:0_2px_18px_rgba(0,0,0,0.4)] max-[768px]:mb-6 max-[768px]:whitespace-normal"
+            className="mb-10 mt-0 whitespace-nowrap text-center font-['Perandory',Georgia,serif] text-[clamp(2.5rem,6.5vw,101px)] font-normal leading-none text-white [text-shadow:0_2px_18px_rgba(0,0,0,0.4)] whitespace-pre-line max-[768px]:mb-6 max-[768px]:whitespace-normal"
           >
-            MORE THAN A DRINK
+            {titleText}
           </motion.h2>
 
           <div className="flex flex-col gap-[1.8rem] text-center font-['Comfortaa',sans-serif] text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.5)] max-[768px]:gap-[1.2rem] max-[768px]:[&_br]:hidden">
@@ -67,11 +91,9 @@ export function MoreThanADrinkSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 2.2, delay: 0.8, ease: SLOW_EASE }}
-              className="m-0 text-[clamp(1.1rem,1.8vw,24px)] font-semibold leading-[1.35]"
+              className="m-0 text-[clamp(1.1rem,1.8vw,24px)] font-semibold leading-[1.35] whitespace-pre-line"
             >
-              Henry&apos;s is not only about what is inside the bottle.
-              <br />
-              It is about the moments created around it.
+              {p1}
             </motion.p>
 
             <motion.p
@@ -79,11 +101,9 @@ export function MoreThanADrinkSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 2.4, delay: 1.4, ease: SLOW_EASE }}
-              className="m-0 text-[clamp(0.95rem,1.3vw,18px)] font-normal leading-[1.4] opacity-95"
+              className="m-0 text-[clamp(0.95rem,1.3vw,18px)] font-normal leading-[1.4] opacity-95 whitespace-pre-line"
             >
-              Long conversations, shared meals, celebrations, and the people who
-              <br />
-              make those moments memorable.
+              {p2}
             </motion.p>
 
             <motion.p
@@ -91,9 +111,9 @@ export function MoreThanADrinkSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 2.6, delay: 2.0, ease: SLOW_EASE }}
-              className="m-0 text-[clamp(0.9rem,1.1vw,16px)] font-normal leading-[1.4] opacity-90"
+              className="m-0 text-[clamp(0.9rem,1.1vw,16px)] font-normal leading-[1.4] opacity-90 whitespace-pre-line"
             >
-              French Vermouth becomes the reason people gather.
+              {p3}
             </motion.p>
           </div>
         </div>

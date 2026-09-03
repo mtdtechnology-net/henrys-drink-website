@@ -5,10 +5,40 @@ import { motion } from "motion/react";
 import React from "react";
 
 interface ProductPageClientProps {
+  data?: Record<string, any>;
   addToCartButton: React.ReactNode;
 }
 
-export function ProductPageClient({ addToCartButton }: ProductPageClientProps) {
+export function ProductPageClient({ data, addToCartButton }: ProductPageClientProps) {
+  const productTitle = data?.ProductTitle || "THE SIGNATURE APERITIF";
+  const productDesc1 = data?.ProductDescription1 || "Bordeaux, France";
+  const productDesc2 = data?.ProductDescription2 || "Wine • Walnut • Elderflower";
+  const productPrice = data?.ProductPrice || "50 €";
+
+  const aperitifTitle = data?.AperitifTitle || "About This Aperitif";
+  const aperitifParagraph1 =
+    data?.AperitifParagraph1 ||
+    "Inspired by a family recipe passed down through generations, Henry's combines Bordeaux wine, walnut, elderflower, and carefully selected spirits to create a refined and distinctive aperitif.";
+  const aperitifParagraph2 =
+    data?.AperitifParagraph2 ||
+    "Balanced, elegant, and versatile, it can be enjoyed on its own or as the foundation of our signature cocktails.";
+
+  const tastingNotesTitle = data?.TastingNotesTitle || "Tasting Notes";
+  const noseSubtitle = data?.NoseSubtitle || "Nose";
+  const noseDescription = data?.NoseDescription || "Floral • Fruity • Delicate";
+  const palateSubtitle = data?.PalateSubtitle || "Palate";
+  const palateDescription = data?.PalateDescription || "Rich Wine • Walnut • Soft Sweetness";
+  const finishSubtitle = data?.FinishSubtitle || "Finish";
+  const finishDescription = data?.FinishDescription || "Smooth • Elegant • Long";
+
+  const detailsTitle = data?.DetailsTitle || "Details";
+  const originSubtitle = data?.OriginSubtitle || "Origin";
+  const originDescription = data?.OriginDescription || "Bordeaux, France";
+  const styleSubtitle = data?.StyleSubtitle || "Style";
+  const styleDescription = data?.StyleDescription || "Wine Aperitif";
+  const servingTempSubtitle = data?.ServingTemperatureSubtitle || "Serving Temperature";
+  const servingTempNumbers = data?.ServingTemperatureNumbers || "6–8°C";
+
   return (
     <section className="relative w-full min-h-screen bg-[#FBF9F5] flex flex-col lg:flex-row items-center lg:items-start justify-between px-6 sm:px-10 xl:px-23 pt-24 lg:pt-35 pb-24 overflow-x-hidden gap-8 lg:gap-0">
       <motion.div
@@ -36,17 +66,17 @@ export function ProductPageClient({ addToCartButton }: ProductPageClientProps) {
         <div className="flex flex-col gap-4 lg:gap-11.5 items-center lg:items-start">
           <div>
             <h1 className="font-perandory text-[36px] sm:text-[48px] lg:text-[60px] xl:text-[64px] leading-[1.05] lg:leading-[1.02] uppercase text-[#325175] tracking-wide whitespace-nowrap">
-              THE SIGNATURE APERITIF
+              {productTitle}
             </h1>
 
             <div className="font-comfortaa text-[13px] sm:text-[15px] lg:text-[22px] text-[#0F0F0F] font-medium leading-relaxed mt-2 lg:mt-5 flex flex-col gap-1 lg:gap-3">
-              <p className="font-semibold text-[#0F0F0F]">Bordeaux, France</p>
-              <p>Wine • Walnut • Elderflower</p>
+              <p className="font-semibold text-[#0F0F0F]">{productDesc1}</p>
+              <p>{productDesc2}</p>
             </div>
           </div>
 
           <div className="font-perandory text-[56px] sm:text-[72px] lg:text-[100px] xl:text-[108px] text-[#325175] leading-none my-1 lg:my-0">
-            50 €
+            {productPrice}
           </div>
         </div>
 
@@ -92,62 +122,55 @@ export function ProductPageClient({ addToCartButton }: ProductPageClientProps) {
       >
         <div className="space-y-2 lg:space-y-3 w-full">
           <h3 className="font-bold text-[16px] lg:text-[18px] text-[#325175] leading-[22px] lg:leading-[25px] text-center lg:text-left">
-            About This Aperitif
+            {aperitifTitle}
           </h3>
           <div className="text-[#0F0F0F] text-[13px] lg:text-[16px] font-medium leading-[20px] lg:leading-[25px] space-y-3 lg:space-y-5 text-left">
-            <p>
-              Inspired by a family recipe passed down through generations, Henry's
-              combines Bordeaux wine, walnut, elderflower, and carefully selected
-              spirits to create a refined and distinctive aperitif.
-            </p>
-            <p>
-              Balanced, elegant, and versatile, it can be enjoyed on its own or as
-              the foundation of our signature cocktails.
-            </p>
+            <p>{aperitifParagraph1}</p>
+            <p>{aperitifParagraph2}</p>
           </div>
         </div>
 
         <div className="space-y-2 lg:space-y-3 w-full">
           <h3 className="font-bold text-[16px] lg:text-[18px] text-[#325175] leading-[22px] lg:leading-[25px] text-center lg:text-left">
-            Tasting Notes
+            {tastingNotesTitle}
           </h3>
           <div className="space-y-3 lg:space-y-5 text-[#0F0F0F] text-[13px] lg:text-[16px] font-medium leading-[20px] lg:leading-[25px] text-left">
             <div>
-              <p className="text-[#325175] font-bold">Nose</p>
-              <p>Floral • Fruity • Delicate</p>
+              <p className="text-[#325175] font-bold">{noseSubtitle}</p>
+              <p>{noseDescription}</p>
             </div>
 
             <div>
-              <p className="text-[#325175] font-bold">Palate</p>
-              <p>Rich Wine • Walnut • Soft Sweetness</p>
+              <p className="text-[#325175] font-bold">{palateSubtitle}</p>
+              <p>{palateDescription}</p>
             </div>
 
             <div>
-              <p className="text-[#325175] font-bold">Finish</p>
-              <p>Smooth • Elegant • Long</p>
+              <p className="text-[#325175] font-bold">{finishSubtitle}</p>
+              <p>{finishDescription}</p>
             </div>
           </div>
         </div>
 
         <div className="space-y-2 lg:space-y-3 w-full">
           <h3 className="font-bold text-[16px] lg:text-[18px] text-[#325175] leading-[22px] lg:leading-[25px] text-center lg:text-left">
-            Details
+            {detailsTitle}
           </h3>
 
           <div className="space-y-3 lg:space-y-5 text-[#0F0F0F] text-[13px] lg:text-[16px] font-medium leading-[20px] lg:leading-[25px] text-left">
             <div>
-              <p className="text-[#325175] font-bold">Origin</p>
-              <p>Bordeaux, France</p>
+              <p className="text-[#325175] font-bold">{originSubtitle}</p>
+              <p>{originDescription}</p>
             </div>
 
             <div>
-              <p className="text-[#325175] font-bold">Style</p>
-              <p>Wine Aperitif</p>
+              <p className="text-[#325175] font-bold">{styleSubtitle}</p>
+              <p>{styleDescription}</p>
             </div>
 
             <div>
-              <p className="text-[#325175] font-bold">Serving Temperature</p>
-              <p>6–8°C</p>
+              <p className="text-[#325175] font-bold">{servingTempSubtitle}</p>
+              <p>{servingTempNumbers}</p>
             </div>
           </div>
         </div>

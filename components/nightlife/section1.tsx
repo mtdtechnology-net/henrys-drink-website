@@ -3,9 +3,20 @@
 import React from "react";
 import { motion, Variants } from "motion/react";
 
-export default function Section1() {
-  const line1 = ["Cocktails,", "atmosphere,", "and", "moments"];
-  const line2 = ["worth", "remembering."];
+interface SectionProps {
+  data?: Record<string, any>;
+}
+
+export default function Section1({ data }: SectionProps) {
+  const rawTitle = data?.NightTitle || "When the night comes alive";
+  const rawDescription =
+    data?.NightDescription ||
+    "COCKTAILS, ATMOSPHERE, AND MOMENTS WORTH REMEMBERING.";
+
+  const words: string[] = rawDescription.split(" ");
+  const midIndex = Math.ceil(words.length / 2);
+  const line1 = words.slice(0, midIndex);
+  const line2 = words.slice(midIndex);
 
   const wordVariants: Variants = {
     hidden: { opacity: 0, y: 12 },
@@ -48,7 +59,7 @@ export default function Section1() {
           transition={{ duration: 1.2, delay: 0.1 }}
           className="font-pinyon text-6xl sm:text-7xl lg:text-[134px] 2xl:scale-125 min-[1920px]:scale-150 whitespace-normal lg:whitespace-nowrap leading-tight lg:leading-none text-white text-center transform origin-center"
         >
-          When the night comes alive
+          {rawTitle}
         </motion.h1>
 
         <motion.p
@@ -56,7 +67,7 @@ export default function Section1() {
           animate="visible"
           className="font-futura text-base sm:text-lg lg:text-xl xl:text-2xl 2xl:text-[28px] font-medium leading-tight uppercase text-white text-center max-w-4xl pt-4 lg:mt-8"
         >
-          {line1.map((word, i) => (
+          {line1.map((word: string, i: number) => (
             <motion.span
               key={`l1-${i}`}
               custom={i}
@@ -69,7 +80,7 @@ export default function Section1() {
 
           <br className="hidden sm:inline" />
 
-          {line2.map((word, i) => (
+          {line2.map((word: string, i: number) => (
             <motion.span
               key={`l2-${i}`}
               custom={line1.length + i}

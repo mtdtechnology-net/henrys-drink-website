@@ -4,7 +4,19 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 
-export default function Section2() {
+interface SectionProps {
+  data?: Record<string, any>;
+}
+
+export default function Section2({ data }: SectionProps) {
+  const title = data?.RhythmTitle || "A DIFFERENT RHYTHM";
+  const paragraph1 =
+    data?.RhythmParagraph1 ||
+    "as the day slows down, the Henry's experience takes on a new energy.";
+  const paragraph2 =
+    data?.RhythmParagraph2 ||
+    "The same appreciation for taste, craftsmanship, and connection moves into a more social setting, where cocktails replace wine glasses, conversations become longer, and every evening unfolds in its own way.";
+
   return (
     <section className="h-screen w-full snap-start grid grid-cols-1 md:grid-cols-2 bg-black text-[#F4EFE6] overflow-hidden relative">
       <div className="absolute top-0 left-0 w-full h-20 sm:h-32 bg-gradient-to-b from-black/60 via-black/25 to-transparent sm:from-black/70 sm:via-black/30 z-20 pointer-events-none" />
@@ -40,7 +52,7 @@ export default function Section2() {
             transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
             className="font-futura text-3xl sm:text-4xl lg:text-[52px] 2xl:text-[68px] font-medium leading-none uppercase text-[#F4EFE6]"
           >
-            A DIFFERENT RHYTHM
+            {title}
           </motion.h2>
 
           <motion.p
@@ -50,7 +62,7 @@ export default function Section2() {
             transition={{ duration: 1.2, delay: 1.2, ease: "easeOut" }}
             className="font-futura text-base sm:text-xl lg:text-[24px] 2xl:text-[32px] font-medium leading-snug text-[#F4EFE6]"
           >
-            as the day slows down, the Henry's experience takes on a new energy.
+            {paragraph1}
           </motion.p>
 
           <motion.p
@@ -60,10 +72,7 @@ export default function Section2() {
             transition={{ duration: 1.2, delay: 1.8, ease: "easeOut" }}
             className="font-futura text-sm sm:text-lg lg:text-[23px] 2xl:text-[28px] font-medium leading-relaxed lowercase text-[#F4EFE6]"
           >
-            The same appreciation for taste, craftsmanship, and connection moves
-            into a more social setting, where cocktails replace wine glasses,
-            conversations become longer, and every evening unfolds in its own
-            way.
+            {paragraph2}
           </motion.p>
         </motion.div>
       </div>

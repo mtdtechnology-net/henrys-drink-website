@@ -4,7 +4,22 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 
-export default function Section4() {
+interface SectionProps {
+  data?: Record<string, any>;
+}
+
+export default function Section4({ data }: SectionProps) {
+  const title = data?.SharedTitle || "made to be shared";
+  const subtitle =
+    data?.SharedSubtitle ||
+    "The best moments happen when people come together.";
+  const paragraph1 =
+    data?.SharedParagraph1 ||
+    "It's about connection. About sharing stories, creating memories, and enjoying the company of others in an atmosphere that feels effortless and genuine.";
+  const paragraph2 =
+    data?.SharedParagraph2 ||
+    "Henry's was created for these moments. The ones that don't need a special occasion, yet somehow become unforgettable.";
+
   return (
     <section className="h-screen w-full snap-start bg-black text-[#F3EDE6] relative flex items-center justify-center overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-20 sm:h-32 bg-gradient-to-b from-black via-black/70 to-transparent z-20 pointer-events-none" />
@@ -45,7 +60,7 @@ export default function Section4() {
           >
             <source src="/cocktailprep.mp4" type="video/mp4" />
           </video>
-          
+
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black hidden md:block pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black md:hidden pointer-events-none" />
         </motion.div>
@@ -69,7 +84,7 @@ export default function Section4() {
             transition={{ duration: 1.4, delay: 0.2, ease: "easeOut" }}
             className="font-pinyon text-[clamp(75px,10.5vw,155px)] 2xl:text-[190px] min-[1920px]:text-[210px] leading-none text-white text-center px-8 w-full"
           >
-            made to be shared
+            {title}
           </motion.h2>
         </div>
 
@@ -80,7 +95,7 @@ export default function Section4() {
           transition={{ duration: 1.4, delay: 0.8, ease: "easeOut" }}
           className="font-futura text-lg sm:text-2xl lg:text-[27px] 2xl:text-[36px] font-medium leading-snug text-white text-center"
         >
-          The best moments happen when people come together.
+          {subtitle}
         </motion.p>
 
         <div className="flex flex-col gap-3 sm:gap-6 2xl:gap-8 font-comfortaa text-xs sm:text-lg lg:text-[19px] 2xl:text-[22px] font-medium leading-relaxed text-white text-center max-w-2xl md:max-w-3xl 2xl:max-w-4xl mt-1 md:mt-2">
@@ -90,11 +105,7 @@ export default function Section4() {
             viewport={{ once: true }}
             transition={{ duration: 1.4, delay: 1.4, ease: "easeOut" }}
           >
-            It's about connection. About sharing stories, creating memories, and{" "}
-            <br className="hidden md:inline" />
-            enjoying the company of others in an atmosphere that feels{" "}
-            <br className="hidden md:inline" />
-            effortless and genuine.
+            {paragraph1}
           </motion.p>
 
           <motion.p
@@ -103,9 +114,7 @@ export default function Section4() {
             viewport={{ once: true }}
             transition={{ duration: 1.4, delay: 2.0, ease: "easeOut" }}
           >
-            Henry's was created for these moments. The ones that don't need a{" "}
-            <br className="hidden md:inline" />
-            special occasion, yet somehow become unforgettable.
+            {paragraph2}
           </motion.p>
         </div>
       </div>

@@ -1,6 +1,10 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Roboto } from "next/font/google";
+import { getGlobalData } from "@/lib/strapi";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -13,6 +17,7 @@ type FooterProps = {
   theme?: FooterTheme;
   privacyHref?: string;
   shippingHref?: string;
+  locale?: string;
 };
 
 const footerThemes = {
@@ -45,8 +50,67 @@ export function Footer({
   theme = "light",
   privacyHref = "#",
   shippingHref = "#",
+  locale,
 }: FooterProps) {
   const styles = footerThemes[theme];
+
+  const [footerData, setFooterData] = useState<Record<string, any> | null>(
+    null
+  );
+
+  useEffect(() => {
+    if (!locale) return;
+
+    async function loadFooterData() {
+      try {
+        const res = await getGlobalData(locale);
+
+        const attributes =
+          res?.data?.attributes ||
+          res?.attributes ||
+          res;
+
+        setFooterData(attributes?.footer || null);
+      } catch (err) {
+        console.error("Error fetching footer data:", err);
+      }
+    }
+
+    loadFooterData();
+  }, [locale]);
+
+  const contactTitle =
+    footerData?.FooterContactTitle || "Contact";
+
+  const contactEmail =
+    footerData?.FooterEmailAddress || "contact@henrysdrink.com";
+
+  const contactDays =
+    footerData?.FooterContactDays || "Monday–Friday";
+
+  const contactHours =
+    footerData?.FooterContactHours || "09:00–19:00";
+
+  const policiesTitle =
+    footerData?.FooterPoliciesTitle || "Policies";
+
+  const privacyPolicyText =
+    footerData?.FooterPrivacyPolicy || "Privacy Policy";
+
+  const shippingDeliveryText =
+    footerData?.FooterShippingDelivery || "Shipping & Delivery";
+
+  const logoUrlFromStrapi =
+    theme === "dark"
+      ? footerData?.LogoDarkTheme?.data?.attributes?.url
+      : footerData?.LogoLightTheme?.data?.attributes?.url;
+
+  const logoSrc = logoUrlFromStrapi
+    ? `${
+        process.env.NEXT_PUBLIC_STRAPI_URL ||
+        "http://localhost:1337"
+      }${logoUrlFromStrapi}`
+    : styles.logo;
 
   return (
     <footer
@@ -56,7 +120,9 @@ export function Footer({
         aria-hidden="true"
         style={{
           WebkitTextStroke:
-            theme === "light" ? "2px #fffcf9" : "2px #12120E",
+            theme === "light"
+              ? "2px #fffcf9"
+              : "2px #12120E",
         }}
         className={`${styles.watermark} pointer-events-none absolute left-[52%] top-[47%] z-0 m-0 origin-center -translate-x-1/2 -translate-y-1/2 scale-x-[0.88] whitespace-nowrap font-['Perandory',Georgia,serif] text-[clamp(17rem,25vw,26rem)] font-normal leading-[0.8] tracking-[0.015em] antialiased max-[1599px]:left-[51%] max-[1599px]:scale-x-[0.84] max-[1599px]:text-[clamp(16rem,27vw,24rem)] max-[1100px]:left-1/2 max-[1100px]:scale-x-[0.8] max-[1100px]:text-[clamp(14rem,30vw,21rem)] max-[700px]:top-[64%] max-[700px]:scale-x-[0.62] max-[700px]:text-[clamp(10rem,45vw,13rem)] max-[380px]:scale-x-[0.57] max-[380px]:text-[9.5rem]`}
       >
@@ -66,7 +132,7 @@ export function Footer({
       <div className="pointer-events-auto relative z-20 mx-auto grid min-h-[320px] w-full max-w-[1440px] grid-cols-[1fr_auto] items-center gap-[clamp(50px,8vw,150px)] max-[700px]:grid-cols-1 max-[700px]:items-start max-[700px]:gap-10">
         <div className="flex min-w-0 translate-x-[25px] translate-y-[18px] self-center flex-col items-start gap-[45px] min-[1600px]:translate-x-0 min-[1600px]:translate-y-[20px] max-[1100px]:translate-x-[15px] max-[700px]:w-full max-[700px]:translate-x-0 max-[700px]:translate-y-0 max-[700px]:flex-row max-[700px]:items-center max-[700px]:justify-between max-[700px]:gap-6">
           <Image
-            src={styles.logo}
+            src={logoSrc}
             alt="Henry's"
             width={98.53448486328125}
             height={127}
@@ -112,23 +178,28 @@ export function Footer({
           <div className="flex min-w-[210px] flex-col items-start gap-5 max-[700px]:min-w-0 max-[700px]:gap-4">
             <h2 className="m-0 text-[18px] font-bold leading-none max-[700px]:text-[16px]">
               <Link
-                href="/contact"
+                href={`/${locale || "en"}/contact`}
                 className="transition-opacity duration-150 hover:opacity-65"
               >
-                Contact
+                {contactTitle}
               </Link>
             </h2>
 
             <div className="flex min-w-0 flex-col gap-4 text-[16px] font-normal leading-[1.25] max-[700px]:gap-3 max-[700px]:text-[14px]">
               <a
-                href="mailto:contact@henrysdrink.com"
+                href={`mailto:${contactEmail}`}
                 className="break-all transition-opacity duration-150 hover:opacity-65"
               >
-                contact@henrysdrink.com
+                {contactEmail}
               </a>
 
-              <p className="m-0 uppercase">Monday–Friday</p>
-              <p className="m-0">09:00–19:00</p>
+              <p className="m-0 uppercase">
+                {contactDays}
+              </p>
+
+              <p className="m-0">
+                {contactHours}
+              </p>
             </div>
           </div>
 
@@ -137,22 +208,30 @@ export function Footer({
             aria-label="Footer policies"
           >
             <h2 className="m-0 text-[18px] font-bold uppercase leading-none max-[700px]:text-[16px]">
-              Policies
+              {policiesTitle}
             </h2>
 
             <div className="flex flex-col gap-4 text-[16px] font-normal leading-[1.25] max-[700px]:gap-3 max-[700px]:text-[14px]">
               <Link
-                href={privacyHref}
+                href={
+                  privacyHref !== "#"
+                    ? privacyHref
+                    : `/${locale || "en"}/privacy-policy`
+                }
                 className="w-fit underline-offset-4 transition-opacity duration-150 hover:underline hover:opacity-65 active:opacity-50"
               >
-                Privacy Policy
+                {privacyPolicyText}
               </Link>
 
               <Link
-                href={shippingHref}
+                href={
+                  shippingHref !== "#"
+                    ? shippingHref
+                    : `/${locale || "en"}/shipping-policy`
+                }
                 className="w-fit underline-offset-4 transition-opacity duration-150 hover:underline hover:opacity-65 active:opacity-50"
               >
-                Shipping &amp; Delivery
+                {shippingDeliveryText}
               </Link>
             </div>
           </nav>

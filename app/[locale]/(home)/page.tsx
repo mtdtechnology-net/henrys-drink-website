@@ -1,15 +1,39 @@
+"use client";
+
 import Image from "next/image";
 import { InfoCard } from "@/components/common/InfoCard";
 import { HoverVideo } from "@/components/video/HoverVideo";
-import { Navbar } from "@/components/navbar/Navbar";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { getBordeauxHeritagePage, getParisianNightPage } from "@/lib/strapi";
 
-export default async function Home({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  
+export default function Home() {
+  const params = useParams();
+  const locale = (params?.locale as string) || "en";
+
+  const [bordeauxData, setBordeauxData] = useState<any>(null);
+  const [parisianData, setParisianData] = useState<any>(null);
+
+  useEffect(() => {
+    async function loadAllData() {
+      try {
+        const bordeaux = await getBordeauxHeritagePage(locale);
+        setBordeauxData(bordeaux);
+      } catch (err) {
+        console.error("Eroare Bordeaux:", err);
+      }
+
+      try {
+        const parisian = await getParisianNightPage(locale);
+        setParisianData(parisian);
+      } catch (err) {
+        console.error("Eroare Parisian:", err);
+      }
+    }
+
+    loadAllData();
+  }, [locale]);
+
   const sharedCardClasses = `
     absolute z-20 pointer-events-none
     
@@ -23,9 +47,7 @@ export default async function Home({
 
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-black text-white">
-
       <div className="flex flex-col md:flex-row h-full w-full">
-
         <div className="relative h-[50vh] md:h-full w-full md:w-[50%] overflow-hidden">
           <HoverVideo
             src="/grandchildWalking.mp4"
@@ -35,11 +57,11 @@ export default async function Home({
           <div className="pointer-events-none absolute inset-0 z-10 bg-black/30" />
 
           <InfoCard
-            title="Bordeaux Heritage"
-            description="The vineyard, the family, the craft."
-            subtitle="by day"
-            ctaText="Discover the story"
-            href="/bordeaux"
+            title={bordeauxData?.BordeauxTitle || "Bordeaux Heritage"}
+            description={bordeauxData?.BordeauxDescription || "The vineyard, the family, the craft.\n by day."}
+            subtitle={undefined}
+            ctaText={bordeauxData?.BordeauxTextButton || "Discover the story"}
+            href={`/${locale}/bordeaux`}
             className={`left-[10%] ${sharedCardClasses}`}
           />
         </div>
@@ -54,18 +76,17 @@ export default async function Home({
 
           <InfoCard
             align="right"
-            title="Parisian Nights"
-            description="Cocktails, atmosphere, and connection."
-            subtitle="by night"
-            ctaText="Discover the experience"
-            href="/parisian"
+            title={parisianData?.ParisianTitle || "Parisian Nights"}
+            description={parisianData?.ParisianDescription || "Cocktails, atmosphere, and connection.\n by night."}
+            subtitle={undefined}
+            ctaText={parisianData?.ParisianTextButton || "Discover the experience"}
+            href={`/${locale}/parisian`}
             className={`right-[10%] ${sharedCardClasses}`}
           />
         </div>
-
       </div>
 
-      <div className="pointer-events-none absolute top-1/2 left-1/2 z-15 h 32 w-full -translate-x-1/2 -translate-y-1/2 flex items-center justify-center md:hidden bg-gradient-to-b from-transparent via-black/75 to-transparent">
+      <div className="pointer-events-none absolute top-1/2 left-1/2 z-15 h-32 w-full -translate-x-1/2 -translate-y-1/2 flex items-center justify-center md:hidden bg-gradient-to-b from-transparent via-black/75 to-transparent">
         <Image
           src="/darkBlur.svg"
           alt=""

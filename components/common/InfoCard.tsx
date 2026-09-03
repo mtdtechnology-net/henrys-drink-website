@@ -58,15 +58,15 @@ export const InfoCard = ({
         </h1>
 
         {description && (
-          <p
-            className={`${comfortaa.className} mt-2 sm:mt-4 w-full ${isRight ? "text-right" : "text-left"} ${textClassName}`}
-            style={textShadowStyle}
-          >
-            {description}
-          </p>
-        )}
+  <p
+    className={`${comfortaa.className} mt-2 sm:mt-4 w-full whitespace-pre-line ${isRight ? "text-right" : "text-left"} ${textClassName}`}
+    style={textShadowStyle}
+  >
+    {description}
+  </p>
+)}
 
-        {subtitle && (
+        {Boolean(subtitle) && (
           <p
             className={`${comfortaa.className} w-full ${isRight ? "text-right" : "text-left"} ${textClassName}`}
             style={textShadowStyle}

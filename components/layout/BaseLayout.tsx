@@ -34,6 +34,7 @@ export default async function BaseLayout({
       {showFooter && (
         <Footer
           theme={footerTheme}
+          locale={locale}
           privacyHref={`/${locale}/privacy-policy`}
           shippingHref={`/${locale}/shipping-delivery`}
         />
