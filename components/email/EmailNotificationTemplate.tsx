@@ -4,7 +4,6 @@ import {
   Body,
   Container,
   Section,
-  Text,
   Tailwind,
 } from '@react-email/components';
 import type { ReactNode } from 'react';
@@ -20,6 +19,17 @@ export interface NotificationTemplateProps {
   content?: ReactNode;
   firstName?: string;
   showFooterButton?: boolean;
+  footerButtonText?: string;
+  footerContactLabel?: string;
+  footerContactEmail?: string;
+  footerOperatingHours?: string;
+  orderSubtitle?: string;
+  productName?: string;
+  productDetails?: string;
+  subtotalLabel?: string;
+  shippingLabel?: string;
+  totalLabel?: string;
+  shippingAddressTitle?: string;
 }
 
 const imageSrcs = {
@@ -36,6 +46,10 @@ export const EmailNotificationTemplate = ({
   content,
   firstName,
   showFooterButton,
+  footerButtonText,
+  footerContactLabel,
+  footerContactEmail,
+  footerOperatingHours,
 }: NotificationTemplateProps) => (
   <Tailwind>
     <Html>
@@ -70,6 +84,10 @@ export const EmailNotificationTemplate = ({
               instagramSrc={imageSrcs.instagram}
               linkedinSrc={imageSrcs.linkedin}
               showButton={showFooterButton}
+              buttonText={footerButtonText}
+              contactLabel={footerContactLabel}
+              contactEmail={footerContactEmail}
+              operatingHours={footerOperatingHours}
             />
           </Section>
 

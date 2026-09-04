@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { getCartPage } from "@/lib/strapi";
 
 interface CartItem {
   id: number;
@@ -108,6 +109,21 @@ export default function CartPage() {
   const router = useRouter();
   const params = useParams<{ locale: string }>();
 
+  const [cmsData, setCmsData] = useState<Record<string, any> | null>(null);
+
+  useEffect(() => {
+    async function loadCmsData() {
+      try {
+        const res = await getCartPage(params.locale || "en");
+        const attributes = res?.data?.attributes || res?.data || res;
+        setCmsData(attributes);
+      } catch (error) {
+        console.error("Error fetching cart page CMS data:", error);
+      }
+    }
+    loadCmsData();
+  }, [params.locale]);
+
   const {
     items,
     shipping,
@@ -119,8 +135,17 @@ export default function CartPage() {
   } = useCartEngine();
 
   const handleGoToCheckout = () => {
-    router.push("/checkout");
+    router.push(`/${params.locale}/checkout`);
   };
+
+  const cartTitle = cmsData?.CartTitle || "Votre Panier";
+  const cartPricePerUnit = cmsData?.CartPricePerUnit || "/ unité";
+  const cartSummarySubtitle = cmsData?.CartSummarySubtitle || "Résumé";
+  const cartSubtotal = cmsData?.CartSubtotal || "Sous-total";
+  const cartShipping = cmsData?.CartShipping || "Livraison";
+  const cartTotal = cmsData?.CartTotal || "Total";
+  const cartPlaceOrderButton = cmsData?.CartPlaceOrderButton || "Passer la commande";
+  const cartSecurePayment = cmsData?.CartSecurePayment || "Paiement sécurisé par Henry's Luxury";
 
   return (
     <motion.div
@@ -136,7 +161,7 @@ export default function CartPage() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="font-['Pinyon_Script'] text-[48px] sm:text-[64px] md:text-[82px] leading-none text-center text-[#442F0E] mb-10 sm:mb-16 md:mb-20"
         >
-          Votre Panier
+          {cartTitle}
         </motion.h1>
 
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16">
@@ -249,8 +274,7 @@ export default function CartPage() {
                         transition={{ duration: 0.5, delay: 0.3 }}
                         className="text-[12px] sm:text-[14px] leading-none opacity-50 text-[#442F0E] mt-1"
                       >
-                        {item.pricePerUnit.toFixed(2).replace(".", ",")} € /
-                        unité
+                        {item.pricePerUnit.toFixed(2).replace(".", ",")} € {cartPricePerUnit}
                       </motion.p>
                     </div>
 
@@ -293,12 +317,12 @@ export default function CartPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="font-['Pinyon_Script'] text-[36px] sm:text-[42px] leading-tight text-center text-[#442F0E] mb-4 sm:mb-6"
             >
-              Résumé
+              {cartSummarySubtitle}
             </motion.h2>
 
             <div className="space-y-4 text-[#442F0E]">
               <div className="flex justify-between items-center text-[15px] sm:text-[16px] pb-4 border-b border-[#442F0E]/10">
-                <span>Sous-total</span>
+                <span>{cartSubtotal}</span>
                 <motion.span
                   key={subtotal}
                   initial={{ opacity: 0.5, y: -2 }}
@@ -310,12 +334,12 @@ export default function CartPage() {
               </div>
 
               <div className="flex justify-between items-center text-[15px] sm:text-[16px] pb-4 border-b border-[#442F0E]/10">
-                <span>Livraison</span>
+                <span>{cartShipping}</span>
                 <span>{shipping.toFixed(2).replace(".", ",")} €</span>
               </div>
 
               <div className="pt-2 flex justify-between items-center text-[18px] sm:text-[20px] font-bold text-[#325175]">
-                <span>Total</span>
+                <span>{cartTotal}</span>
                 <motion.span
                   key={total}
                   initial={{ opacity: 0.5, scale: 0.95 }}
@@ -337,7 +361,7 @@ export default function CartPage() {
                 onClick={handleGoToCheckout}
                 className="w-full h-[56px] sm:h-[60px] bg-[#325175] text-white rounded-[160px] font-semibold text-[16px] sm:text-[18px] hover:bg-[#253d5a] transition-colors border border-[#325175] cursor-pointer"
               >
-                Passer la commande
+                {cartPlaceOrderButton}
               </motion.button>
 
               <div className="flex items-center justify-center gap-1.5 text-[12px] text-[#442F0E]/60 pt-1">
@@ -355,7 +379,7 @@ export default function CartPage() {
                   />
                 </svg>
                 <span style={{ color: "#325175" }}>
-                  Paiement sécurisé par Henry&apos;s Luxury
+                  {cartSecurePayment}
                 </span>
               </div>
             </div>

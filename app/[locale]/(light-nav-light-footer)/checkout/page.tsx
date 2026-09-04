@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { motion } from "motion/react";
+import { getCheckoutPage } from "@/lib/strapi";
 
 type CartItem = {
   productId: number;
@@ -16,6 +17,8 @@ type CartItem = {
 export default function CheckoutPage() {
   const params = useParams<{ locale: string }>();
   const locale = params.locale ?? "en";
+
+  const [cmsData, setCmsData] = useState<Record<string, any> | null>(null);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -56,6 +59,16 @@ export default function CheckoutPage() {
   const total = subtotal + shipping;
 
   useEffect(() => {
+    async function loadCmsData() {
+      try {
+        const res = await getCheckoutPage(locale);
+        const attributes = res?.data?.attributes || res?.data || res;
+        setCmsData(attributes);
+      } catch (error) {
+        console.error("Error fetching CheckoutPage CMS data:", error);
+      }
+    }
+
     async function loadCart() {
       try {
         const response = await fetch(
@@ -71,19 +84,19 @@ export default function CheckoutPage() {
 
         const itemMap = new Map<number, CartItem>();
 
-for (const item of data.items ?? []) {
-  const currentItem = itemMap.get(item.productId);
+        for (const item of data.items ?? []) {
+          const currentItem = itemMap.get(item.productId);
 
-  itemMap.set(item.productId, {
-    ...item,
-    price: Number(item.price ?? item.pricePerUnit ?? 0),
-    quantity: (currentItem?.quantity ?? 0) + item.quantity,
-  });
-}
+          itemMap.set(item.productId, {
+            ...item,
+            price: Number(item.price ?? item.pricePerUnit ?? 0),
+            quantity: (currentItem?.quantity ?? 0) + item.quantity,
+          });
+        }
 
-setCartItems(
-  Array.from(itemMap.values()).filter((item) => item.quantity > 0),
-);
+        setCartItems(
+          Array.from(itemMap.values()).filter((item) => item.quantity > 0),
+        );
       } catch (error) {
         setCheckoutError(
           error instanceof Error ? error.message : "Could not load cart.",
@@ -93,6 +106,7 @@ setCartItems(
       }
     }
 
+    loadCmsData();
     loadCart();
   }, [locale]);
 
@@ -109,7 +123,7 @@ setCartItems(
     if (submitting) return;
 
     if (cartItems.length === 0) {
-      setCheckoutError("Your cart is empty.");
+      setCheckoutError(emptyCartText);
       return;
     }
 
@@ -162,6 +176,29 @@ setCartItems(
     }
   }
 
+  const title = cmsData?.CheckoutTitle || "Finaliser la commande";
+  const deliverySubtitle =
+    cmsData?.CheckoutDeliveryDetailsSubtitle || "COORDONNÉES DE LIVRAISON";
+  const firstNameLabel = cmsData?.CheckoutFirstName || "Prénom";
+  const lastNameLabel = cmsData?.CheckoutLastName || "Nom de famille";
+  const addressLabel = cmsData?.CheckoutAddress || "Adresse";
+  const addressLine2Label =
+    cmsData?.CheckoutAddressLine2 || "Complément d'adresse";
+  const postalCodeLabel = cmsData?.CheckoutPostalCode || "Code postal";
+  const cityLabel = cmsData?.CheckoutCity || "Ville";
+  const countryLabel = cmsData?.CheckoutCountry || "Pays";
+  const emailLabel = cmsData?.CheckoutEmail || "E-mail";
+  const phoneNumberLabel = cmsData?.CheckoutPhoneNumber || "Téléphone";
+  const summaryTitle = cmsData?.CheckoutSummaryTitle || "Résumé";
+  const subtotalLabel = cmsData?.CheckoutSubtotal || "Sous-total";
+  const shippingLabel = cmsData?.CheckoutShipping || "Livraison";
+  const totalLabel = cmsData?.CheckoutTotal || "Total";
+  const emptyCartText = cmsData?.EmptyCartText || "Your cart is empty.";
+  const confirmButtonText =
+    cmsData?.CheckoutConfirmOrderButton || "Confirmer la commande";
+  const securePaymentText =
+    cmsData?.CheckoutSecurePayment || "Paiement sécurisé par Henry's Luxury";
+
   return (
     <div className="min-h-screen w-full bg-[#FFFBF7] px-4 pb-16 pt-28 font-['Comfortaa'] text-[#325175] sm:px-8 sm:pb-24 sm:pt-36 md:px-16 md:pt-40">
       <div className="mx-auto max-w-[1280px]">
@@ -172,7 +209,7 @@ setCartItems(
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-6 text-center font-['Pinyon_Script'] text-[48px] leading-none text-[#442F0E] sm:mb-8 sm:text-[64px] md:mb-10 md:text-[82px]"
         >
-          Complete Your Order
+          {title}
         </motion.h1>
 
         {checkoutError && (
@@ -190,13 +227,13 @@ setCartItems(
             className="w-full rounded-[22px] border border-[#325175]/30 bg-white/55 px-6 py-8 shadow-[0_12px_40px_rgba(50,81,117,0.05)] sm:px-10 sm:py-10 lg:flex-1"
           >
             <h2 className="mb-8 text-[18px] font-bold uppercase tracking-[0.12em] text-[#325175]">
-              Shipping Address
+              {deliverySubtitle}
             </h2>
 
             <div className="space-y-6">
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <Field
-                  label="First Name"
+                  label={firstNameLabel}
                   name="firstName"
                   placeholder="Jean"
                   value={formData.firstName}
@@ -204,7 +241,7 @@ setCartItems(
                   required
                 />
                 <Field
-                  label="Last Name"
+                  label={lastNameLabel}
                   name="lastName"
                   placeholder="Dupont"
                   value={formData.lastName}
@@ -214,7 +251,7 @@ setCartItems(
               </div>
 
               <Field
-                label="Address"
+                label={addressLabel}
                 name="address"
                 placeholder="15 Avenue des Champs-Élysées"
                 value={formData.address}
@@ -223,16 +260,16 @@ setCartItems(
               />
 
               <Field
-                label="Address Details"
+                label={addressLine2Label}
                 name="addressComplement"
-                placeholder="Apartment, floor (optional)"
+                placeholder="Appartement, étage..."
                 value={formData.addressComplement}
                 onChange={handleChange}
               />
 
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <Field
-                  label="Postal Code"
+                  label={postalCodeLabel}
                   name="postalCode"
                   placeholder="75008"
                   value={formData.postalCode}
@@ -240,7 +277,7 @@ setCartItems(
                   required
                 />
                 <Field
-                  label="City"
+                  label={cityLabel}
                   name="city"
                   placeholder="Paris"
                   value={formData.city}
@@ -250,7 +287,7 @@ setCartItems(
               </div>
 
               <Field
-                label="Country"
+                label={countryLabel}
                 name="country"
                 placeholder="France"
                 value={formData.country}
@@ -260,7 +297,7 @@ setCartItems(
 
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <Field
-                  label="Email"
+                  label={emailLabel}
                   name="email"
                   placeholder="jean.dupont@example.com"
                   value={formData.email}
@@ -269,7 +306,7 @@ setCartItems(
                   required
                 />
                 <Field
-                  label="Phone"
+                  label={phoneNumberLabel}
                   name="phone"
                   placeholder="+33 6 00 00 00 00"
                   value={formData.phone}
@@ -288,13 +325,13 @@ setCartItems(
             className="w-full rounded-[22px] bg-white/35 px-6 py-7 sm:px-8 lg:w-[351px]"
           >
             <h2 className="mb-6 text-left font-['Pinyon_Script'] text-[42px] leading-tight text-[#325175]">
-              Summary
+              {summaryTitle}
             </h2>
 
             {loadingCart ? (
-              <p className="text-sm text-[#325175]/60">Loading cart…</p>
+              <p className="text-sm text-[#325175]/60">...</p>
             ) : cartItems.length === 0 ? (
-              <p className="text-sm text-[#325175]/60">Your cart is empty.</p>
+              <p className="text-sm text-[#325175]/60">{emptyCartText}</p>
             ) : (
               <>
                 <div className="space-y-4 border-b border-[#325175]/10 pb-4">
@@ -308,7 +345,7 @@ setCartItems(
                           {item.name}
                         </p>
                         <p className="text-[13px] text-[#325175]/60">
-                          Quantity: {item.quantity}
+                          Quantité: {item.quantity}
                         </p>
                       </div>
 
@@ -323,17 +360,17 @@ setCartItems(
 
                 <div className="mt-5 space-y-2 text-[#325175]">
                   <div className="flex items-center justify-between text-[15px] sm:text-[16px]">
-                    <span>Subtotal</span>
+                    <span>{subtotalLabel}</span>
                     <span>{formatter.format(subtotal)}</span>
                   </div>
 
                   <div className="flex items-center justify-between border-b border-[#325175]/10 pb-4 text-[15px] sm:text-[16px]">
-                    <span>Shipping</span>
+                    <span>{shippingLabel}</span>
                     <span>{formatter.format(shipping)}</span>
                   </div>
 
                   <div className="flex items-center justify-between pt-2 text-[18px] font-bold text-[#325175] sm:text-[20px]">
-                    <span>Total</span>
+                    <span>{totalLabel}</span>
                     <span>{formatter.format(total)}</span>
                   </div>
                 </div>
@@ -357,11 +394,11 @@ setCartItems(
             whileTap={{ scale: submitting ? 1 : 0.97 }}
             className="h-[60px] w-full cursor-pointer rounded-[160px] border border-[#325175] bg-[#325175] text-[18px] font-semibold text-white transition-colors hover:bg-[#253d5a] disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {submitting ? "Creating order…" : "Confirm Order"}
+            {submitting ? "..." : confirmButtonText}
           </motion.button>
 
           <div className="flex items-center justify-center gap-1.5 pt-1 text-[12px] text-[#325175]/60">
-            <span>Secure checkout powered by Henry&apos;s Luxury</span>
+            <span>{securePaymentText}</span>
           </div>
         </motion.div>
       </div>

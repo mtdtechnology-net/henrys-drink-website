@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
+import { getOrderConfirmPage, OrderConfirmPageData } from "@/lib/strapi";
 
 type ConfirmResult = {
   isPaid: boolean;
@@ -19,6 +20,11 @@ export default function SuccessPage() {
 
   const [result, setResult] = useState<ConfirmResult | null>(null);
   const [error, setError] = useState("");
+  const [cms, setCms] = useState<OrderConfirmPageData | null>(null);
+
+  useEffect(() => {
+    getOrderConfirmPage(locale).then(setCms).catch(console.error);
+  }, [locale]);
 
   useEffect(() => {
     if (!sessionId) {
@@ -47,7 +53,9 @@ export default function SuccessPage() {
         }
       } catch (e) {
         if (!cancelled) {
-          setError(e instanceof Error ? e.message : "Could not verify payment.");
+          setError(
+            e instanceof Error ? e.message : "Could not verify payment."
+          );
         }
       }
     })();
@@ -65,7 +73,7 @@ export default function SuccessPage() {
         {error ? (
           <>
             <h1 className="font-['Pinyon_Script'] text-[clamp(52px,9vw,100px)] leading-[1.1] text-[#442F0E] mb-6">
-              Verification Error
+              {cms?.VerificationErrorTitle || "Verification Error"}
             </h1>
             <p className="text-[clamp(15px,1.8vw,20px)] leading-[160%] opacity-80 mb-12">
               {error}
@@ -74,35 +82,39 @@ export default function SuccessPage() {
         ) : sessionId && result === null ? (
           <>
             <h1 className="font-['Pinyon_Script'] text-[clamp(52px,9vw,100px)] leading-[1.1] text-[#442F0E] mb-6">
-              Verifying…
+              {cms?.VerifyingTitle || "Verifying…"}
             </h1>
             <p className="text-[clamp(15px,1.8vw,20px)] leading-[160%] opacity-80 mb-12">
-              Confirming your payment.
+              {cms?.VerifyingDescription || "Confirming your payment."}
             </p>
           </>
         ) : isPaid ? (
           <>
             <h1 className="font-['Pinyon_Script'] text-[clamp(52px,9vw,100px)] leading-[1.1] text-[#442F0E] mb-6">
-              Order Confirmed
+              {cms?.OrderConfirmedTitle || "Order Confirmed"}
             </h1>
 
             <p className="text-[clamp(15px,1.8vw,20px)] leading-[160%] opacity-80 mb-12">
-              Your payment was successful.
+              {cms?.OrderConfirmedDescription || "Your payment was successful."}
               {result?.reference
-                ? ` Your order reference is ${result.reference}.`
+                ? ` ${cms?.OrderReferenceText || "Your order reference is"} ${result.reference}.`
                 : ""}{" "}
-              A confirmation email has been sent to{" "}
-              <strong className="text-[#325175]">{result?.email ?? "you"}</strong>.
+              {cms?.EmailSentText || "A confirmation email has been sent to"}{" "}
+              <strong className="text-[#325175]">
+                {result?.email ?? "you"}
+              </strong>
+              .
             </p>
           </>
         ) : (
           <>
             <h1 className="font-['Pinyon_Script'] text-[clamp(52px,9vw,100px)] leading-[1.1] text-[#442F0E] mb-6">
-              No payment found
+              {cms?.NoPaymentTitle || "No payment found"}
             </h1>
 
             <p className="text-[clamp(15px,1.8vw,20px)] leading-[160%] opacity-80 mb-12">
-              We could not confirm any payment for this link.
+              {cms?.NoPaymentDescription ||
+                "We could not confirm any payment for this link."}
             </p>
           </>
         )}
@@ -113,7 +125,7 @@ export default function SuccessPage() {
           href={`/${locale}/product`}
           className="inline-flex items-center justify-center bg-[#325175] text-[#F3EDE6] font-semibold text-[17px] px-10 py-4 rounded-full hover:bg-[#233a54] transition-colors shadow-sm"
         >
-          Return to Shop
+          {cms?.ReturnToShopButton || "Return to Shop"}
         </Link>
       </div>
     </main>

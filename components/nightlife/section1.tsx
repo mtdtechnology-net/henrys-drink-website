@@ -51,13 +51,13 @@ export default function Section1({ data }: SectionProps) {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="relative z-20 flex flex-col items-center justify-center w-full max-w-7xl mx-auto pt-14 mt-8 lg:mt-20 md:pt-16 2xl:pt-24"
+        className="relative z-20 flex flex-col items-center justify-center w-full max-w-7xl mx-auto pt-14 mt-8 lg:mt-20 md:pt-16 2xl:pt-24 max-h-[800px]:mt-2 max-h-[800px]:pt-6"
       >
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.1 }}
-          className="font-pinyon text-6xl sm:text-7xl lg:text-[134px] 2xl:scale-125 min-[1920px]:scale-150 whitespace-normal lg:whitespace-nowrap leading-tight lg:leading-none text-white text-center transform origin-center"
+          className="font-pinyon text-6xl sm:text-7xl lg:text-[134px] lg:[@media(max-height:800px)]:text-[85px] lg:[@media(min-width:1024px)_and_(max-width:1025px)]:text-[95px] 2xl:scale-125 min-[1920px]:scale-150 whitespace-normal lg:whitespace-nowrap leading-tight lg:leading-none text-white text-center transform origin-center"
         >
           {rawTitle}
         </motion.h1>
@@ -65,7 +65,7 @@ export default function Section1({ data }: SectionProps) {
         <motion.p
           initial="hidden"
           animate="visible"
-          className="font-futura text-base sm:text-lg lg:text-xl xl:text-2xl 2xl:text-[28px] font-medium leading-tight uppercase text-white text-center max-w-4xl pt-4 lg:mt-8"
+          className="font-futura text-base sm:text-lg lg:text-xl xl:text-2xl 2xl:text-[28px] font-medium leading-tight uppercase text-white text-center max-w-4xl pt-4 lg:mt-8 max-h-[800px]:text-sm max-h-[800px]:pt-2 max-h-[800px]:mt-2"
         >
           {line1.map((word: string, i: number) => (
             <motion.span
@@ -92,7 +92,7 @@ export default function Section1({ data }: SectionProps) {
           ))}
         </motion.p>
 
-        <div className="invisible mt-20 lg:mt-36 2xl:mt-48 px-8 py-4 2xl:px-12 2xl:py-5 font-futura text-lg md:text-[22px] 2xl:text-[26px]">
+        <div className="invisible mt-20 lg:mt-36 2xl:mt-48 max-h-[800px]:mt-8 px-8 py-4 2xl:px-12 2xl:py-5 font-futura text-lg md:text-[22px] 2xl:text-[26px]">
           Discover the experience
         </div>
       </motion.div>

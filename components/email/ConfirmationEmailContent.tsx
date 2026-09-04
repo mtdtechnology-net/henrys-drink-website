@@ -16,7 +16,14 @@ export type ConfirmationEmailContentProps = {
   city: string;
   postalCode: string;
   country: string;
-}
+  orderSubtitle?: string;
+  productName?: string;
+  productDetails?: string;
+  subtotalLabel?: string;
+  shippingLabel?: string;
+  totalLabel?: string;
+  shippingAddressTitle?: string;
+};
 
 export const ConfirmationEmailContent = ({ 
   quantity, 
@@ -26,10 +33,17 @@ export const ConfirmationEmailContent = ({
   addressLine,
   city,
   postalCode,
-  country
+  country,
+  orderSubtitle = "DÉTAILS DE LA COMMANDE",
+  productName = "The Signature Apéritif",
+  productDetails,
+  subtotalLabel = "Sous-total",
+  shippingLabel = "Livraison (Bordeaux Heritage Express)",
+  totalLabel = "TOTAL",
+  shippingAddressTitle = "ADRESSE DE LIVRAISON",
 }: ConfirmationEmailContentProps) => {
 
-  const total = productsAmount + shippingTotal
+  const total = productsAmount + shippingTotal;
 
   return (
     <Tailwind>
@@ -38,22 +52,22 @@ export const ConfirmationEmailContent = ({
 
         <Section className="mb-4 w-[calc(100%-64px)] my-6 mx-auto">
           <Text className="pb-4 text-[#325175] font-['Comfortaa','Noto_Serif',sans-serif] font-light text-[13px] my-0">
-            DÉTAILS DE LA COMMANDE
+            {orderSubtitle}
           </Text>
 
           <Row className="mb-4">
             <Column>
               <Text className="text-[#442F0E] font-['Geist','Noto_Serif',sans-serif] font-bold text-[13px] my-0 ">
-                The Signature Apéritif
+                {productName}
               </Text>
 
               <Text className="text-[#7A6E60] font-['Geist','Noto_Serif',sans-serif] text-[10px] my-0 ">
-                Bordeaux · Quantité {quantity}
+                {productDetails ? productDetails : `Bordeaux · Quantité ${quantity}`}
               </Text>
 
             </Column>
 
-            <Column align="right" >
+            <Column align="right">
               <Text className="text-[#442F0E] font-['Geist','Noto_Serif',sans-serif] font-extrabold text-[13px] my-0">
                 {productsAmount.toFixed(2)}€
               </Text>
@@ -65,19 +79,27 @@ export const ConfirmationEmailContent = ({
           <Section className="w-full">
             <Row className="py-2">
               <Column>
-                <Text className="m-0 text-left font-['Geist','Noto_Serif',sans-serif] text-xs text-[#7A6E60]">Sous-total</Text>
+                <Text className="m-0 text-left font-['Geist','Noto_Serif',sans-serif] text-xs text-[#7A6E60]">
+                  {subtotalLabel}
+                </Text>
               </Column>
               <Column align="right">
-                <Text className="m-0 text-right font-['Geist','Noto_Serif',sans-serif] text-xs text-[#442F0E]">{productsAmount.toFixed(2)}€ </Text>
+                <Text className="m-0 text-right font-['Geist','Noto_Serif',sans-serif] text-xs text-[#442F0E]">
+                  {productsAmount.toFixed(2)}€
+                </Text>
               </Column>
             </Row>
 
             <Row className="py-1">
               <Column>
-                <Text className="m-0 text-left font-['Geist','Noto_Serif',sans-serif] text-xs text-[#7A6E60]">Livraison (Bordeaux Heritage Express)</Text>
+                <Text className="m-0 text-left font-['Geist','Noto_Serif',sans-serif] text-xs text-[#7A6E60]">
+                  {shippingLabel}
+                </Text>
               </Column>
               <Column align="right">
-                <Text className="m-0 text-right font-['Geist','Noto_Serif',sans-serif] text-xs text-[#442F0E]">{shippingTotal.toFixed(2)}€</Text>
+                <Text className="m-0 text-right font-['Geist','Noto_Serif',sans-serif] text-xs text-[#442F0E]">
+                  {shippingTotal.toFixed(2)}€
+                </Text>
               </Column>
             </Row>
 
@@ -85,10 +107,14 @@ export const ConfirmationEmailContent = ({
 
             <Row className="pt-3">
               <Column>
-                <Text className="m-0 pt-2 text-left font-['Comfortaa','Noto_Serif',sans-serif] text-bold text-xs text-[#325175] text-[13px]">TOTAL</Text>
+                <Text className="m-0 pt-2 text-left font-['Comfortaa','Noto_Serif',sans-serif] font-bold text-xs text-[#325175] text-[13px]">
+                  {totalLabel}
+                </Text>
               </Column>
               <Column align="right">
-                <Text className="m-0 mt-2 text-right font-['Geist','Noto_Serif',sans-serif] font-bold text-xs text-[#95000D] text-[16px]">{total.toFixed(2)}€</Text>
+                <Text className="m-0 mt-2 text-right font-['Geist','Noto_Serif',sans-serif] font-bold text-xs text-[#95000D] text-[16px]">
+                  {total.toFixed(2)}€
+                </Text>
               </Column>
             </Row>
           </Section>
@@ -97,11 +123,10 @@ export const ConfirmationEmailContent = ({
 
         <Hr className="border-t-2 border-[#F7F2E8] w-full w-[calc(100%-64px)] mx-auto" />
 
-
         <Section className="mb-4 w-[calc(100%-64px)] my-6 mx-auto">
           <Column>
             <Text className="pb-5 text-[#325175] font-['Comfortaa','Noto_Serif',sans-serif] font-light text-[13px] my-0">
-              ADRESSE DE LIVRAISON
+              {shippingAddressTitle}
             </Text>
 
             <Section className="bg-white border border-solid border-[#F0E7D5] rounded-xl p-6 max-w-[580px] mx-auto">
@@ -128,9 +153,7 @@ export const ConfirmationEmailContent = ({
           </Column>
         </Section>
 
-
       </Column>
-
     </Tailwind>
   );
 };
