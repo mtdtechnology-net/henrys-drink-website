@@ -7,12 +7,14 @@ type AddToCartButtonProps = {
   productId: number;
   locale: string;
   buttonText?: string;
+  loadingText?: string;
 };
 
 export function AddToCartButton({
   productId,
   locale,
   buttonText,
+  loadingText,
 }: AddToCartButtonProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -53,7 +55,7 @@ export function AddToCartButton({
       disabled={isLoading}
       className="flex h-[65px] w-[190px] cursor-pointer items-center justify-center rounded-[160px] bg-[#325175] font-comfortaa text-[22px] font-medium leading-none text-white shadow-sm transition-colors hover:bg-[#233a54] disabled:cursor-not-allowed disabled:opacity-60"
     >
-      {isLoading ? "Adding..." : buttonText || "Add to cart"}
+      {isLoading ? loadingText || "..." : buttonText || "Add to cart"}
     </button>
   );
 }

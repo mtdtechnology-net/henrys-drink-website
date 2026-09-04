@@ -5,6 +5,7 @@ import {
   findOrderReferenceByTransactionId,
 } from "@/lib/prestashop";
 import { sendNotificationEmail } from "@/lib/services/email.service";
+import { getOrderConfirmationEmail } from "@/lib/strapi";
 
 export const runtime = "nodejs";
 
@@ -53,14 +54,28 @@ export async function GET(request: NextRequest) {
 
   if (isPaid && metadata.email) {
     try {
+      const locale = metadata.locale ?? "fr";
+      const strapiData = await getOrderConfirmationEmail(locale);
+
       await sendNotificationEmail({
         to: metadata.email,
         userEmail: metadata.email,
         subject: "Confirmation de votre commande - Henry's",
-        title: "Merci pour votre commande !",
-        description: `Merci pour votre achat ! Nous avons bien reçu votre paiement.`,
+        title: strapiData?.OrderConfirmationTitle || "Merci pour votre commande",
+        description: strapiData?.OrderConfirmationDescription || "Merci pour votre achat ! Nous avons bien reçu votre paiement.",
         firstName: metadata.firstName,
-        locale: metadata.locale ?? "en",
+        locale: locale,
+        footerButtonText: strapiData?.EmailFooterButton,
+        footerContactLabel: strapiData?.EmailFooterContact,
+        footerContactEmail: strapiData?.EmailFooterContactAddress,
+        footerOperatingHours: strapiData?.EmailFooterOperatingHours,
+        orderSubtitle: strapiData?.OrderConfirmationSubtitle,
+        productName: strapiData?.OrderProductName,
+        productDetails: strapiData?.OrderProductDetails,
+        subtotalLabel: strapiData?.OrderSubtotal,
+        shippingLabel: strapiData?.OrderShipping,
+        totalLabel: strapiData?.OrderTotal,
+        shippingAddressTitle: strapiData?.OrderShippingAddress,
       });
     } catch (error) {
       console.error(

@@ -129,3 +129,91 @@ export async function getGlobalData(
      locale
     );
 }
+
+export async function getCartPage(
+  locale: string = "en")
+   {
+  return fetchStrapiSingle(
+    "cart-page", 
+    locale
+  );
+}
+  
+export async function getCheckoutPage(
+  locale: string = "en")
+   {
+  return fetchStrapiSingle(
+    "checkout-page", 
+    locale
+  );
+}
+
+export async function getOrderConfirmationEmail(
+  locale: string = "en")
+   {
+  return fetchStrapiSingle(
+    "order-confirmation-email",
+     locale
+    );
+}
+
+export async function getContactFormConfirmationEmail(
+  locale: string = "en")
+   {
+  return fetchStrapiSingle(
+    "contact-form-confirmation-email",
+     locale
+    );
+}
+
+export async function getOrderConfirmPage(
+  locale: string = "en"): 
+  Promise<OrderConfirmPageData> {
+  return fetchStrapiSingle(
+    "order-confirm-page", 
+    locale
+  );
+}
+
+export interface OrderConfirmationEmailData {
+  OrderConfirmationTitle: string;
+  OrderConfirmationDescription: string;
+  OrderConfirmationSubtitle: string;
+  OrderProductName: string;
+  OrderProductDetails: string;
+  OrderSubtotal: string;
+  OrderShipping: string;
+  OrderTotal: string;
+  OrderShippingAddress: string;
+  EmailFooterContact: string;
+  EmailFooterButton: string;
+  EmailFooterOperatingHours: string;
+  EmailFooterContactAddress: string;
+}
+
+export interface ContactFormConfirmationEmailData {
+  ContactFormTitle: string;
+  ContactFormSubtitle: string;
+  ContactFormDescription: string;
+  ContactFormPhotoText: string;
+  EmailFooterButton: string;
+  EmailFooterContact: string;
+  EmailFooterOperatingHours: string;
+  EmailFooterContactAddress: string;
+}
+
+export interface OrderConfirmPageData {
+  VerifyingTitle: string;
+  VerifyingDescription: string;
+  OrderConfirmedTitle: string;
+  OrderConfirmedDescription: string;
+  OrderReferenceText: string;
+  EmailSentText: string;
+  NoPaymentTitle: string;
+  NoPaymentDescription: string;
+  VerificationErrorTitle: string;
+  PaymentCancelledTitle: string;
+  PaymentCancelledDescription: string;
+  ReturnToShopButton: string;
+  ReturnToCartButton: string;
+}
